@@ -3,7 +3,7 @@ session_start();
 require_once 'inc/functions.php';
 $query = [
     'client_id' => '8687',
-    'redirect_uri' => 'localhost:4000', // http://example.com/callback
+    'redirect_uri' => 'https://jys-aniapp-v3.herokuapp.com', // http://example.com/callback
     'response_type' => 'code'    
 ];
 
