@@ -41,7 +41,6 @@ require_once 'inc/header.php'; ?>
 
     if (!empty($data)) {
         if ($status === 'CURRENT') {
-            var_dump($data);
             echo '<h3>Currently Watching</h3>';
             echo '<table>';
             echo '<tbody>';
@@ -58,7 +57,6 @@ require_once 'inc/header.php'; ?>
             echo '</table>';
         }
         if ($status === 'COMPLETED') {
-            var_dump($data);
             echo '<h3>Completed</h3>';
             echo '<table>';
             echo '<tbody>';

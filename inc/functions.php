@@ -75,12 +75,16 @@ function get_username($userId) {
 function get_userAnimeList($userId, $status) {
     $query = '
     query ($userId: Int, $status: MediaListStatus) {
-        MediaList (userId: $userId, type: ANIME, status: $status, sort: SCORE_DESC) {
-            media {
-                id,
-                coverImage {
-                    medium,
-                },
+        MediaListCollection (userId: $userId, type: ANIME, status: $status, sort: SCORE_DESC) {
+            lists {
+                entries {
+                    media {
+                        id,
+                        coverImage {
+                            medium,
+                        },
+                    }
+                }
             }
         }
     }';
@@ -97,7 +101,7 @@ function get_userAnimeList($userId, $status) {
         ]
     ]);
     $arr = json_decode($response->getBody()->getContents(), true);
-    return $arr['data']['MediaList'];
+    return $arr['data']['MediaListCollection']['lists']['entries'];
 }
 
 
@@ -105,12 +109,16 @@ function get_userAnimeList($userId, $status) {
 function get_userMangaList($userId, $status) {
     $query = '
     query ($userId: Int, $status: MediaListStatus) {
-        MediaList (userId: $userId, type: MANGA, status: $status, sort: SCORE_DESC) {
-            media {
-                id,
-                coverImage {
-                    medium,
-                },
+        MediaListCollection (userId: $userId, type: MANGA, status: $status, sort: SCORE_DESC) {
+            lists {
+                entries {
+                    media {
+                        id,
+                        coverImage {
+                            medium,
+                        },
+                    }
+                }
             }
         }
     }';
@@ -127,7 +135,7 @@ function get_userMangaList($userId, $status) {
         ]
     ]);
     $arr = json_decode($response->getBody()->getContents(), true);
-    return $arr['data']['MediaList']['media'];
+    return $arr['data']['MediaListCollection']['lists']['entries'];
 }
 
 
