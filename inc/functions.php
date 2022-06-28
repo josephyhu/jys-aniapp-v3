@@ -97,7 +97,7 @@ function get_userAnimeList($userId, $status) {
         ]
     ]);
     $arr = json_decode($response->getBody()->getContents(), true);
-    return $arr['data']['MediaList'];
+    return $arr['data']['MediaList']['media'];
 }
 
 
@@ -127,7 +127,7 @@ function get_userMangaList($userId, $status) {
         ]
     ]);
     $arr = json_decode($response->getBody()->getContents(), true);
-    return $arr['data']['MediaList'];
+    return $arr['data']['MediaList']['media'];
 }
 
 
@@ -157,5 +157,5 @@ function search_media($type, $search) {
         ]
     ]);
     $arr = json_decode($response->getBody()->getContents(), true);
-    return $arr['data']['MediaList'];
+    return $arr['data']['MediaList']['media'];
 }

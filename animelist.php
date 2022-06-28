@@ -47,7 +47,7 @@ require_once 'inc/header.php'; ?>
             echo '<tbody>';
             echo '<tr>';
             for ($i = 0; $i < count($data); $i++) {
-                echo "<td><img src='" . $data[$i]['media']['coverImage']['medium'] . "' alt='cover'></td>";
+                echo "<td><img src='" . $data[$i]['coverImage']['medium'] . "' alt='cover'></td>";
 
                 if (substr($i, -1) == 9) {
                     echo '</tr><tr>';
@@ -63,7 +63,7 @@ require_once 'inc/header.php'; ?>
             echo '<tbody>';
             echo '<tr>';
             for ($i = 0; $i < count($data); $i++) {
-                echo "<td><img src='" . $data[$i]['media']['coverImage']['medium'] . "' alt='cover'></td>";
+                echo "<td><img src='" . $data[$i]['coverImage']['medium'] . "' alt='cover'></td>";
 
                 if (substr($i, -1) == 9) {
                     echo '</tr><tr>';
@@ -79,7 +79,7 @@ require_once 'inc/header.php'; ?>
             echo '<tbody>';
             echo '<tr>';
             for ($i = 0; $i < count($data); $i++) {
-                echo "<td><img src='" . $data[$i]['media']['coverImage']['medium'] . "' alt='cover'></td>";
+                echo "<td><img src='" . $data[$i]['coverImage']['medium'] . "' alt='cover'></td>";
 
                 if (substr($i, -1) == 9) {
                     echo '</tr><tr>';
@@ -95,7 +95,7 @@ require_once 'inc/header.php'; ?>
             echo '<tbody>';
             echo '<tr>';
             for ($i = 0; $i < count($data); $i++) {
-                echo "<td><img src='" . $data[$i]['media']['coverImage']['medium'] . "' alt='cover'></td>";
+                echo "<td><img src='" . $data[$i]['coverImage']['medium'] . "' alt='cover'></td>";
 
                 if (substr($i, -1) == 9) {
                     echo '</tr><tr>';
@@ -111,7 +111,7 @@ require_once 'inc/header.php'; ?>
             echo '<tbody>';
             echo '<tr>';
             for ($i = 0; $i < count($data); $i++) {
-                echo "<td><img src='" . $data[$i]['media']['coverImage']['medium'] . "' alt='cover'></td>";
+                echo "<td><img src='" . $data[$i]['coverImage']['medium'] . "' alt='cover'></td>";
 
                 if (substr($i, -1) == 9) {
                     echo '</tr><tr>';
@@ -127,7 +127,7 @@ require_once 'inc/header.php'; ?>
             echo '<tbody>';
             echo '<tr>';
             for ($i = 0; $i < count($data); $i++) {
-                echo "<td><img src='" . $data[$i]['media']['coverImage']['medium'] . "' alt='cover'></td>";
+                echo "<td><img src='" . $data[$i]['coverImage']['medium'] . "' alt='cover'></td>";
 
                 if (substr($i, -1) == 9) {
                     echo '</tr><tr>';
