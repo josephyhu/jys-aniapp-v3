@@ -142,11 +142,13 @@ function get_userMangaList($userId, $status) {
 // Enable search functionality.
 function search_media($type, $search) {
     $query = 'query ($type: MediaType, $search: String) {
-        Media (type: $type, search: $search, sort: SCORE_DESC) {
-            id,
-            coverImage {
-                medium,
-            },
+        MediaList (type: $type, sort: SCORE_DESC) {
+            media (search: $search) {
+                id,
+                coverImage {
+                    medium,
+                },
+            }
         }
     }';
 
