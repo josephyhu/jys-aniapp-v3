@@ -58,12 +58,13 @@ require_once 'inc/header.php'; ?>
             echo '</table>';
         }
         if ($status === 'COMPLETED') {
+            var_dump($data);
             echo '<h3>Completed</h3>';
             echo '<table>';
             echo '<tbody>';
             echo '<tr>';
             for ($i = 0; $i < count($data); $i++) {
-                echo "<td><img src='" . $data[$i]['coverImage']['medium'] . "' alt='cover'></td>";
+                echo "<td><img src='" . $data[$i]['media']['coverImage']['medium'] . "' alt='cover'></td>";
 
                 if (substr($i, -1) == 9) {
                     echo '</tr><tr>';
