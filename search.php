@@ -42,9 +42,9 @@ require_once 'inc/header.php';
                 echo '<tr>';
                 for ($i = 0; $i < count($data); $i++) {
                     if ($type === 'ANIME') {
-                        echo "<td><a href='anime.php/id?='" . $data[$i]['id'] . "'><img src='" . $data[$i]['coverImage']['medium'] . "' alt='cover'></a></td>";
+                        echo "<td><a href='anime.php?id='" . $data[$i]['id'] . "'><img src='" . $data[$i]['coverImage']['medium'] . "' alt='cover'></a></td>";
                     } else {
-                        echo "<td><a href='manga.php/id?='" . $data[$i]['id'] . "'><img src='" . $data[$i]['coverImage']['medium'] . "' alt='cover'></a></td>";
+                        echo "<td><a href='manga.php?id='" . $data[$i]['id'] . "'><img src='" . $data[$i]['coverImage']['medium'] . "' alt='cover'></a></td>";
                     }
 
                     if (substr($i, -1) == 9) {

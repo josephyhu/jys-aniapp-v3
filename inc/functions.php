@@ -168,7 +168,7 @@ function search_media($type, $search) {
 
 // Get specific anime details
 function get_animeDetails($id) {
-    $query ='query ($id: id) {
+    $query ='query ($id: Int) {
         Media (id: $id) {
             title {
                 english,
