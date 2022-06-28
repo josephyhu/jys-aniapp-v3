@@ -142,7 +142,7 @@ function get_userMangaList($userId, $status) {
 // Enable search functionality.
 function search_media($type, $search) {
     $query = 'query ($type: MediaType, $search: String) {
-        MediaList {
+        Page {
             media (type: $type, search: $search, sort: SCORE_DESC) {
                 id,
                 coverImage {
@@ -165,5 +165,5 @@ function search_media($type, $search) {
         ]
     ]);
     $arr = json_decode($response->getBody()->getContents(), true);
-    return $arr['data']['MediaList'];
+    return $arr['data']['Page']['media'];
 }
