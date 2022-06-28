@@ -1,0 +1,80 @@
+body {
+    background: #0B1622;
+    max-width: 80%;
+    color: #9FAD8D;
+    margin: auto;
+}
+
+header {
+    background: #151F2E;
+    text-align: Center;
+}
+
+main {
+    background: #151F2E;
+    text-align: center;
+}
+
+footer {
+    background: #151F2E;
+    text-align: center;
+}
+
+a {
+    color: #728AA1;
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    opacity: 40%;
+}
+
+.required {
+    color: #FF0000;
+}
+
+.success {
+    color: #00FF00;
+}
+
+.notice {
+    color: #FFFF00;
+}
+
+.warning {
+    color: #FF8000;
+}
+
+table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+    margin: 0 auto
+}
+
+.login a, .links a, .logout a {
+    display: block;
+    width: 100%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border: 1px solid blue;
+}
+
+.banner {
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+}
+
+@media only screen and (min-width: 768px) {
+    .login a, .links a, .logout a {
+        display: inline;
+        width: auto;
+        padding: 12px 24px;
+        border: 1px solid blue;
+    }
+    
+    .login, .links, .logout {
+        padding: 12px 0px;
+        margin: 6px;
+    }
+}
