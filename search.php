@@ -37,6 +37,7 @@ require_once 'inc/header.php';
                 $data = search_media($type, $search);
             }
             if (!empty($data)) {
+                var_dump($data);
                 echo '<table>';
                 echo '<tbody>';
                 echo '<tr>';
