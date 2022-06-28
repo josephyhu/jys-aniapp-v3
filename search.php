@@ -41,7 +41,11 @@ require_once 'inc/header.php';
                 echo '<tbody>';
                 echo '<tr>';
                 for ($i = 0; $i < count($data); $i++) {
-                    echo "<td><img src='" . $data[$i]['coverImage']['medium'] . "' alt='cover'></td>";
+                    if ($type === 'ANIME') {
+                        echo "<td><a href='anime.php/id?='" . $data[$i]['id'] . "'><img src='" . $data[$i]['coverImage']['medium'] . "' alt='cover'></a></td>";
+                    } else {
+                        echo "<td><a href='manga.php/id?='" . $data[$i]['id'] . "'><img src='" . $data[$i]['coverImage']['medium'] . "' alt='cover'></a></td>";
+                    }
 
                     if (substr($i, -1) == 9) {
                         echo '</tr><tr>';

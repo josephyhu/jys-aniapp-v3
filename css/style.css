@@ -77,4 +77,21 @@ table, th, td {
         padding: 12px 0px;
         margin: 6px;
     }
+
+    .flex-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+    }
+
+    #cover {
+        margin-right: 6px;
+    }
+
+    #description {
+        margin-left: 6px;
+    }
 }

@@ -104,7 +104,6 @@ function get_userAnimeList($userId, $status) {
     return $arr['data']['MediaListCollection']['lists'][0]['entries'];
 }
 
-
 // Get current user mangalist.
 function get_userMangaList($userId, $status) {
     $query = '
@@ -138,7 +137,6 @@ function get_userMangaList($userId, $status) {
     return $arr['data']['MediaListCollection']['lists'][0]['entries'];
 }
 
-
 // Enable search functionality.
 function search_media($type, $search) {
     $query = 'query ($type: MediaType, $search: String) {
@@ -166,4 +164,38 @@ function search_media($type, $search) {
     ]);
     $arr = json_decode($response->getBody()->getContents(), true);
     return $arr['data']['Page']['media'];
+}
+
+// Get specific anime details
+function get_animeDetails($id) {
+    $query ='query ($id: id) {
+        Media (id: $id) {
+            title {
+                english,
+                romaji,
+            },
+            type,
+            format,
+            status,
+            description,
+            coverImage {
+                large,
+            },
+            bannerImage,
+        }
+    }';
+
+    $variables = [
+        'id' => $id,
+    ];
+
+    $http = new GuzzleHttp\Client;
+    $response = $http->post('https://graphql.anilist.co', [
+        'json' => [
+            'query' => $query,
+            'variables' => $variables,
+        ]
+    ]);
+    $arr = json_decode($response->getBody()->getContents(), true);
+    return $arr['data']['Media'];
 }
