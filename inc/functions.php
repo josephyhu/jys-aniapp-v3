@@ -101,7 +101,7 @@ function get_userAnimeList($userId, $status) {
         ]
     ]);
     $arr = json_decode($response->getBody()->getContents(), true);
-    return $arr['data'];
+    return $arr['data']['MediaListCollection']['lists'][0]['entries'];
 }
 
 
