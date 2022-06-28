@@ -163,5 +163,5 @@ function search_media($type, $search) {
         ]
     ]);
     $arr = json_decode($response->getBody()->getContents(), true);
-    return $arr['data']['Media'];
+    return $arr['data'];
 }
