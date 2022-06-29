@@ -174,7 +174,6 @@ function get_animeDetails($id) {
                 english,
                 romaji,
             },
-            type,
             format,
             status,
             description,
@@ -182,6 +181,25 @@ function get_animeDetails($id) {
                 large,
             },
             bannerImage,
+            startDate {
+                year,
+                month,
+                day,
+            },
+            endDate {
+                year,
+                month,
+                day,
+            },
+            season,
+            seasonYear,
+            episodes,
+            duration,
+            genre,
+            averageScore,
+            popularity,
+            source,
+            countryOfOrigin,
         }
     }';
 
@@ -208,7 +226,6 @@ function get_mangaDetails($id) {
                 english,
                 romaji,
             },
-            type,
             format,
             status,
             description,
@@ -216,6 +233,23 @@ function get_mangaDetails($id) {
                 large,
             },
             bannerImage,
+            startDate {
+                year,
+                month,
+                day,
+            },
+            endDate {
+                year,
+                month,
+                day,
+            },
+            chapters,
+            volumes,
+            genre,
+            averageScore,
+            popularity,
+            source,
+            countryOfOrigin,
         }
     }';
 

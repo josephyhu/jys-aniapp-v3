@@ -29,7 +29,7 @@ require_once 'inc/header.php';
             echo "<div id='cover'>";
             echo "<img src='" . $data['coverImage']['large']. "' alt='cover'>";
             echo "</div>";
-            echo "<div id='description' class='clearfix'>";
+            echo "<div class='details' class='clearfix'>";
             echo "<p>" . $data['description'] . "</p>";
             echo "</div>";
             echo "</div>";

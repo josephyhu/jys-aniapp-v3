@@ -91,7 +91,7 @@ table, th, td {
         margin-right: 6px;
     }
 
-    #description {
+    .details {
         margin-left: 6px;
     }
 }
