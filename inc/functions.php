@@ -345,8 +345,8 @@ function get_userMangaDetails($userId, $mediaId) {
 function add_anime($accessToken, $mediaId, $status) {
     $query = 'mutation ($mediaId: Int, $status: MediaListStatus) {
         SaveMediaListEntry (mediaId: $mediaId, status: $status) {
-            id
-            status
+            id,
+            status,
         }
     }';
 
@@ -364,6 +364,9 @@ function add_anime($accessToken, $mediaId, $status) {
         ],
         'json' => [
             'query' => $query,
+            'variables' => $variables,
         ]
     ]);
+    $arr = json_decode($response->getBody()->getContents(), true);
+    return $arr['data']['SaveMediaListEntry']['id'];
 }
