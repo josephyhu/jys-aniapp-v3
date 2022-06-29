@@ -43,7 +43,7 @@ require_once 'inc/header.php';
         $status = htmlspecialchars($_POST['status']);
         $score = htmlspecialchars($_POST['score']);
         $progress = htmlspecialchars($_POST['progress']);
-        $progressVolumes = htmlspecialchars($_POST['progressVol']);
+        $progressVolumes = htmlspecialchars($_POST['progressVolumes']);
 
         if (update_manga($_SESSION['accessToken'], $id, $status, $score, $progress, $progressVolumes)) {
             echo "<p class='success'>Manga successfully updated.</p>";
