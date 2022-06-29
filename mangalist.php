@@ -43,7 +43,7 @@ require_once 'inc/header.php'; ?>
         if ($status === 'CURRENT') {
             echo '<h3>Currently Reading</h3>';
         } else if ($status === 'COMPLETED') {
-            echo '<h3>Copleted</h3>';
+            echo '<h3>Completed</h3>';
         } else if ($status === 'PLANNING') {
             echo '<h3>Plan to Read</h3>';
         } else if ($status === 'PAUSED') {
