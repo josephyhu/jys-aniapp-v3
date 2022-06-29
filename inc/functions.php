@@ -402,16 +402,14 @@ function add_manga($accessToken, $mediaId, $status) {
     return $arr['data']['SaveMediaListEntry']['id'];
 }
 
-function test($accessToken, $userId, $mediaId, $score) {
-    $query = 'mutation ($userId: Int, $mediaId: Int, $score: Float) {
-        SaveMediaListEntry(userId: $userId, mediaId: $mediaId, score $score) {
-            userId,
+function test($accessToken, $mediaId, $score) {
+    $query = 'mutation ($mediaId: Int, $score: Float) {
+        SaveMediaListEntry(mediaId: $mediaId, score $score) {
             mediaId,
             score,
         }
     }';
     $variables = [
-        "userId" => $userId,
         "mediaId" => $mediaId,
         "score" => $score,
     ];
