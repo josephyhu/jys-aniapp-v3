@@ -3,6 +3,7 @@ session_start();
 require_once 'inc/functions.php';
 
 $id = $_GET['id'];
+$userId = $_GET['userId'];
 
 require_once 'inc/header.php';
 ?>
@@ -20,6 +21,9 @@ require_once 'inc/header.php';
     <?php } ?>
     <?php
         $data = get_mangaDetails($id);
+        if (!empty($userId)) {
+            $authData = get_userMangaDetails($userId, $id);
+        }
 
         if (!empty($data)) {
             echo "<img src='" . $data['bannerImage'] . "' alt='banner' class='banner'>";
@@ -70,6 +74,31 @@ require_once 'inc/header.php';
             echo "</table>";
             echo "</div>";
             echo "</div>";
+        }
+        if (!empty($authData)) {
+            echo "<hr>";
+            echo "<table>";
+            echo "<thead>";
+            echo "<tr>";
+            echo "<th>Status</th>";
+            echo "<th>Started Date</th>";
+            echo "<th>Completed Date</th>";
+            echo "<th>Progress</th>";
+            echo "<th>Score</th>";
+            echo "<th>Repeat</th>";
+            echo "</tr>";
+            echo "</thead>";
+            echo "<tbody>";
+            echo "<tr>";
+            echo "<td>" . $authData['status'] . "</td>";
+            echo "<td>" . $authData['startedAt']['year'] . "-" . $authData['startedAt']['month'] . "-" . $authData['startedAt']['day'] . "</td>";
+            echo "<td>" . $authData['completedAt']['year'] . "-" . $authData['completedAt']['month'] . "-" . $authData['completedAt']['day'] . "</td>";
+            echo "<td>" . $authData['progress'] . "</td>";
+            echo "<td>" . $authData['score'] . "</td>";
+            echo "<td>" . $authData['repeat'] . "</td>";
+            echo "</tr";
+            echo "</tbody>";
+            echo "</table>";
         }
     ?>
 </main>

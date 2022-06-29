@@ -272,6 +272,7 @@ function get_mangaDetails($id) {
 function get_userAnimeDetails($userId, $mediaId) {
     $query ='query ($userId: Int, $mediaId: Int) {
         MediaList(userId: $userId, mediaId: $mediaId, type: ANIME) {
+            status,
             startedAt {
                 year,
                 month,
@@ -288,18 +289,54 @@ function get_userAnimeDetails($userId, $mediaId) {
         }
     }';
 
-$variables = [
-    'userId' => $userId,
-    'mediaId' => $mediaId,
-];
+    $variables = [
+        'userId' => $userId,
+        'mediaId' => $mediaId,
+    ];
 
-$http = new GuzzleHttp\Client;
-$response = $http->post('https://graphql.anilist.co', [
-    'json' => [
-        'query' => $query,
-        'variables' => $variables,
-    ]
-]);
-$arr = json_decode($response->getBody()->getContents(), true);
-return $arr['data']['MediaList'];
+    $http = new GuzzleHttp\Client;
+    $response = $http->post('https://graphql.anilist.co', [
+        'json' => [
+            'query' => $query,
+            'variables' => $variables,
+        ]
+    ]);
+    $arr = json_decode($response->getBody()->getContents(), true);
+    return $arr['data']['MediaList'];
+}
+
+function get_userMangaDetails($userId, $mediaId) {
+    $query ='query ($userId: Int, $mediaId: Int) {
+        MediaList(userId: $userId, mediaId: $mediaId, type: MANGA) {
+            status,
+            startedAt {
+                year,
+                month,
+                day,
+            },
+            completedAt {
+                year,
+                month,
+                day,
+            },
+            progress,
+            score,
+            repeat,
+        }
+    }';
+
+    $variables = [
+        'userId' => $userId,
+        'mediaId' => $mediaId,
+    ];
+
+    $http = new GuzzleHttp\Client;
+    $response = $http->post('https://graphql.anilist.co', [
+        'json' => [
+            'query' => $query,
+            'variables' => $variables,
+        ]
+    ]);
+    $arr = json_decode($response->getBody()->getContents(), true);
+    return $arr['data']['MediaList'];
 }
