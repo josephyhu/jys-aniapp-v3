@@ -401,3 +401,33 @@ function add_manga($accessToken, $mediaId, $status) {
     $arr = json_decode($response->getBody()->getContents(), true);
     return $arr['data']['SaveMediaListEntry']['id'];
 }
+
+function test($accessToken, $userId, $mediaId, $score) {
+    $query = 'mutation ($userId: Int, $mediaId: Int, $score: Float) {
+        SaveMediaListEntry(userId: $userId, mediaId: $mediaId, score $score) {
+            userId,
+            mediaId,
+            score,
+        }
+    }';
+    $variables = [
+        "userId" => $userId,
+        "mediaId" => $mediaId,
+        "score" => $score,
+    ];
+
+    $http = new GuzzleHttp\Client;
+    $response = $http->request('POST', 'https://graphql.anilist.co', [
+        'headers' => [
+            'Authorization' => 'Bearer ' . $accessToken,
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ],
+        'json' => [
+            'query' => $query,
+            'variables' => $variables,
+        ]
+    ]);
+    $arr = json_decode($response->getBody()->getContents(), true);
+    return $arr['data']['SaveMediaListEntry'];
+}

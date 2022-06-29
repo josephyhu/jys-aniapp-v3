@@ -107,7 +107,6 @@ require_once 'inc/header.php';
             echo "</tr";
             echo "</tbody>";
             echo "</table>";
-
             echo "<a href='test.php'>test</a>";
         }
     ?>
