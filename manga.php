@@ -87,7 +87,7 @@ require_once 'inc/header.php';
                         <option value="DROPPED">Dropped</option>
                         <option value="REPEATING">Repeating</option>
                     </select><br>
-                    <button type="submit">Add anime</button>
+                    <button type="submit">Add manga</button>
                 </form>
             <?php
                 $status = htmlspecialchars($_POST['status']);
