@@ -341,3 +341,29 @@ function get_userMangaDetails($userId, $mediaId) {
     $arr = json_decode($response->getBody()->getContents(), true);
     return $arr['data']['MediaList'];
 }
+
+function add_anime($accessToken, $mediaId, $status) {
+    $query = 'mutation ($mediaId: Int, $status: MediaListStatus) {
+        SaveMediaListEntry (mediaId: $mediaId, status: $status) {
+            id
+            status
+        }
+    }';
+
+    $variables = [
+        "mediaId" => $mediaId,
+        "status" => $status,
+    ];
+
+    $http = new GuzzleHttp\Client;
+    $response = $http->request('POST', 'https://graphql.anilist.co', [
+        'headers' => [
+            'Authorization' => 'Bearer ' . $accessToken,
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ],
+        'json' => [
+            'query' => $query,
+        ]
+    ]);
+}
