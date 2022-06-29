@@ -69,11 +69,14 @@ require_once 'inc/header.php';
         $completedAt = htmlspecialchars($_POST['completedAt']);
         $score = htmlspecialchars($_POST['score']);
         $progress = htmlspecialchars($_POST['progress']);
-
-        if (update_anime($_SESSION['accessToken'], $id, $status, $startedAt, $completedAt, $score, $progress)) {
-            echo "<p class='success'>Anime successfully updated.</p>";
-        } else {
-            echo "<p class='warning'>Updating anime failed.</p>";
+        try {
+            if (update_anime($_SESSION['accessToken'], $id, $status, $startedAt, $completedAt, $score, $progress)) {
+                echo "<p class='success'>Anime successfully updated.</p>";
+            } else {
+                echo "<p class='warning'>Updating anime failed.</p>";
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
         }
 
     ?>
