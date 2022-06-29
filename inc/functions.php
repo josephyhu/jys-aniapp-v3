@@ -405,7 +405,7 @@ function add_manga($accessToken, $mediaId, $status) {
 function test($accessToken, $mediaId, $score) {
     $query = 'mutation ($mediaId: Int, $score: Float) {
         SaveMediaListEntry(mediaId: $mediaId, score $score) {
-            mediaId,
+            id,
             score,
         }
     }';
