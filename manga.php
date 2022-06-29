@@ -77,7 +77,7 @@ require_once 'inc/header.php';
 
             if (isset($_SESSION['userId'])) {
             ?>
-                <a href='add_anime.php?id=<?php echo $id; ?>'>Add anime</a>
+                <a href='add_manga.php?id=<?php echo $id; ?>'>Add manga</a>
             <?php
             }
         }
