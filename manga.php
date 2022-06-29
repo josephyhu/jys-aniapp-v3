@@ -107,6 +107,9 @@ require_once 'inc/header.php';
             echo "</tr";
             echo "</tbody>";
             echo "</table>";
+            ?>
+            <a href="update_manga.php?userId=<?php echo $userId; ?>&id=<?php echo $id; ?>">Update manga</a>
+            <?php
         }
     ?>
 </main>

@@ -19,14 +19,14 @@ require_once 'inc/header.php';
     <?php if (!empty($userId)) { ?>
         <div class="logout"><a href="logout.php">Log out</a></div>
     <?php }
-        $data = get_userAnimeDetails($userId, $id);
+        $data = get_userMangaDetails($userId, $id);
     ?>
     <form method="post">
         <label for="status">Status</label>
         <select id="status" name="status">
-            <option value="CURRENT">Currently watching</option>
+            <option value="CURRENT">Currently reading</option>
             <option value="COMPLETED">Completed</option>
-            <option value="PLANNING">Plan to watch</option>
+            <option value="PLANNING">Plan to read</option>
             <option value="PAUSED">Paused</option>
             <option value="DROPPED">Dropped</option>
             <option value="REPEATING">Repeating</option>
@@ -42,10 +42,10 @@ require_once 'inc/header.php';
         $score = htmlspecialchars($_POST['score']);
         $progress = htmlspecialchars($_POST['progress']);
 
-        if (update_anime($_SESSION['accessToken'], $id, $status, $score, $progress)) {
-            echo "<p class='success'>Anime successfully updated.</p>";
+        if (update_manga($_SESSION['accessToken'], $id, $status, $score, $progress)) {
+            echo "<p class='success'>Manga successfully updated.</p>";
         } else {
-            echo "<p class='warning'>Updating anime failed.</p>";
+            echo "<p class='warning'>Updating manga failed.</p>";
         }
 
     ?>
