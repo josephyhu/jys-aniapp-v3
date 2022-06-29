@@ -107,6 +107,27 @@ require_once 'inc/header.php';
             echo "</tr";
             echo "</tbody>";
             echo "</table>";
+
+            function test($score) {
+                $query = 'mutation ($score: Float) {
+                    SaveMediaListEntry(userId: 5391009, mediaId: 9253, score $score) {
+                        score,
+                    }
+                }';
+                $variables = [
+                    "score" => $score,
+                ];
+
+                $http = new GuzzleHttp\Client;
+                $response = $http->post('https://graphql.anilist.co', [
+                    'json' => [
+                        'query' => $query,
+                        'variables' => $variables,
+                    ]
+                ]);
+            }
+
+            test(9);
         }
     ?>
 </main>
