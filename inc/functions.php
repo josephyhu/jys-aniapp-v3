@@ -403,12 +403,20 @@ function add_manga($accessToken, $mediaId, $status) {
 }
 
 function update_anime($accessToken, $mediaId, $status, $startedAt, $completedAt, $score, $progress) {
-    $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $startedAt: FuzzyDateInput, $completedAt: FuzzyDateInput,$score: Float, $progress: Int) {
+    $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $startedAt: FuzzyDateInput, $completedAt: FuzzyDateInput, $score: Float, $progress: Int) {
         SaveMediaListEntry(mediaId: $mediaId, status: $status, startedAt: $startedAt, completedAt: $completedAt, score: $score, progress: $progress) {
             id,
             status,
-            startedAt,
-            completedAt,
+            startedAt {
+                year,
+                month,
+                day,
+            },
+            completedAt {
+                year,
+                month,
+                day,
+            },
             score,
             progress,
         }
