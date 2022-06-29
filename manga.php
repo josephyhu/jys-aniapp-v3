@@ -19,7 +19,7 @@ require_once 'inc/header.php';
         <div class="logout"><a href="logout.php">Log out</a></div>
     <?php } ?>
     <?php
-        $data = get_animeDetails($id);
+        $data = get_mangaDetails($id);
 
         if (!empty($data)) {
             echo "<img src='" . $data['bannerImage'] . "' alt='banner' class='banner'>";
@@ -32,6 +32,42 @@ require_once 'inc/header.php';
             echo "<div class='details' class='clearfix'>";
             echo "<p>" . $data['description'] . "</p>";
             echo "<hr>";
+            echo "<table>";
+            echo "<thead>";
+            echo "<tr>";
+            echo "<th>Format</th>";
+            echo "<th>Status</th>";
+            echo "<th>Chapters</th>";
+            echo "<th>Volumes</th>";
+            echo "<th>Start Date</th>";
+            echo "<th>End Date</th>";
+            echo "<th>Average Score</th>";
+            echo "<th>Popularity</th>";
+            echo "<th>Source</th>";
+            echo "<th>Genres</th>";
+            echo "<th>Country</th>";
+            echo "</tr>";
+            echo "</thead>";
+            echo "<tbody>";
+            echo "<tr>";
+            echo "<td>" . $data['format'] . "</td>";
+            echo "<td>" . $data['status'] . "</td>";
+            echo "<td>" . $data['chapters'] . "</td>";
+            echo "<td>" . $data['volumes'] . "</td>";
+            echo "<td>" . $data['startDate']['year'] . "-" . $data['startDate']['month'] . "-" . $data['startDate']['day'] . "</td>";
+            echo "<td>" . $data['endDate']['year'] . "-" . $data['endDate']['month'] . "-" . $data['endDate']['day'] . "</td>";
+            echo "<td>" . $data['averageScore'] . "</td>";
+            echo "<td>" . $data['popularity'] . "</td>";
+            echo "<td>" . $data['source'] . "</td>";
+            echo "<td>";
+            foreach ($data['genres'] as $genre) {
+                echo $genre . "<br>";
+            }
+            echo "</td>";
+            echo "<td>" . $data['countryOfOrigin'] . "</td>";
+            echo "</tr";
+            echo "</tbody>";
+            echo "</table>";
             echo "</div>";
             echo "</div>";
         }
