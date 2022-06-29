@@ -32,11 +32,11 @@ require_once 'inc/header.php';
             <option value="REPEATING">Repeating</option>
         </select><br>
         <label for="score">Score</label>
-        <input type="text" id="score" name="score" value="<?php echo $data['score'] ?>"><br>
+        <input type="text" id="score" name="score" value="<?php echo $data['score']; ?>"><br>
         <label for="progress">Progress</label>
-        <input type="number" id="progress" name="progress" value="<?php echo $data['progress'] ?>"><br>
+        <input type="number" id="progress" name="progress" value="<?php echo $data['progress']; ?>"><br>
         <label for="progressVolumes">Volume progress</label>
-        <input type="number" id="progressVolumes" name="progressVolumes" value="<?php echo $data['progressVolumes'] ?>"><br>
+        <input type="number" id="progressVolumes" name="progressVolumes" value="<?php echo $data['progressVolumes']; ?>"><br>
         <button type="submit">Update manga</button>
     </form>
     <?php 
