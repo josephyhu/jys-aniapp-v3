@@ -1,2 +1,3 @@
 # jys-aniapp-v3
-Joseph Yhu's unofficial AniList app v3
+
+[Click here to run the app.](https://jys-aniapp-v3.herokuapp.com)
