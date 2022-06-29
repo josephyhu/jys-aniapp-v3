@@ -56,4 +56,7 @@ require_once 'inc/header.php';
 
     ?>
 </main>
+<script>
+    console.log(document.getElementById("startedAt").value);
+</script>
 <?php require_once 'inc/footer.php'; ?>
