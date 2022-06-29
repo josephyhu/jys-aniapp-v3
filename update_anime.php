@@ -31,9 +31,9 @@ require_once 'inc/header.php';
             <option value="REPEATING">Repeating</option>
         </select><br>
         <label for="score">Score</label>
-        <input id="score" name="score" value="<?php echo $data['score'] ?>"><br>
+        <input type="text" id="score" name="score" value="<?php echo $data['score'] ?>"><br>
         <label for="progress">Progress</label>
-        <input id="progress" name="progress" value="<?php echo $data['progress'] ?>"><br>
+        <input type="text" id="progress" name="progress" value="<?php echo $data['progress'] ?>"><br>
         <button type="submit">Update anime</button>
     </form>
     <?php 
