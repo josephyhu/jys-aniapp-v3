@@ -42,11 +42,12 @@ require_once 'inc/header.php';
         $score = htmlspecialchars($_POST['score']);
         $progress = htmlspecialchars($_POST['progress']);
 
-        if (update_anime($_SESSION['accessToken'], $id, $status, $score, $progress)) {
-            echo "<p class='success'>Anime successfully updated.</p>";
-        } else {
-            echo "<p class='warning'>Updating anime failed.</p>";
+        try {
+            update_anime($_SESSION['accessToken'], $id, $status, $score, $progress);
+        } catch (Exception $e) {
+            echo $e->getMessage();
         }
+
     ?>
 </main>
 <?php require_once 'inc/footer.php'; ?>
