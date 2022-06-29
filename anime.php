@@ -78,7 +78,6 @@ require_once 'inc/header.php';
             echo "</div>";
         }
         if (!empty($authData)) {
-            var_dump($authData);
             echo "<hr>";
             echo "<table>";
             echo "<thead>";
