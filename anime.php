@@ -62,7 +62,7 @@ require_once 'inc/header.php';
             echo "<td>" . $data['popularity'] . "</td>";
             echo "<td>" . $data['source'] . "</td>";
             echo "<td>" . $data['genre'] . "</td>";
-            echo "<td>" . $data['country'] . "</td>";
+            echo "<td>" . $data['countryOfOrigin'] . "</td>";
             echo "</tr";
             echo "</tbody>";
             echo "</table>";
