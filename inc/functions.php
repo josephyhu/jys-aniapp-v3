@@ -403,7 +403,7 @@ function add_manga($accessToken, $mediaId, $status) {
 }
 
 function update_anime($accessToken, $mediaId, $status, $score, $progress) {
-    $query = 'mutation ($mediaId: Int, $status, MediaListStatus, $score: Float, $progress: Int) {
+    $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $score: Float, $progress: Int) {
         SaveMediaListEntry(mediaId: $mediaId, status: $status, score: $score, progress: $progress) {
             id,
             status,

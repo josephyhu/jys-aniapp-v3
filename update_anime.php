@@ -40,12 +40,12 @@ require_once 'inc/header.php';
     <?php 
         $status = htmlspecialchars($_POST['status']);
         $score = htmlspecialchars($_POST['score']);
-        $progress = (int) htmlspecialchars($_POST['progress']);
+        $progress = htmlspecialchars($_POST['progress']);
 
-        try {
-            update_anime($_SESSION['accessToken'], $id, $status, $score, $progress);
-        } catch (Exception $e) {
-            echo $e->getMessage();
+        if (update_anime($_SESSION['accessToken'], $id, $status, $score, $progress)) {
+            echo "<p class='success'>Anime successfully updated.</p>";
+        } else {
+            echo "<p class='warning'>Updating anime failed.</p>";
         }
 
     ?>
