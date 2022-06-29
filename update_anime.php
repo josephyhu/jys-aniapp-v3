@@ -66,6 +66,7 @@ require_once 'inc/header.php';
     <?php 
         $status = htmlspecialchars($_POST['status']);
         $startedAt = htmlspecialchars($_POST['startedAt']);
+        var_dump($startedAt);
         $startedObj = [
             $startedYear => substr($startedAt, 0, 4),
             $startedMonth => substr($startedAt, 5, 6),
