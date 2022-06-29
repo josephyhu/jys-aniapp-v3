@@ -190,12 +190,6 @@ function get_animeDetails($id) {
                 month,
                 day,
             },
-            season,
-            seasonYear,
-            episodes,
-            duration,
-            genre,
-            source,
         }
     }';
 
