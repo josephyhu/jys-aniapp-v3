@@ -320,6 +320,7 @@ function get_userMangaDetails($userId, $mediaId) {
                 day,
             },
             progress,
+            progressVolumes,
             score,
             repeat,
         }
