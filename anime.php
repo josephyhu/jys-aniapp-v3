@@ -76,6 +76,10 @@ require_once 'inc/header.php';
             echo "</table>";
             echo "</div>";
             echo "</div>";
+
+            if (isset($_SESSION['userId'])) {
+                echo "Add anime.";
+            }
         }
         if (!empty($authData)) {
             echo "<hr>";
