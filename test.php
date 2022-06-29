@@ -1,7 +1,9 @@
 <?php
 function test($userId, $mediaId, $score) {
-    $query = 'mutation ($score: Float) {
+    $query = 'mutation ($userId: Int, $mediaId: Int, $score: Float) {
         SaveMediaListEntry(userId: $userId, mediaId: $mediaId, score $score) {
+            userId,
+            mediaId,
             score,
         }
     }';
@@ -18,6 +20,9 @@ function test($userId, $mediaId, $score) {
             'variables' => $variables,
         ]
     ]);
+    $arr = json_decode($response->getBody()->getContents(), true);
+    return $arr['data']['SaveMediaListEntry'];
 }
 
-test(5391009, 9253, 9);
+$data = test(5391009, 9253, 9);
+var_dump($data);
