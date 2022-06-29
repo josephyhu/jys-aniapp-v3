@@ -76,7 +76,24 @@ require_once 'inc/header.php';
             echo "</div>";
 
             if (isset($_SESSION['userId'])) {
-                echo "Add manga.";
+                ?>
+                <form method="post">
+                    <label for="status">Status<span class="required">*</span></label>
+                    <select id="status" name="status" required>
+                        <option value="CURRENT">Currently reading</option>
+                        <option value="COMPLETED">Completed</option>
+                        <option value="PLANNING">Plan to read</option>
+                        <option value="PAUSED">Paused</option>
+                        <option value="DROPPED">Dropped</option>
+                        <option value="REPEATING">Repeating</option>
+                    </select><br>
+                    <button type="submit">Add anime</button>
+                </form>
+            <?php
+                $status = htmlspecialchars($_POST['status']);
+                if (add_manga($_SESSION['accessToken'], $id, $status)) {
+                    echo "<p class='success'>Manga successfully added.</p>";
+                }
             }
         }
         if (!empty($authData)) {
