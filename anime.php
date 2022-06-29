@@ -18,8 +18,8 @@ require_once 'inc/header.php';
     </div>
     <?php if (isset($_SESSION['userId'])) { ?>
         <div class="logout"><a href="logout.php">Log out</a></div>
-    <?php } ?>
-    <?php
+    <?php 
+    }
         $data = get_animeDetails($id);
         if (!empty($userId)) {
             $authData = get_userAnimeDetails($userId, $id);
@@ -78,7 +78,7 @@ require_once 'inc/header.php';
             echo "</div>";
 
             if (isset($_SESSION['userId'])) {
-                echo "test...";
+                echo "<a href='add_anime.php?id='" . $id . "'>Add anime</a>";
             }
         }
         if (!empty($authData)) {

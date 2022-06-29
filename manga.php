@@ -18,8 +18,8 @@ require_once 'inc/header.php';
     </div>
     <?php if (isset($_SESSION['userId'])) { ?>
         <div class="logout"><a href="logout.php">Log out</a></div>
-    <?php } ?>
     <?php
+    }
         $data = get_mangaDetails($id);
         if (!empty($userId)) {
             $authData = get_userMangaDetails($userId, $id);
