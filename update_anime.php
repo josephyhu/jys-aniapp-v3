@@ -23,7 +23,7 @@ require_once 'inc/header.php';
      ?>
     <form method="post">
         <label for="status">Status</label>
-        <select id="status" name="status" required>
+        <select id="status" name="status">
             <option value="CURRENT">Currently watching</option>
             <option value="COMPLETED">Completed</option>
             <option value="PLANNING">Plan to watch</option>
@@ -42,10 +42,10 @@ require_once 'inc/header.php';
         $score = htmlspecialchars($_POST['score']);
         $progress = htmlspecialchars($_POST['progress']);
 
-        try {
-            update_anime($_SESSION['accessToken'], $id, $status, $score, $progress);
-        } catch (Exception $e) {
-            echo $e->getMessage();
+        if (update_anime($_SESSION['accessToken'], $id, $status, $score, $progress)) {
+            echo "<p class='success'>Anime successfully updated.</p>";
+        } else {
+            echo "<p class='warning'>Updating anime failed.</p>";
         }
 
     ?>
