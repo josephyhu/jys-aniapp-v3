@@ -65,8 +65,8 @@ require_once 'inc/header.php';
     </form>
     <?php 
         $status = htmlspecialchars($_POST['status']);
-        $startedAt = htmlspecialchars(str_replace('-', '', $_POST['startedAt']));
-        $completedAt = htmlspecialchars(str_replace('-', '', $_POST['completedAt']));
+        $startedAt = htmlspecialchars($_POST['startedAt']);
+        $completedAt = htmlspecialchars($_POST['completedAt']);
         $score = htmlspecialchars($_POST['score']);
         $progress = htmlspecialchars($_POST['progress']);
 
@@ -78,7 +78,4 @@ require_once 'inc/header.php';
 
     ?>
 </main>
-<script>
-    console.log(document.getElementById("startedAt").value);
-</script>
 <?php require_once 'inc/footer.php'; ?>
