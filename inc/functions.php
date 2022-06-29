@@ -424,8 +424,16 @@ function update_anime($accessToken, $mediaId, $status, $startedAt, $completedAt,
     $variables = [
         "mediaId" => $mediaId,
         "status" => $status,
-        "startedAt" => $startedAt,
-        "completedAt" => $completedAt,
+        "startedAt" => [
+            "year" => $startedAt[0],
+            "month" => $startedAt[1],
+            "day" => $startedAt[2],
+        ],
+        "completedAt" => [
+            "year" => $completedAt[0],
+            "month" => $completedAt[1],
+            "day" => $completedAt[2],
+        ],
         "score" => $score,
         "progress" => $progress,
     ];
