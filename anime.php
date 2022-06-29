@@ -77,7 +77,9 @@ require_once 'inc/header.php';
             echo "</div>";
             echo "</div>";
 
-
+            if (isset($_SESSION['userId'])) {
+                echo "test...";
+            }
         }
         if (!empty($authData)) {
             echo "<hr>";
