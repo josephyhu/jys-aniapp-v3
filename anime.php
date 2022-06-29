@@ -22,7 +22,7 @@ require_once 'inc/header.php';
     <?php
         $data = get_animeDetails($id);
         if (!empty($userId)) {
-            $authData = get_userAnimeDetails($userId);
+            $authData = get_userAnimeDetails($userId, $id);
         }
 
         if (!empty($data)) {
