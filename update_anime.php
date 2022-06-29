@@ -22,25 +22,25 @@ require_once 'inc/header.php';
         $data = get_userAnimeDetails($userId, $id);
         $startedYear = $data['startedAt']['year'];
         if ($data['startedAt']['month'] < 10) {
-            $startedMonth = '0' . $date['startedAt']['month'];
+            $startedMonth = '0' . $data['startedAt']['month'];
         } else {
-            $startedMonth = $date['startedAt']['month'];
+            $startedMonth = $data['startedAt']['month'];
         }
         if ($data['startedAt']['day'] < 10) {
-            $startedDay = '0' . $date['startedAt']['day'];
+            $startedDay = '0' . $data['startedAt']['day'];
         } else {
-            $startedDay = $date['startedAt']['day'];
+            $startedDay = $data['startedAt']['day'];
         }
         $completedYear = $data['completedAt']['year'];
         if ($data['completedAt']['month'] < 10) {
-            $completedMonth = '0' . $date['completedAt']['month'];
+            $completedMonth = '0' . $data['completedAt']['month'];
         } else {
-            $completedMonth = $date['comletedAt']['month'];
+            $completedMonth = $data['comletedAt']['month'];
         }
         if ($data['completedAt']['day'] < 10) {
-            $completedDay = '0' . $date['completedAt']['day'];
+            $completedDay = '0' . $data['completedAt']['day'];
         } else {
-            $completedDay = $date['completedAt']['day'];
+            $completedDay = $data['completedAt']['day'];
         }
     ?>
     <form method="post">
