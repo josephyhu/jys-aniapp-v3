@@ -92,7 +92,9 @@ require_once 'inc/header.php';
                     <button type="submit">Add anime</button>
                 </form>
             <?php
-                add_anime($_SESSION['accessToken'], $id, $status);
+                if (add_anime($_SESSION['accessToken'], $id, $status)) {
+                    echo "<p class='success'>Anime successfully added.</p>";
+                }
             }
         }
         if (!empty($authData)) {
