@@ -32,9 +32,9 @@ require_once 'inc/header.php';
             <option value="REPEATING">Repeating</option>
         </select><br>
         <label for="startedAt">Started date</label>
-        <input type="date" id="startedAt" name="startedAt" value="<?php echo $data['startedAt']; ?>"><br>
+        <input type="date" id="startedAt" name="startedAt" value="<?php echo $data['startedAt']['year'] . '-' . $data['startedAt']['month'] . '-' . $data['startedAt']['day']; ?>"><br>
         <label for="completedAt">Completed date</label>
-        <input type="date" id="completedAt" name="completedAt" value="<?php echo $data['completedAt']; ?>"><br>
+        <input type="date" id="completedAt" name="completedAt" value="<?php echo $data['completedAt']['year'] . '-' . $data['completedAt']['month'] . '-' . $data['completedAt']['day']; ?>"><br>
         <label for="score">Score</label>
         <input type="text" id="score" name="score" value="<?php echo $data['score']; ?>"><br>
         <label for="progress">Progress</label>
