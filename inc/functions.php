@@ -166,8 +166,42 @@ function search_media($type, $search) {
     return $arr['data']['Page']['media'];
 }
 
-// Get specific anime details
+// Get specific anime details.
 function get_animeDetails($id) {
+    $query ='query ($id: Int) {
+        Media (id: $id) {
+            title {
+                english,
+                romaji,
+            },
+            type,
+            format,
+            status,
+            description,
+            coverImage {
+                large,
+            },
+            bannerImage,
+        }
+    }';
+
+    $variables = [
+        'id' => $id,
+    ];
+
+    $http = new GuzzleHttp\Client;
+    $response = $http->post('https://graphql.anilist.co', [
+        'json' => [
+            'query' => $query,
+            'variables' => $variables,
+        ]
+    ]);
+    $arr = json_decode($response->getBody()->getContents(), true);
+    return $arr['data']['Media'];
+}
+
+// Get specific manga details.
+function get_mangaDetails($id) {
     $query ='query ($id: Int) {
         Media (id: $id) {
             title {
