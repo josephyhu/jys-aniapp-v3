@@ -269,9 +269,9 @@ function get_mangaDetails($id) {
 }
 
 // Get specific anime details for the current user.
-function get_userAnimeDetails($userId, $id) {
-    $query ='query ($userId: Int, $id: Int) {
-        MediaList(userId: $userId, mediaId: $id) {
+function get_userAnimeDetails($userId) {
+    $query ='query ($userId: Int) {
+        MediaList(userId: $userId, type: ANIME) {
             startedAt {
                 year,
                 month,
@@ -290,7 +290,6 @@ function get_userAnimeDetails($userId, $id) {
 
 $variables = [
     'userId' => $userId,
-    'mediaId' => $id,
 ];
 
 $http = new GuzzleHttp\Client;
