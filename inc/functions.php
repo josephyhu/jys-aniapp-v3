@@ -220,7 +220,7 @@ function get_animeDetails($id) {
 
 // Get specific manga details.
 function get_mangaDetails($id) {
-    $query ='query ($id: Int) {
+    $query ='query ($userId: Int, $id: Int) {
         Media (id: $id, type: MANGA) {
             title {
                 english,
@@ -266,4 +266,39 @@ function get_mangaDetails($id) {
     ]);
     $arr = json_decode($response->getBody()->getContents(), true);
     return $arr['data']['Media'];
+}
+
+// Get specific anime details for the current user.
+function get_userAnimeDetails($userId) {
+    $query ='query ($userId: Int) {
+        MediaList(userId: $userId) {
+            startedAt {
+                year,
+                month,
+                day,
+            },
+            completedAt {
+                year,
+                month,
+                day,
+            },
+            progress,
+            score,
+            repeat,
+        }
+    }';
+
+$variables = [
+    'userId' => $userId,
+];
+
+$http = new GuzzleHttp\Client;
+$response = $http->post('https://graphql.anilist.co', [
+    'json' => [
+        'query' => $query,
+        'variables' => $variables,
+    ]
+]);
+$arr = json_decode($response->getBody()->getContents(), true);
+return $arr['data']['MediaList'];
 }

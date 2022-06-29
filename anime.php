@@ -3,6 +3,7 @@ session_start();
 require_once 'inc/functions.php';
 
 $id = $_GET['id'];
+$userId = $_GET['userId'];
 
 require_once 'inc/header.php';
 ?>
@@ -20,6 +21,9 @@ require_once 'inc/header.php';
     <?php } ?>
     <?php
         $data = get_animeDetails($id);
+        if (!empty($userId)) {
+            $authData = get_userAnimeDetails($userId);
+        }
 
         if (!empty($data)) {
             echo "<img src='" . $data['bannerImage'] . "' alt='banner' class='banner'>";
@@ -72,6 +76,29 @@ require_once 'inc/header.php';
             echo "</table>";
             echo "</div>";
             echo "</div>";
+        }
+        if (!empty($authData)) {
+            echo "<hr>";
+            echo "<table>";
+            echo "<thead>";
+            echo "<tr>";
+            echo "<th>Started Date</th>";
+            echo "<th>Completed Date</th>";
+            echo "<th>Progress</th>";
+            echo "<th>Score</th>";
+            echo "<th>Repeat</th>";
+            echo "</tr>";
+            echo "</thead>";
+            echo "<tbody>";
+            echo "<tr>";
+            echo "<td>" . $data['startedAt']['year'] . "-" . $data['startedAt']['month'] . "-" . $data['startedAt']['day'] . "</td>";
+            echo "<td>" . $data['completedAt']['year'] . "-" . $data['completedAt']['month'] . "-" . $data['completedAt']['day'] . "</td>";
+            echo "<td>" . $data['progress'] . "</td>";
+            echo "<td>" . $data['score'] . "</td>";
+            echo "<td>" . $data['repeat'] . "</td>";
+            echo "</tr";
+            echo "</tbody>";
+            echo "</table>";
         }
     ?>
 </main>

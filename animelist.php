@@ -42,100 +42,31 @@ require_once 'inc/header.php'; ?>
     if (!empty($data)) {
         if ($status === 'CURRENT') {
             echo '<h3>Currently Watching</h3>';
-            echo '<table>';
-            echo '<tbody>';
-            echo '<tr>';
-            for ($i = 0; $i < count($data); $i++) {
-                echo "<td><img src='" . $data[$i]['media']['coverImage']['medium'] . "' alt='cover'></td>";
-
-                if (substr($i, -1) == 9) {
-                    echo '</tr><tr>';
-                }
-            }
-            echo '</tr>';
-            echo '</tbody>';
-            echo '</table>';
-        }
-        if ($status === 'COMPLETED') {
-            echo '<h3>Completed</h3>';
-            echo '<table>';
-            echo '<tbody>';
-            echo '<tr>';
-            for ($i = 0; $i < count($data); $i++) {
-                echo "<td><img src='" . $data[$i]['media']['coverImage']['medium'] . "' alt='cover'></td>";
-
-                if (substr($i, -1) == 9) {
-                    echo '</tr><tr>';
-                }
-            }
-            echo '</tr>';
-            echo '</tbody>';
-            echo '</table>';
-        }
-        if ($status === 'PLANNING') {
+        } else if ($status === 'COMPLETED') {
+            echo '<h3>Copleted</h3>';
+        } else if ($status === 'PLANNING') {
             echo '<h3>Plan to Watch</h3>';
-            echo '<table>';
-            echo '<tbody>';
-            echo '<tr>';
-            for ($i = 0; $i < count($data); $i++) {
-                echo "<td><img src='" . $data[$i]['coverImage']['medium'] . "' alt='cover'></td>";
-
-                if (substr($i, -1) == 9) {
-                    echo '</tr><tr>';
-                }
-            }
-            echo '</tr>';
-            echo '</tbody>';
-            echo '</table>';
-        }
-        if ($status === 'PAUSED') {
+        } else if ($status === 'PAUSED') {
             echo '<h3>Paused</h3>';
-            echo '<table>';
-            echo '<tbody>';
-            echo '<tr>';
-            for ($i = 0; $i < count($data); $i++) {
-                echo "<td><img src='" . $data[$i]['coverImage']['medium'] . "' alt='cover'></td>";
-
-                if (substr($i, -1) == 9) {
-                    echo '</tr><tr>';
-                }
-            }
-            echo '</tr>';
-            echo '</tbody>';
-            echo '</table>';
-        }
-        if ($status === 'DROPPED') {
+        } else if ($status === 'DROPPED') {
             echo '<h3>Dropped</h3>';
-            echo '<table>';
-            echo '<tbody>';
-            echo '<tr>';
-            for ($i = 0; $i < count($data); $i++) {
-                echo "<td><img src='" . $data[$i]['coverImage']['medium'] . "' alt='cover'></td>";
-
-                if (substr($i, -1) == 9) {
-                    echo '</tr><tr>';
-                }
-            }
-            echo '</tr>';
-            echo '</tbody>';
-            echo '</table>';
-        }
-        if ($status === 'REPEATING') {
+        } else {
             echo '<h3>Repeating</h3>';
-            echo '<table>';
-            echo '<tbody>';
-            echo '<tr>';
-            for ($i = 0; $i < count($data); $i++) {
-                echo "<td><img src='" . $data[$i]['coverImage']['medium'] . "' alt='cover'></td>";
-
-                if (substr($i, -1) == 9) {
-                    echo '</tr><tr>';
-                }
-            }
-            echo '</tr>';
-            echo '</tbody>';
-            echo '</table>';
         }
+        echo '<table>';
+        echo '<tbody>';
+        echo '<tr>';
+        for ($i = 0; $i < count($data); $i++) {
+        ?>
+            <td><a href="anime.php?userId=<?php echo $_SESSION['userId']; ?>&id=<?php echo $data[$i]['media']['id']; ?>"><img src="<?php echo $data[$i]['media']['coverImage']['medium']; ?>" alt='cover'></td>
+        <?php
+            if (substr($i, -1) == 9) {
+                echo '</tr><tr>';
+            }
+        }
+        echo '</tr>';
+        echo '</tbody>';
+        echo '</table>';
     }
     ?>
 </main>
