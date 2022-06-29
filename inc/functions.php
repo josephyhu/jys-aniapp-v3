@@ -196,7 +196,7 @@ function get_animeDetails($id) {
             episodes,
             duration,
             genre,
-            popularity,
+            source,
         }
     }';
 
