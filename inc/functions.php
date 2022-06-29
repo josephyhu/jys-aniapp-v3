@@ -190,12 +190,10 @@ function get_animeDetails($id) {
                 month,
                 day,
             },
-            season,
-            seasonYear,
+            averageScore,
+            popularity,
             episodes,
-            duration,
             genre,
-            source,
         }
     }';
 
