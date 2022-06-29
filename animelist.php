@@ -24,7 +24,7 @@ require_once 'inc/header.php'; ?>
             <option value="PLANNING">Plan to watch</option>
             <option value="PAUSED">Paused</option>
             <option value="DROPPED">Dropped</option>
-            <optino value="REPEATING">Repeating</option>
+            <option value="REPEATING">Repeating</option>
         </select><br>
         <button type="submit">View your list</button>
     </form>
