@@ -20,6 +20,28 @@ require_once 'inc/header.php';
         <div class="logout"><a href="logout.php">Log out</a></div>
     <?php }
         $data = get_userAnimeDetails($userId, $id);
+        $startedYear = $data['startedAt']['year'];
+        if ($data['startedAt']['month'] < 10) {
+            $startedMonth = '0' . $date['startedAt']['month'];
+        } else {
+            $startedMonth = $date['startedAt']['month'];
+        }
+        if ($data['startedAt']['day'] < 10) {
+            $startedDay = '0' . $date['startedAt']['day'];
+        } else {
+            $startedDay = $date['startedAt']['day'];
+        }
+        $completedYear = $data['completedAt']['year'];
+        if ($data['completedAt']['month'] < 10) {
+            $completedMonth = '0' . $date['completedAt']['month'];
+        } else {
+            $completedMonth = $date['comletedAt']['month'];
+        }
+        if ($data['completedAt']['day'] < 10) {
+            $completedDay = '0' . $date['completedAt']['day'];
+        } else {
+            $completedDay = $date['completedAt']['day'];
+        }
     ?>
     <form method="post">
         <label for="status">Status</label>
@@ -32,9 +54,9 @@ require_once 'inc/header.php';
             <option value="REPEATING">Repeating</option>
         </select><br>
         <label for="startedAt">Started date</label>
-        <input type="date" id="startedAt" name="startedAt" value="<?php echo $data['startedAt']['year'] . '-' . $data['startedAt']['month'] . '-' . $data['startedAt']['day']; ?>"><br>
+        <input type="date" id="startedAt" name="startedAt" value="<?php echo $startedYear . '-' . $startedMonth . '-' . $startedDay; ?>"><br>
         <label for="completedAt">Completed date</label>
-        <input type="date" id="completedAt" name="completedAt" value="<?php echo $data['completedAt']['year'] . '-' . $data['completedAt']['month'] . '-' . $data['completedAt']['day']; ?>"><br>
+        <input type="date" id="completedAt" name="completedAt" value="<?php echo $completedYear . '-' . $completedMonth . '-' . $completedDay; ?>"><br>
         <label for="score">Score</label>
         <input type="text" id="score" name="score" value="<?php echo $data['score']; ?>"><br>
         <label for="progress">Progress</label>
