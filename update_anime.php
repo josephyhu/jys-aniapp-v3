@@ -31,20 +31,24 @@ require_once 'inc/header.php';
             <option value="DROPPED">Dropped</option>
             <option value="REPEATING">Repeating</option>
         </select><br>
+        <label for="startedAt">Started date</label>
+        <input type="date" id="startedAt" name="startedAt" value="<?php echo $data['startedAt']; ?>"><br>
+        <label for="completedAt">Completed date</label>
+        <input type="date" id="completedAt" name="completedAt" value="<?php echo $data['completedAt']; ?>"><br>
         <label for="score">Score</label>
-        <input type="text" id="score" name="score" value="<?php echo $data['score'] ?>"><br>
+        <input type="text" id="score" name="score" value="<?php echo $data['score']; ?>"><br>
         <label for="progress">Progress</label>
-        <input type="number" id="progress" name="progress" value="<?php echo $data['progress'] ?>"><br>
-        <label for="progressVol">Volume progress</label>
-        <input type="number" id="progressVol" name="progressVol" value="<?php echo $data['progressVolumes'] ?>"><br>
+        <input type="number" id="progress" name="progress" value="<?php echo $data['progress']; ?>"><br>
         <button type="submit">Update anime</button>
     </form>
     <?php 
         $status = htmlspecialchars($_POST['status']);
+        $startedAt = htmlspecialchars(str_replace('-', '', $_POST['startedAt']));
+        $completedAt = htmlspecialchars(str_replace('-', '', $_POST['completedAt']));
         $score = htmlspecialchars($_POST['score']);
         $progress = htmlspecialchars($_POST['progress']);
 
-        if (update_anime($_SESSION['accessToken'], $id, $status, $score, $progress)) {
+        if (update_anime($_SESSION['accessToken'], $id, $status, $startedAt, $completedAt, $score, $progress)) {
             echo "<p class='success'>Anime successfully updated.</p>";
         } else {
             echo "<p class='warning'>Updating anime failed.</p>";
