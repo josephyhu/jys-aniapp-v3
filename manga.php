@@ -75,31 +75,31 @@ require_once 'inc/header.php';
             echo "</div>";
             echo "</div>";
         }
-        // if (!empty($authData)) {
-        //     echo "<hr>";
-        //     echo "<table>";
-        //     echo "<thead>";
-        //     echo "<tr>";
-        //     echo "<th>Status</th>";
-        //     echo "<th>Started Date</th>";
-        //     echo "<th>Completed Date</th>";
-        //     echo "<th>Progress</th>";
-        //     echo "<th>Score</th>";
-        //     echo "<th>Repeat</th>";
-        //     echo "</tr>";
-        //     echo "</thead>";
-        //     echo "<tbody>";
-        //     echo "<tr>";
-        //     echo "<td>" . $authData['status'] . "</td>";
-        //     echo "<td>" . $authData['startedAt']['year'] . "-" . $authData['startedAt']['month'] . "-" . $authData['startedAt']['day'] . "</td>";
-        //     echo "<td>" . $authData['completedAt']['year'] . "-" . $authData['completedAt']['month'] . "-" . $authData['completedAt']['day'] . "</td>";
-        //     echo "<td>" . $authData['progress'] . "</td>";
-        //     echo "<td>" . $authData['score'] . "</td>";
-        //     echo "<td>" . $authData['repeat'] . "</td>";
-        //     echo "</tr";
-        //     echo "</tbody>";
-        //     echo "</table>";
-        // }
+        if (!empty($authData)) {
+            echo "<hr>";
+            echo "<table>";
+            echo "<thead>";
+            echo "<tr>";
+            echo "<th>Status</th>";
+            echo "<th>Started Date</th>";
+            echo "<th>Completed Date</th>";
+            echo "<th>Progress</th>";
+            echo "<th>Score</th>";
+            echo "<th>Repeat</th>";
+            echo "</tr>";
+            echo "</thead>";
+            echo "<tbody>";
+            echo "<tr>";
+            echo "<td>" . $authData['status'] . "</td>";
+            echo "<td>" . $authData['startedAt']['year'] . "-" . $authData['startedAt']['month'] . "-" . $authData['startedAt']['day'] . "</td>";
+            echo "<td>" . $authData['completedAt']['year'] . "-" . $authData['completedAt']['month'] . "-" . $authData['completedAt']['day'] . "</td>";
+            echo "<td>" . $authData['progress'] . "</td>";
+            echo "<td>" . $authData['score'] . "</td>";
+            echo "<td>" . $authData['repeat'] . "</td>";
+            echo "</tr";
+            echo "</tbody>";
+            echo "</table>";
+        }
     ?>
 </main>
 <?php require_once 'inc/footer.php'; ?>
