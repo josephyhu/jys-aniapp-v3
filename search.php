@@ -42,10 +42,13 @@ require_once 'inc/header.php';
                 echo '<tr>';
                 for ($i = 0; $i < count($data); $i++) {
                     if ($type === 'ANIME') {
-                        var_dump($data[$i]['id']);
-                        echo "<td><a href='anime.php?id='" . $data[$i]['id'] . "'><img src='" . $data[$i]['coverImage']['medium'] . "' alt='cover'></a></td>";
+                    ?>
+                        <td><a href='anime.php?id=<?php echo $data[$i]["id"]; ?>'><img src='<?php echo $data[$i]["coverImage"]["medium"]; ?>' alt='cover'></a></td>;
+                    <?php
                     } else {
-                        echo "<td><a href='manga.php?id='" . $data[$i]['id'] . "'><img src='" . $data[$i]['coverImage']['medium'] . "' alt='cover'></a></td>";
+                    ?>
+                        <td><a href='manga.php?id=<?php echo $data[$i]["id"]; ?>'><img src='<?php echo $data[$i]["coverImage"]["medium"]; ?>' alt='cover'></a></td>";
+                    <?php
                     }
 
                     if (substr($i, -1) == 9) {
