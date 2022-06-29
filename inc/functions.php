@@ -245,7 +245,7 @@ function get_mangaDetails($id) {
             },
             chapters,
             volumes,
-            genre,
+            genres,
             averageScore,
             popularity,
             source,
