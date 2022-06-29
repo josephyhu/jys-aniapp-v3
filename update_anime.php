@@ -68,26 +68,21 @@ require_once 'inc/header.php';
         $startedAt = htmlspecialchars($_POST['startedAt']);
         $startedObj = [
             "year" => substr($startedAt, 0, 4),
-            "month" => substr($startedAt, 5, 6),
-            "day" => substr($startedAt, 8, 9),
+            "month" => substr($startedAt, 5, 2),
+            "day" => substr($startedAt, 8, 2),
         ];
         $completedAt = htmlspecialchars($_POST['completedAt']);
         $completedObj = [
             "year" => substr($completedAt, 0, 4),
-            "month" => substr($completedAt, 5, 6),
-            "day" => substr($completedAt, 8, 9),
+            "month" => substr($completedAt, 5, 2),
+            "day" => substr($completedAt, 8, 2),
         ];
         $score = htmlspecialchars($_POST['score']);
         $progress = htmlspecialchars($_POST['progress']);
-        try {
-            if (update_anime($_SESSION['accessToken'], $id, $status, $startedObj, $completedObj, $score, $progress)) {
-                echo "<p class='success'>Anime successfully updated.</p>";
-            } else {
-                echo "<p class='warning'>Updating anime failed.</p>";
-            }
-        } catch (Exception $e) {
-            var_dump($startedObj);
-            echo $e->getMessage();
+        if (update_anime($_SESSION['accessToken'], $id, $status, $startedObj, $completedObj, $score, $progress)) {
+            echo "<p class='success'>Anime successfully updated.</p>";
+        } else {
+            echo "<p class='warning'>Updating anime failed.</p>";
         }
 
     ?>
