@@ -35,7 +35,7 @@ require_once 'inc/header.php';
         <input type="text" id="score" name="score" value="<?php echo $data['score'] ?>"><br>
         <label for="progress">Progress</label>
         <input type="text" id="progress" name="progress" value="<?php echo $data['progress'] ?>"><br>
-        <button type="submit">Update anime</button>
+        <button type="submit">Update manga</button>
     </form>
     <?php 
         $status = htmlspecialchars($_POST['status']);
