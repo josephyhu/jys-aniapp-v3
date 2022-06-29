@@ -200,6 +200,7 @@ function get_animeDetails($id) {
             popularity,
             source,
             countryOfOrigin,
+            siteUrl,
         }
     }';
 
@@ -250,6 +251,7 @@ function get_mangaDetails($id) {
             popularity,
             source,
             countryOfOrigin,
+            siteUrl,
         }
     }';
 
