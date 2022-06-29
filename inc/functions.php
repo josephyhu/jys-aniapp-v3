@@ -175,6 +175,7 @@ function get_animeDetails($id) {
                 romaji,
             },
             format,
+            status,
             description,
             coverImage {
                 large,
@@ -190,10 +191,15 @@ function get_animeDetails($id) {
                 month,
                 day,
             },
+            season,
+            seasonYear,
+            episodes,
+            duration,
+            genres,
             averageScore,
             popularity,
-            episodes,
-            genre,
+            source,
+            countryOfOrigin,
         }
     }';
 
