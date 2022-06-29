@@ -19,9 +19,9 @@ require_once 'inc/header.php'; ?>
     <form method="post">
         <label for="status">Status<span class="required">*</span></label>
         <select id="status" name="status" required>
-            <option value="CURRENT">Currently watching</option>
+            <option value="CURRENT">Currently reading</option>
             <option value="COMPLETED">Completed</option>
-            <option value="PLANNING">Plan to watch</option>
+            <option value="PLANNING">Plan to read</option>
             <option value="PAUSED">Paused</option>
             <option value="DROPPED">Dropped</option>
             <option value="REPEATING">Repeating</option>
