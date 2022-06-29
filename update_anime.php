@@ -3,7 +3,7 @@ session_start();
 require_once 'inc/functions.php';
 
 $id = $_GET['id'];
-$userId = $_Get['userId'];
+$userId = $_GET['userId'];
 
 require_once 'inc/header.php';
 ?>

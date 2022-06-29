@@ -35,6 +35,8 @@ require_once 'inc/header.php';
 
         if (add_manga($_SESSION['accessToken'], $id, $status)) {
             echo "<p class='success'>Manga successfully added.</p>";
+        } else {
+            echo "<p class='warning'>Adding manga failed.</p>";
         }
     ?>
 </main>
