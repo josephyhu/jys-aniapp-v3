@@ -34,7 +34,9 @@ require_once 'inc/header.php';
         <label for="score">Score</label>
         <input type="text" id="score" name="score" value="<?php echo $data['score'] ?>"><br>
         <label for="progress">Progress</label>
-        <input type="text" id="progress" name="progress" value="<?php echo $data['progress'] ?>"><br>
+        <input type="number" id="progress" name="progress" value="<?php echo $data['progress'] ?>"><br>
+        <label for="progressVol">Volume progress</label>
+        <input type="number" id="progressVol" name="progressVol" value="<?php echo $data['progressVolumes'] ?>"><br>
         <button type="submit">Update anime</button>
     </form>
     <?php 

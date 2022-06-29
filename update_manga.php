@@ -34,15 +34,18 @@ require_once 'inc/header.php';
         <label for="score">Score</label>
         <input type="text" id="score" name="score" value="<?php echo $data['score'] ?>"><br>
         <label for="progress">Progress</label>
-        <input type="text" id="progress" name="progress" value="<?php echo $data['progress'] ?>"><br>
+        <input type="number" id="progress" name="progress" value="<?php echo $data['progress'] ?>"><br>
+        <label for="progressVolumes">Volume progress</label>
+        <input type="number" id="progressVolumes" name="progressVolumes" value="<?php echo $data['progressVolumes'] ?>"><br>
         <button type="submit">Update manga</button>
     </form>
     <?php 
         $status = htmlspecialchars($_POST['status']);
         $score = htmlspecialchars($_POST['score']);
         $progress = htmlspecialchars($_POST['progress']);
+        $progressVolumes = htmlspecialchars($_POST['progressVol']);
 
-        if (update_manga($_SESSION['accessToken'], $id, $status, $score, $progress)) {
+        if (update_manga($_SESSION['accessToken'], $id, $status, $score, $progress, $progressVolumes)) {
             echo "<p class='success'>Manga successfully updated.</p>";
         } else {
             echo "<p class='warning'>Updating manga failed.</p>";
