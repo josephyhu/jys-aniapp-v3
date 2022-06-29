@@ -40,7 +40,7 @@ require_once 'inc/header.php';
     <?php 
         $status = htmlspecialchars($_POST['status']);
         $score = htmlspecialchars($_POST['score']);
-        $progress = htmlspecialchars($_POST['progress']);
+        $progress = (int) htmlspecialchars($_POST['progress']);
 
         if (update_anime($_SESSION['accessToken'], $id, $status, $score, $progress)) {
             echo "<p class='success'>Anime successfully updated.</p>";
