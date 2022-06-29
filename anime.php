@@ -61,7 +61,11 @@ require_once 'inc/header.php';
             echo "<td>" . $data['averageScore'] . "</td>";
             echo "<td>" . $data['popularity'] . "</td>";
             echo "<td>" . $data['source'] . "</td>";
-            echo "<td>" . $data['genres'] . "</td>";
+            echo "<td>";
+            foreach ($data['genres'] as $genre) {
+                echo $genre . "<br>";
+            }
+            echo "</td>";
             echo "<td>" . $data['countryOfOrigin'] . "</td>";
             echo "</tr";
             echo "</tbody>";
