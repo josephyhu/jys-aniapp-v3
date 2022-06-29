@@ -78,7 +78,9 @@ require_once 'inc/header.php';
             echo "</div>";
 
             if (isset($_SESSION['userId'])) {
-                echo "<a href='add_anime.php?id='" . $id . "'>Add anime</a>";
+            ?>
+                <a href='add_anime.php?id=<?php echo $id; ?>'>Add anime</a>
+            <?php
             }
         }
         if (!empty($authData)) {
