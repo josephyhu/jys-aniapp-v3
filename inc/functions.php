@@ -197,7 +197,6 @@ function get_animeDetails($id) {
             duration,
             genre,
             averageScore,
-            popularity,
         }
     }';
 
