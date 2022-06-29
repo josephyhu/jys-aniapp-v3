@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once 'inc/functions.php';
 
 $id = $_GET['id'];
@@ -16,7 +15,7 @@ require_once 'inc/header.php';
         <?php } ?>
         <a href="search.php">Search</a>
     </div>
-    <?php if (isset($_SESSION['userId'])) { ?>
+    <?php if (!empty($userId)) { ?>
         <div class="logout"><a href="logout.php">Log out</a></div>
     <?php }
         $data = get_userAnimeDetails($userId, $id);
