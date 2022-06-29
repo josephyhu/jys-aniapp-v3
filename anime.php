@@ -4,7 +4,6 @@ require_once 'inc/functions.php';
 
 $id = $_GET['id'];
 $userId = $_GET['userId'];
-var_dump($userId);
 
 require_once 'inc/header.php';
 ?>
@@ -79,6 +78,7 @@ require_once 'inc/header.php';
             echo "</div>";
         }
         if (!empty($authData)) {
+            var_dump($authData);
             echo "<hr>";
             echo "<table>";
             echo "<thead>";
