@@ -4,6 +4,7 @@ require_once 'inc/functions.php';
 
 $id = $_GET['id'];
 $userId = $_GET['userId'];
+var_dump($userId);
 
 require_once 'inc/header.php';
 ?>
