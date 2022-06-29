@@ -78,6 +78,7 @@ require_once 'inc/header.php';
             echo "</div>";
 
             if (isset($_SESSION['userId'])) {
+                var_dump($_SESSION['accessToken']);
             ?>
                 <form method="post">
                     <label for="status">Status<span class="required">*</span></label>
