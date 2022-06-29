@@ -78,7 +78,6 @@ require_once 'inc/header.php';
             echo "</div>";
 
             if (isset($_SESSION['userId'])) {
-                var_dump($_SESSION['accessToken']);
             ?>
                 <form method="post">
                     <label for="status">Status<span class="required">*</span></label>
@@ -93,6 +92,7 @@ require_once 'inc/header.php';
                     <button type="submit">Add anime</button>
                 </form>
             <?php
+                $status = htmlspecialchars($_POST['status']);
                 if (add_anime($_SESSION['accessToken'], $id, $status)) {
                     echo "<p class='success'>Anime successfully added.</p>";
                 }
