@@ -27,7 +27,7 @@ require_once 'inc/header.php';
 
         if (!empty($data)) {
             echo "<img src='" . $data['bannerImage'] . "' alt='banner' class='banner'>";
-            echo "<h2>" . $data['title']['english'] . " (" . $data['title']['romaji'] . ")</h2>";
+            echo "<h2><a href='" . $data['mediaList']['siteUrl'] . "' target='_blank'>" . $data['title']['english'] . " (" . $data['title']['romaji'] . ")</a></h2>";
 
             echo "<div class='flex-container'>";
             echo "<div id='cover'>";
