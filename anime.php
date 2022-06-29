@@ -108,6 +108,9 @@ require_once 'inc/header.php';
             echo "</tbody>";
             echo "</table>";
             echo "<a href='test.php'>test</a>";
+            ?>
+            <a href="update_anime.php?userId=<?php echo $userId; ?>&id=<?php echo $id; ?>"></a>
+            <?php
         }
     ?>
 </main>

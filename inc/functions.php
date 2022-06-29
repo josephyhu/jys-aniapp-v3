@@ -402,16 +402,20 @@ function add_manga($accessToken, $mediaId, $status) {
     return $arr['data']['SaveMediaListEntry']['id'];
 }
 
-function test($accessToken, $mediaId, $score) {
-    $query = 'mutation ($mediaId: Int, $score: Float) {
-        SaveMediaListEntry(mediaId: $mediaId, score: $score) {
+function update_anime($accessToken, $mediaId, $status, $score, $progress) {
+    $query = 'mutation ($mediaId: Int, $status, MediaListStatus, $score: Float, $progress: Int) {
+        SaveMediaListEntry(mediaId: $mediaId, status: $status, score: $score, progress: $progress) {
             id,
+            status,
             score,
+            progress,
         }
     }';
     $variables = [
         "mediaId" => $mediaId,
+        "status" => $status,
         "score" => $score,
+        "progress" => $progress,
     ];
 
     $http = new GuzzleHttp\Client;

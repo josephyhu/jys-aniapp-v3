@@ -3,6 +3,7 @@ session_start();
 require_once 'inc/functions.php';
 
 $id = $_GET['id'];
+$userId = $_Get['userId'];
 
 require_once 'inc/header.php';
 ?>
@@ -17,9 +18,11 @@ require_once 'inc/header.php';
     </div>
     <?php if (isset($_SESSION['userId'])) { ?>
         <div class="logout"><a href="logout.php">Log out</a></div>
-    <?php } ?>
+    <?php }
+        $data = get_userAnimeDetails($userId, $id);
+     ?>
     <form method="post">
-        <label for="status">Status<span class="required">*</span></label>
+        <label for="status">Status</label>
         <select id="status" name="status" required>
             <option value="CURRENT">Currently watching</option>
             <option value="COMPLETED">Completed</option>
@@ -28,15 +31,21 @@ require_once 'inc/header.php';
             <option value="DROPPED">Dropped</option>
             <option value="REPEATING">Repeating</option>
         </select><br>
-        <button type="submit">Add anime</button>
+        <label for="score">Score</label>
+        <input id="score" name="score" value="<?php echo $data['score'] ?>"><br>
+        <label for="progress">Progress</label>
+        <input id="progress" name="progress" value="<?php echo $data['progress'] ?>"><br>
+        <button type="submit">Update anime</button>
     </form>
     <?php 
         $status = htmlspecialchars($_POST['status']);
+        $score = htmlspecialchars($_POST['score']);
+        $progress = htmlspecialchars($_POST['progress']);
 
-        if (add_anime($_SESSION['accessToken'], $id, $status)) {
-            echo "<p class='success'>Anime successfully added.</p>";
+        if (update_anime($_SESSION['accessToken'], $id, $status, $score, $progress)) {
+            echo "<p class='success'>Anime successfully updated.</p>";
         } else {
-            echo "<p class='warning'>Adding anime failed.</p>";
+            echo "<p class='warning'>Updating anime failed.</p>";
         }
     ?>
 </main>
