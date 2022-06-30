@@ -1,7 +1,6 @@
 <?php
-unset($code);
-unset($data);
-unset($logged_in);
-unset($logged_out);
+unset($_SESSION['accessToken']);
+unset($_SESSION['userId']);
+unset($_SESSION['username']);
 session_destroy();
 header('Location: index.php?logged_out=1');
