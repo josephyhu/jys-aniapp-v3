@@ -14,6 +14,7 @@ require_once 'inc/header.php'; ?>
         <a href="mangalist.php">Manga List</a>
         <a href="search.php">Search</a>
     </div>
+    <div class="logout"><a href="logout.php">Log out</a></div>
     <h2><?php echo $_SESSION['username'] . "'s Anime List"; ?></h2>
     <form method="post">
         <label for="status">Status<span class="required">*</span></label>
