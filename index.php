@@ -9,7 +9,7 @@ $query = [
 
 
 $url = 'https://anilist.co/api/v2/oauth/authorize?' . urldecode(http_build_query($query));
-$_SESSION['code'] = $_GET['code'];
+$code = $_GET['code'];
 $logged_out = $_GET['logged_out'];
 $logged_in = $_GET['logged_in'];
 
@@ -30,6 +30,7 @@ require_once 'inc/header.php';
             }
             echo "<h2>Welcome guest!</h2>";
         } else {
+            $_SESSION['code'] = $code;
             $_SESSION['accessToken'] = get_token($_SESSION['code']);
             $_SESSION['userId'] = get_userId($_SESSION['accessToken']);
             $_SESSION['username'] = get_username($_SESSION['userId']);
