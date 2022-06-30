@@ -28,12 +28,37 @@ require_once 'inc/header.php';
             <option value="DROPPED">Dropped</option>
             <option value="REPEATING">Repeating</option>
         </select><br>
+        <label for="startedAt">Started date</label>
+        <input type="date" id="startedAt" name="startedAt"><br>
+        <label for="completedAt">Completed date</label>
+        <input type="date" id="completedAt" name="completedAt"><br>
+        <label for="score">Score</label>
+        <input type="text" id="score" name="score"><br>
+        <label for="progress">Progress</label>
+        <input type="number" id="progress" name="progress"><br>
+        <label for="progressVolumes">Volume progress</label>
+        <input type="number" id="progressVolumes" name="progressVolumes"><br>
         <button type="submit">Add manga</button>
     </form>
     <?php 
         $status = htmlspecialchars($_POST['status']);
+        $startedAt = htmlspecialchars($_POST['startedAt']);
+        $startedObj = [
+            "year" => substr($startedAt, 0, 4),
+            "month" => substr($startedAt, 5, 2),
+            "day" => substr($startedAt, 8, 2),
+        ];
+        $completedAt = htmlspecialchars($_POST['completedAt']);
+        $completedObj = [
+            "year" => substr($completedAt, 0, 4),
+            "month" => substr($completedAt, 5, 2),
+            "day" => substr($completedAt, 8, 2),
+        ];
+        $score = htmlspecialchars($_POST['score']);
+        $progress = htmlspecialchars($_POST['progress']);
+        $progressVolumes = htmlspecialchars($_POST['progressVolumes']);
 
-        if (add_manga($_SESSION['accessToken'], $id, $status)) {
+        if (add_manga($_SESSION['accessToken'], $id, $status, $startedObj, $completedObj, $score, $progress, $progressVolumes)) {
             echo "<p class='success'>Manga successfully added.</p>";
         } else {
             echo "<p class='warning'>Adding manga failed.</p>";

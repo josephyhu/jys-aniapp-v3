@@ -344,17 +344,41 @@ function get_userMangaDetails($userId, $mediaId) {
     return $arr['data']['MediaList'];
 }
 
-function add_anime($accessToken, $mediaId, $status) {
-    $query = 'mutation ($mediaId: Int, $status: MediaListStatus) {
-        SaveMediaListEntry (mediaId: $mediaId, status: $status) {
+function add_anime($accessToken, $mediaId, $status, $startedAt, $completedAt, $score, $progress) {
+    $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $startedAt: FuzzyDateInput, $completedAt: FuzzyDateInput, $score: Float, $progress: Int) {
+        SaveMediaListEntry (mediaId: $mediaId, status: $status, startedAt: $startedAt, completedAt: $completedAt, score: $score, progress: $progress) {
             id,
             status,
+            startedAt {
+                year,
+                month,
+                day,
+            },
+            completedAt {
+                year,
+                month,
+                day,
+            },
+            score,
+            progress,
         }
     }';
 
     $variables = [
         "mediaId" => $mediaId,
         "status" => $status,
+        "startedAt" => [
+            "year" => $startedAt["year"],
+            "month" => $startedAt["month"],
+            "day" => $startedAt["day"],
+        ],
+        "completedAt" => [
+            "year" => $completedAt["year"],
+            "month" => $completedAt["month"],
+            "day" => $completedAt["day"],
+        ],
+        "score" => $score,
+        "progress" => $progress,
     ];
 
     $http = new GuzzleHttp\Client;
@@ -373,17 +397,43 @@ function add_anime($accessToken, $mediaId, $status) {
     return $arr['data']['SaveMediaListEntry']['id'];
 }
 
-function add_manga($accessToken, $mediaId, $status) {
-    $query = 'mutation ($mediaId: Int, $status: MediaListStatus) {
-        SaveMediaListEntry (mediaId: $mediaId, status: $status) {
+function add_manga($accessToken, $mediaId, $status, $startedAt, $completedAt, $score, $progress, $progressVolumes) {
+    $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $startedAt: FuzzyDateInput, $completedAt: FuzzyDateInput, $score: Float, $progress: Int, $progressVolumes: Int) {
+        SaveMediaListEntry (mediaId: $mediaId, status: $status, startedAt: $startedAt, completedAt: $completedAt, score: $score, progress: $progress, progressVolumes: $progressVolumes) {
             id,
             status,
+            startedAt {
+                year,
+                month,
+                day,
+            },
+            completedAt {
+                year,
+                month,
+                day,
+            },
+            score,
+            progress,
+            progressVolumes,
         }
     }';
 
     $variables = [
         "mediaId" => $mediaId,
         "status" => $status,
+        "startedAt" => [
+            "year" => $startedAt["year"],
+            "month" => $startedAt["month"],
+            "day" => $startedAt["day"],
+        ],
+        "completedAt" => [
+            "year" => $completedAt["year"],
+            "month" => $completedAt["month"],
+            "day" => $completedAt["day"],
+        ],
+        "score" => $score,
+        "progress" => $progress,
+        "progressVolumes" => $progressVolumes,
     ];
 
     $http = new GuzzleHttp\Client;
