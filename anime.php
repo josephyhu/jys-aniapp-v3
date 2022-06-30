@@ -8,18 +8,19 @@ $userId = $_GET['userId'];
 require_once 'inc/header.php';
 ?>
 <main>
+    <?php    
+    if (!isset($_SESSION['userId'])) {
+        header('Location: index.php?logged_in=0');
+    }
+    ?>
     <div class="links">
         <a href="index.php">Home</a>
-        <?php if (isset($_SESSION['userId'])) { ?>
-            <a href="animelist.php">Anime List</a>
-            <a href="mangalist.php">Manga List</a>
-        <?php } ?>
+        <a href="animelist.php">Anime List</a>
+        <a href="mangalist.php">Manga List</a>
         <a href="search.php">Search</a>
     </div>
-    <?php if (isset($_SESSION['userId'])) { ?>
-        <div class="logout"><a href="logout.php">Log out</a></div>
-    <?php 
-    }
+    <div class="logout"><a href="logout.php">Log out</a></div>
+    <?php
         $data = get_animeDetails($id);
         if (!empty($userId)) {
             $authData = get_userAnimeDetails($userId, $id);

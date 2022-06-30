@@ -8,40 +8,42 @@ $userId = $_GET['userId'];
 require_once 'inc/header.php';
 ?>
 <main>
+<?php
+    if (!isset($_SESSION['userId'])) {
+        header('Location: index.php?logged_in=0');
+    }
+    ?>
     <div class="links">
         <a href="index.php">Home</a>
-        <?php if (isset($_SESSION['userId'])) { ?>
-            <a href="animelist.php">Anime List</a>
-            <a href="mangalist.php">Manga List</a>
-        <?php } ?>
+        <a href="animelist.php">Anime List</a>
+        <a href="mangalist.php">Manga List</a>
         <a href="search.php">Search</a>
     </div>
-    <?php if (!empty($userId)) { ?>
-        <div class="logout"><a href="logout.php">Log out</a></div>
-    <?php }
-        $data = get_userMangaDetails($userId, $id);
-        $startedYear = $data['startedAt']['year'];
-        if ($data['startedAt']['month'] < 10) {
-            $startedMonth = '0' . $data['startedAt']['month'];
-        } else {
-            $startedMonth = $data['startedAt']['month'];
-        }
-        if ($data['startedAt']['day'] < 10) {
-            $startedDay = '0' . $data['startedAt']['day'];
-        } else {
-            $startedDay = $data['startedAt']['day'];
-        }
-        $completedYear = $data['completedAt']['year'];
-        if ($data['completedAt']['month'] < 10) {
-            $completedMonth = '0' . $data['completedAt']['month'];
-        } else {
-            $completedMonth = $data['comletedAt']['month'];
-        }
-        if ($data['completedAt']['day'] < 10) {
-            $completedDay = '0' . $data['completedAt']['day'];
-        } else {
-            $completedDay = $data['completedAt']['day'];
-        }
+    <div class="logout"><a href="logout.php">Log out</a></div>
+    <?php
+    $data = get_userMangaDetails($userId, $id);
+    $startedYear = $data['startedAt']['year'];
+    if ($data['startedAt']['month'] < 10) {
+        $startedMonth = '0' . $data['startedAt']['month'];
+    } else {
+        $startedMonth = $data['startedAt']['month'];
+    }
+    if ($data['startedAt']['day'] < 10) {
+        $startedDay = '0' . $data['startedAt']['day'];
+    } else {
+        $startedDay = $data['startedAt']['day'];
+    }
+    $completedYear = $data['completedAt']['year'];
+    if ($data['completedAt']['month'] < 10) {
+        $completedMonth = '0' . $data['completedAt']['month'];
+    } else {
+        $completedMonth = $data['comletedAt']['month'];
+    }
+    if ($data['completedAt']['day'] < 10) {
+        $completedDay = '0' . $data['completedAt']['day'];
+    } else {
+        $completedDay = $data['completedAt']['day'];
+    }
     ?>
     <form method="post">
         <label for="status">Status</label>
