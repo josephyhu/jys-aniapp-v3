@@ -8,11 +8,6 @@ $userId = $_GET['userId'];
 require_once 'inc/header.php';
 ?>
 <main>
-    <?php    
-    if (!isset($_SESSION['userId'])) {
-        header('Location: index.php?logged_in=0');
-    }
-    ?>
     <div class="links">
         <a href="index.php">Home</a>
         <?php if (isset($_SESSION['user_id'])) { ?>
