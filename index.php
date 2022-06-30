@@ -9,7 +9,7 @@ $query = [
 
 
 $url = 'https://anilist.co/api/v2/oauth/authorize?' . urldecode(http_build_query($query));
-$_SESSION['code'] = $_GET['code'];
+$_SESSION['get_code'] = $_GET['code'];
 $logged_out = $_GET['logged_out'];
 $logged_in = $_GET['logged_in'];
 
@@ -17,7 +17,7 @@ require_once 'inc/header.php';
 ?>
 <main>
     <?php
-        if (empty($_SESSION['code'])) {
+        if (!isset($_SESSION['get_code'])) {
             echo "<div class='links'><a href='index.php'>Home</a>";
             echo "<a href='search.php'>Search</a></div>";
             echo "<div class='login'><a href='$url'>Log in with AniList</a></div>";
