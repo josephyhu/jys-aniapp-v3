@@ -6,7 +6,7 @@ require_once 'inc/header.php'; ?>
     <?php
     if (!isset($_SESSION['userId'])) {
         header('Location: index.php?logged_in=0');
-    }
+    } else {
     ?>
     <div class="links">
         <a href="index.php">Home</a>
@@ -15,6 +15,7 @@ require_once 'inc/header.php'; ?>
         <a href="search.php">Search</a>
     </div>
     <div class="logout"><a href="logout.php">Log out</a></div>
+    <?php } ?>
     <h2><?php echo $_SESSION['username'] . "'s Anime List"; ?></h2>
     <form method="post">
         <label for="status">Status<span class="required">*</span></label>
