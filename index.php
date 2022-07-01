@@ -17,7 +17,7 @@ require_once 'inc/header.php';
 ?>
 <main>
     <?php
-        if (!isset($code) || (isset($logged_in) && $logged_in != 1)) {
+        if (!isset($_SESSION['logged_in'])) {
             echo "<div class='links'><a href='index.php'>Home</a>";
             echo "<a href='search.php'>Search</a></div>";
             echo "<div class='login'><a href='$url'>Log in with AniList</a></div>";
@@ -30,7 +30,7 @@ require_once 'inc/header.php';
             }
             echo "<h2>Welcome guest!</h2>";
         } else {
-            $logged_in = 1;
+            $_SESSION['logged_in'] = 1;
             $_SESSION['accessToken'] = get_token($code);
             $_SESSION['userId'] = get_userId($_SESSION['accessToken']);
             $_SESSION['username'] = get_username($_SESSION['userId']);
