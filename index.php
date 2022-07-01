@@ -9,7 +9,11 @@ $query = [
 
 
 $url = 'https://anilist.co/api/v2/oauth/authorize?' . urldecode(http_build_query($query));
-$_SESSION['code'] = $_GET['code'];
+if (isset($_GET['code'])) {
+    $_SESSION['code'] = $_GET['code'];
+} else {
+    $_SESSION['code'] = 0;
+}
 $logged_out = $_GET['logged_out'];
 $logged_in = $_GET['logged_in'];
 
@@ -17,14 +21,14 @@ require_once 'inc/header.php';
 ?>
 <main>
     <?php
-        if (!isset($_SESSION['code'])) {
+        if ($_SESSION['code'] == 0) {
             echo "<div class='links'><a href='index.php'>Home</a>";
             echo "<a href='search.php'>Search</a></div>";
             echo "<div class='login'><a href='$url'>Log in with AniList</a></div>";
-            if (isset($logged_in) && $logged_in == 0) {
+            if ($logged_in == 0) {
                 echo "<p class='warning'>You have to be logged in to use this feature.</p>";
             }
-            if (isset($logged_out) && $logged_out == 1) {
+            if ($logged_out == 1) {
                 echo "<p class='success'>Successfully logged out.</p>";
                 echo "<p class='notice'>Be sure to revoke the app to finish logging out.</p>";
             }
