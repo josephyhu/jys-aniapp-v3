@@ -94,4 +94,12 @@ table, th, td {
     .details {
         margin-left: 6px;
     }
+
+    #avatar {
+        margin-right: 6px;
+    }
+
+    #bio {
+        margin-left: 6px;
+    }
 }
