@@ -45,15 +45,22 @@ require_once 'inc/header.php';
                         <img src='<?php echo $data['avatar']['large']; ?>' alt='avatar'>
                     </div>
                     <div id='bio' class='clearfix'>
-                        <h3>Bio</h3>
-                        <?php
-                        echo $data['about'];
-                        ?>
-                    </div>
+                    <h3>Bio</h3>
+                    <?php
+                    $data['about'] = preg_replace(
+                        "/\[\](.*)/i",
+                        "",
+                        $data['about'],
+                    );
+                    $data['about'] = substr($data['about'], 0, 500);
+                    echo wordwrap($data['about'], 125, '<br>');
+                    echo "<br>Click the banner image for the full bio.";
+                    ?>
+                </div>
                 </div>
                 <div id='stats'>
                     <h3>Anime Stats</h3>
-                    <?php $days_watched = $data['statistics']['anime']['minutesWatched']/1440; ?>
+                    <?php $days_watched = round($data['statistics']['anime']['minutesWatched']/1440, 2); ?>
                     <table>
                         <thead>
                             <tr>
