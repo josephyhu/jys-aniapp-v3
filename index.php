@@ -9,11 +9,7 @@ $query = [
 
 
 $url = 'https://anilist.co/api/v2/oauth/authorize?' . urldecode(http_build_query($query));
-if (isset($_GET['code'])) {
-    $_SESSION['code'] = $_GET['code'];
-} else {
-    $_SESSION['code'] = 0;
-}
+$code = $_GET['code'];
 $logged_out = $_GET['logged_out'];
 $logged_in = $_GET['logged_in'];
 
@@ -21,11 +17,21 @@ require_once 'inc/header.php';
 ?>
 <main>
     <?php
-        if ($_SESSION['code'] == 0) {
+        if (isset($code) || $logged_in == 1) {
+            $_SESSION['accessToken'] = get_token($code);
+            $_SESSION['userId'] = get_userId($_SESSION['accessToken']);
+            $_SESSION['username'] = get_username($_SESSION['userId']);
+            echo "<div class='links'><a href='index.php?logged_in=1'>Home</a>";
+            echo "<a href='animelist.php'>Anime List</a>";
+            echo "<a href='mangalist.php'>Manga List</a>";
+            echo "<a href='search.php'>Search</a></div>";
+            echo "<div class='logout'><a href='logout.php'>Log out</a></div>";
+            echo "<h2>Welcome " . $_SESSION['username'] . "!</h2>";
+        } else {
             echo "<div class='links'><a href='index.php'>Home</a>";
             echo "<a href='search.php'>Search</a></div>";
             echo "<div class='login'><a href='$url'>Log in with AniList</a></div>";
-            if ($logged_in == 0) {
+            if (isset($logged_in) && $logged_in == 0) {
                 echo "<p class='warning'>You have to be logged in to use this feature.</p>";
             }
             if ($logged_out == 1) {
@@ -33,16 +39,6 @@ require_once 'inc/header.php';
                 echo "<p class='notice'>Be sure to revoke the app to finish logging out.</p>";
             }
             echo "<h2>Welcome guest!</h2>";
-        } else {
-            $_SESSION['accessToken'] = get_token($_SESSION['code']);
-            $_SESSION['userId'] = get_userId($_SESSION['accessToken']);
-            $_SESSION['username'] = get_username($_SESSION['userId']);
-            echo "<div class='links'><a href='index.php'>Home</a>";
-            echo "<a href='animelist.php'>Anime List</a>";
-            echo "<a href='mangalist.php'>Manga List</a>";
-            echo "<a href='search.php'>Search</a></div>";
-            echo "<div class='logout'><a href='logout.php'>Log out</a></div>";
-            echo "<h2>Welcome " . $_SESSION['username'] . "!</h2>";
         }
     ?>
 </main>

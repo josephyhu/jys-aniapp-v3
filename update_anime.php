@@ -14,7 +14,7 @@ require_once 'inc/header.php';
     }
     ?>
     <div class="links">
-        <a href="index.php">Home</a>
+        <a href="index.php?logged_in=1">Home</a>
         <a href="animelist.php">Anime List</a>
         <a href="mangalist.php">Manga List</a>
         <a href="search.php">Search</a>
