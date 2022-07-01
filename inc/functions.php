@@ -80,6 +80,10 @@ function get_userAnimeList($userId, $status) {
                 entries {
                     media {
                         id,
+                        title {
+                            english,
+                            romaji,
+                        },
                         coverImage {
                             medium,
                         },
@@ -113,6 +117,10 @@ function get_userMangaList($userId, $status) {
                 entries {
                     media {
                         id,
+                        title {
+                            english,
+                            romaji,
+                        },
                         coverImage {
                             medium,
                         },
@@ -143,6 +151,10 @@ function search_media($type, $search) {
         Page {
             media (type: $type, search: $search, sort: SCORE_DESC) {
                 id,
+                title {
+                    english,
+                    romaji,
+                },
                 coverImage {
                     medium,
                 },
