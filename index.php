@@ -17,7 +17,7 @@ require_once 'inc/header.php';
 ?>
 <main>
     <?php
-        if ($_SESSION['logged_in'] != 1) {
+        if (!isset($code) || !isset($_SESSION['logged_in'])) {
             echo "<div class='links'><a href='index.php'>Home</a>";
             echo "<a href='search.php'>Search</a></div>";
             echo "<div class='login'><a href='$url'>Log in with AniList</a></div>";
