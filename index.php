@@ -18,6 +18,7 @@ require_once 'inc/header.php';
 <main>
     <?php
         if (isset($code)) {
+            $logged_in = 1;
             $_SESSION['accessToken'] = get_token($code);
             $_SESSION['userId'] = get_userId($_SESSION['accessToken']);
             $_SESSION['username'] = get_username($_SESSION['userId']);
