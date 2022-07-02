@@ -44,16 +44,27 @@ require_once 'inc/header.php';
     } else {
         $completedDay = $data['completedAt']['day'];
     }
+    if ($data['status'] == 'CURRENT') {
+        $status = 'Currently watching';
+    } else if ($data['status'] == 'COMPLETED') {
+        $status = 'Completed';
+    } else if ($data['status'] == 'PLANNING') {
+        $status = 'Plan to watch';
+    } else if ($data['status'] == 'PAUSED') {
+        $status = 'Paused';
+    } else if ($data['status'] == 'DROPPED') {
+        $status = 'Dropped';
+    } else {
+        $status = 'Repeating';
+    }
+    $status_arr = array('CURRENT', 'COMPLETED', 'PLANNING', 'PAUSED', 'DROPPED', 'REPEATING');
     ?>
     <form method="post">
         <label for="status">Status</label>
         <select id="status" name="status">
-            <option value="CURRENT">Currently watching</option>
-            <option value="COMPLETED">Completed</option>
-            <option value="PLANNING">Plan to watch</option>
-            <option value="PAUSED">Paused</option>
-            <option value="DROPPED">Dropped</option>
-            <option value="REPEATING">Repeating</option>
+            <?php for ($i = 0; $i < count($status_arr); $i++ ) { ?>
+                <option value="<?php $status_arr[$i]; ?>" <?php $status_arr[$i] == $data['status'] ? 'Selected' : ''; ?>><?php echo $status; ?></option>
+            <?php } ?>
         </select><br>
         <label for="startedAt">Started date</label>
         <input type="date" id="startedAt" name="startedAt" value="<?php echo $startedYear . '-' . $startedMonth . '-' . $startedDay; ?>"><br>
