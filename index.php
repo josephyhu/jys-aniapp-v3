@@ -39,10 +39,10 @@ require_once 'inc/header.php';
             }
             ?>
             <?php if (!empty($data)) { ?>
-                <a href='<?php echo $data['siteUrl']; ?>' target='_blank'><img src='<?php echo $data['bannerImage']; ?>' alt='banner' class='banner'></a>
+                <a href='https://anilist.co/user/<?php echo $data['name']; ?>' target='_blank'><img src='<?php echo $data['bannerImage']; ?>' alt='banner' class='banner'></a>
                 <div class='flex-container'>
                     <div id='avatar'>
-                        <a href='<?php echo $data['siteUrl']; ?>' target='_blank'><img src='<?php echo $data['avatar']['large']; ?>' alt='avatar'></a>
+                        <a href='https://anilist.co/user/<?php echo $data['name']; ?>' target='_blank'><img src='<?php echo $data['avatar']['large']; ?>' alt='avatar'></a>
                     </div>
                     <div id='bio' class='clearfix'>
                     <h3>Bio</h3>

@@ -568,7 +568,7 @@ function get_userStats($userId) {
                 },
                 bannerImage,
                 about,
-                siteUrl,
+                name,
                 statistics {
                     anime {
                         count,
