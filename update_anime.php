@@ -48,12 +48,9 @@ require_once 'inc/header.php';
     <form method="post">
         <label for="status">Status</label>
         <select id="status" name="status">
-            <option value="CURRENT">Currently watching</option>
-            <option value="COMPLETED">Completed</option>
-            <option value="PLANNING">Plan to watch</option>
-            <option value="PAUSED">Paused</option>
-            <option value="DROPPED">Dropped</option>
-            <option value="REPEATING">Repeating</option>
+            <?php for ($i = 0; $i < count($data['status']); $i++) { ?>
+                <option value="<?php echo $data['status'][$i]; ?>"><?php echo ucfirst(strtolower($data['status'][$i])); ?></option>
+            <? } ?>
         </select><br>
         <label for="startedAt">Started date</label>
         <input type="date" id="startedAt" name="startedAt" value="<?php echo $startedYear . '-' . $startedMonth . '-' . $startedDay; ?>"><br>
