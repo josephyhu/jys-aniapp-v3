@@ -44,13 +44,13 @@ require_once 'inc/header.php';
     } else {
         $completedDay = $data['completedAt']['day'];
     }
-    $status = array('Current', 'Completed', 'Planning', 'Paused', 'Dropped', 'Repeating');
+    $status_arr = array('Current', 'Completed', 'Planning', 'Paused', 'Dropped', 'Repeating');
     ?>
     <form method="post">
         <label for="status">Status</label>
         <select id="status" name="status">
-            <?php for ($i = 0; $i < count($status); $i++ ) { ?>
-                <option value="<?php echo strtoupper($status[$i]); ?>" <?php echo strtoupper($status[$i]) == $data['status'] ? 'Selected' : ''; ?>><?php echo $status[$i]; ?></option>
+            <?php for ($i = 0; $i < count($status_arr); $i++ ) { ?>
+                <option value="<?php echo strtoupper($status_arr[$i]); ?>" <?php echo strtoupper($status_arr[$i]) == $data['status'] ? 'Selected' : ''; ?>><?php echo $status_arr[$i]; ?></option>
             <?php } ?>
         </select><br>
         <label for="startedAt">Started date</label>
