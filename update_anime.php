@@ -44,26 +44,13 @@ require_once 'inc/header.php';
     } else {
         $completedDay = $data['completedAt']['day'];
     }
-    if ($data['status'] == 'CURRENT') {
-        $status = 'Currently watching';
-    } else if ($data['status'] == 'COMPLETED') {
-        $status = 'Completed';
-    } else if ($data['status'] == 'PLANNING') {
-        $status = 'Plan to watch';
-    } else if ($data['status'] == 'PAUSED') {
-        $status = 'Paused';
-    } else if ($data['status'] == 'DROPPED') {
-        $status = 'Dropped';
-    } else {
-        $status = 'Repeating';
-    }
     $status_arr = array('CURRENT', 'COMPLETED', 'PLANNING', 'PAUSED', 'DROPPED', 'REPEATING');
     ?>
     <form method="post">
         <label for="status">Status</label>
         <select id="status" name="status">
             <?php for ($i = 0; $i < count($status_arr); $i++ ) { ?>
-                <option value="<?php $status_arr[$i]; ?>" <?php $status_arr[$i] == $data['status'] ? 'Selected' : ''; ?>><?php echo $status; ?></option>
+                <option value="<?php $status_arr[$i]; ?>" <?php $status_arr[$i] == $data['status'] ? 'Selected' : ''; ?>><?php echo ucwords($status_arr[$i]); ?></option>
             <?php } ?>
         </select><br>
         <label for="startedAt">Started date</label>
