@@ -42,7 +42,7 @@ require_once 'inc/header.php';
                 <a href='<?php echo $data['siteUrl']; ?>' target='_blank'><img src='<?php echo $data['bannerImage']; ?>' alt='banner' class='banner'></a>
                 <div class='flex-container'>
                     <div id='avatar'>
-                        <img src='<?php echo $data['avatar']['large']; ?>' alt='avatar'>
+                        <a href='<?php echo $data['siteUrl']; ?>' target='_blank'><img src='<?php echo $data['avatar']['large']; ?>' alt='avatar'></a>
                     </div>
                     <div id='bio' class='clearfix'>
                     <h3>Bio</h3>
@@ -54,7 +54,7 @@ require_once 'inc/header.php';
                     );
                     $data['about'] = substr($data['about'], 0, 500);
                     echo wordwrap($data['about'], 125, '<br>');
-                    echo "<br>Click the banner image for the full bio.";
+                    echo "<br>Click the avatar or the banner for the full bio.";
                     ?>
                 </div>
                 </div>
