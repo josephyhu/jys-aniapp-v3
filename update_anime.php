@@ -50,7 +50,7 @@ require_once 'inc/header.php';
         <label for="status">Status</label>
         <select id="status" name="status">
             <?php for ($i = 0; $i < count($status_arr); $i++) { ?>
-                <option value="<?php echo $status_arr[$i]; ?>"><?php echo ucfirst(strtolower($status_arr[$i])); ?></option>
+                <option value="<?php echo $status_arr[$i]; ?>" <?php $status_arr[$i] == $data['status'] ? 'selected' : ''; ?>><?php echo ucfirst(strtolower($status_arr[$i])); ?></option>
             <? } ?>
         </select><br>
         <label for="startedAt">Started date</label>
