@@ -22,8 +22,8 @@ require_once 'inc/header.php';
         echo "<label for='type'>Type<span class='required'>*</span></label><br>";
         echo "<input type='radio' id='anime' name='type' value='ANIME' required><label for='anime'>Anime</label> ";
         echo "<input type='radio' id='manga' name='type' value='MANGA'><label for='manga'>Manga</label><br>";
-        echo "<label for='search'>Search<span class='required'>*</span></label> ";
         ?>
+        <label for='search'>Search<span class='required'>*</span></label>
         <input type='text' id='search' name='search' value='<?php echo isset($_POST['search']) ? htmlspecialchars($_POST['search']) : ''?>' required><br>
         <?php
         echo "<button type='submit'>Search</button><br>";
