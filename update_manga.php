@@ -44,20 +44,18 @@ require_once 'inc/header.php';
     } else {
         $completedDay = $data['completedAt']['day'];
     }
+    $status_arr = array('CURRENT', 'COMPLETED', 'PLANNING', 'PAUSED', 'DROPPED', 'REPEATING');
     ?>
     <form method="post">
         <label for="status">Status</label>
         <select id="status" name="status">
-            <option value="CURRENT">Currently reading</option>
-            <option value="COMPLETED">Completed</option>
-            <option value="PLANNING">Plan to read</option>
-            <option value="PAUSED">Paused</option>
-            <option value="DROPPED">Dropped</option>
-            <option value="REPEATING">Repeating</option>
+        <?php for ($i = 0; $i < count($status_arr); $i++) { ?>
+                <option value="<?php echo $status_arr[$i]; ?>" <?php echo ($status_arr[$i] == $data['status']) ? 'selected' : ''; ?>><?php echo ucfirst(strtolower($status_arr[$i])); ?></option>
+            <? } ?>
         </select><br>
-        <label for="startedAt">Started date</label>
+        <label for="startedAt">Started date<span class='required'>*</span></label>
         <input type="date" id="startedAt" name="startedAt" value="<?php echo $startedYear . '-' . $startedMonth . '-' . $startedDay; ?>"><br>
-        <label for="completedAt">Completed date</label>
+        <label for="completedAt">Completed date<span class='required'>*</span></label>
         <input type="date" id="completedAt" name="completedAt" value="<?php echo $completedYear . '-' . $completedMonth . '-' . $completedDay; ?>"><br>
         <label for="score">Score</label>
         <input type="text" id="score" name="score" value="<?php echo $data['score']; ?>"><br>
