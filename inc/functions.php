@@ -586,14 +586,14 @@ function get_userStats($userId) {
     return $arr['data']['User'];
 }
 
-function delete_userAnime($accessToken, $mediaId) {
-    $query = 'mutation ($mediaId: Int) {
-        DeleteMediaListEntry(mediaId: $mediaId) {
+function delete_userAnime($accessToken, $id) {
+    $query = 'mutation ($id: Int) {
+        DeleteMediaListEntry(id: $id) {
             id,
         }
     }';
     $variables = [
-        "mediaId" => $mediaId
+        "id" => $id
     ];
 
     $http = new GuzzleHttp\Client;
@@ -612,14 +612,14 @@ function delete_userAnime($accessToken, $mediaId) {
     return $arr['data']['DeleteMediaListEntry'];
 }
 
-function delete_userManga($accessToken, $mediaId) {
-    $query = 'mutation ($mediaId: Int) {
-        DeleteMediaListEntry(mediaId: $mediaId) {
+function delete_userManga($accessToken, $id) {
+    $query = 'mutation ($id: Int) {
+        DeleteMediaListEntry(id: $id) {
             id,
         }
     }';
     $variables = [
-        "mediaId" => $mediaId
+        "id" => $id
     ];
 
     $http = new GuzzleHttp\Client;
