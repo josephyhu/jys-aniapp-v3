@@ -24,6 +24,8 @@ require_once 'inc/header.php';
         $data = get_mangaDetails($id);
         if (isset($_SESSION['userId'])) {
             $authData = get_userMangaDetails($_SESSION['userId'], $id);
+        } else {
+            $authData = '';
         }
 
         if (!empty($data)) {
