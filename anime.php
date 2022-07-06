@@ -3,7 +3,6 @@ session_start();
 require_once 'inc/functions.php';
 
 $id = $_GET['id'];
-$userId = $_GET['userId'];
 
 require_once 'inc/header.php';
 ?>
@@ -23,8 +22,8 @@ require_once 'inc/header.php';
     <?php
     }
         $data = get_animeDetails($id);
-        if (!empty($userId)) {
-            $authData = get_userAnimeDetails($userId, $id);
+        if (isset($_SESSION['userId'])) {
+            $authData = get_userAnimeDetails($_SESSION['userId'], $id);
         }
 
         if (!empty($data)) {
@@ -85,7 +84,7 @@ require_once 'inc/header.php';
             echo "<tr>";
             for ($i = 0; $i < count($relatedMedia); $i++) {
             ?>
-                <td><a href="animelist?id=<?php echo $id; ?>"></a><img src="<?php echo $relatedMedia[$i]['node']['coverImage']['medium']; ?>" alt="cover" title='<?php echo $relatedMedia[$i]["node"]["title"]["romaji"] . "\n" . $relatedMedia[$i]["relationType"]; ?>'></a></td>
+                <td><a href="anime.php?id=<?php echo $id; ?>"></a><img src="<?php echo $relatedMedia[$i]['node']['coverImage']['medium']; ?>" alt="cover" title='<?php echo $relatedMedia[$i]["node"]["title"]["romaji"] . "\n" . $relatedMedia[$i]["relationType"]; ?>'></a></td>
             <?php
                 
                 if (substr($i, -1) == 9) {
