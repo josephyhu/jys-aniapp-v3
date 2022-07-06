@@ -85,10 +85,15 @@ require_once 'inc/header.php';
             echo "<tbody>";
             echo "<tr>";
             for ($i = 0; $i < count($relatedMedia); $i++) {
+                if ($elatedMedia[$i]['node']['type'] == 'ANIME') {
             ?>
-                <td><a href="anime.php?id=<?php echo $relatedMedia[$i]['node']['id']; ?>"><img src="<?php echo $relatedMedia[$i]['node']['coverImage']['medium']; ?>" alt="cover" title='<?php echo $relatedMedia[$i]["node"]["title"]["romaji"] . "\n" . $relatedMedia[$i]["relationType"]; ?>'></a></td>
+                    <td><a href="anime.php?id=<?php echo $relatedMedia[$i]['node']['id']; ?>"><img src="<?php echo $relatedMedia[$i]['node']['coverImage']['medium']; ?>" alt="cover" title='<?php echo $relatedMedia[$i]["node"]["title"]["romaji"] . "\n" . $relatedMedia[$i]["relationType"]; ?>'></a></td>
             <?php
-                
+                } else {
+            ?>
+                    <td><a href="manga.php?id=<?php echo $relatedMedia[$i]['node']['id']; ?>"><img src="<?php echo $relatedMedia[$i]['node']['coverImage']['medium']; ?>" alt="cover" title='<?php echo $relatedMedia[$i]["node"]["title"]["romaji"] . "\n" . $relatedMedia[$i]["relationType"]; ?>'></a></td>
+            <?php
+                }
                 if (substr($i, -1) == 9) {
                     echo '</tr><tr>';
                 }
