@@ -652,7 +652,8 @@ function get_relatedMedia($id) {
                         },
                         coverImage {
                             medium,
-                        }
+                        },
+                        type,
                     }
                 }
             }
