@@ -8,10 +8,8 @@ $userId = $_GET['userId'];
 require_once 'inc/header.php';
 
 try {
-    delete_userAnime($_SESSION['accessToken'], $id);
-    echo "<p class='success'>Anime successfully deleted.</p>";
-    sleep(3);
-    header('Location: animelist.php');
+    $data = delete_userAnime($_SESSION['accessToken'], $id);
+    echo $data['deleted'];
 } catch (Exception $e) {
     echo $e->getMessage();
 }
