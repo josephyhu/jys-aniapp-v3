@@ -128,8 +128,8 @@ require_once 'inc/header.php';
             echo "</tbody>";
             echo "</table>";
             ?>
-            <a href="update_anime.php?userId=<?php echo $userId; ?>&id=<?php echo $id; ?>">Update anime</a><br>
-            <a href="delete_anime.php?userId=<?php echo $userId; ?>&entryId=<?php echo $authData['id']; ?>">Delete Anime</a>
+            <a href="update_anime.php?&id=<?php echo $id; ?>">Update anime</a><br>
+            <a href="delete_anime.php?&entryId=<?php echo $authData['id']; ?>">Delete Anime</a>
             <?php
         }
     ?>
