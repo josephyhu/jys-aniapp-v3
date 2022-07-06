@@ -24,6 +24,8 @@ require_once 'inc/header.php';
         $data = get_animeDetails($id);
         if (isset($_SESSION['userId'])) {
             $authData = get_userAnimeDetails($_SESSION['userId'], $id);
+        } else {
+            $authData = '';
         }
 
         if (!empty($data)) {
