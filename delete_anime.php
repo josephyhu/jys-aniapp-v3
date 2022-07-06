@@ -13,5 +13,5 @@ try {
     sleep(3);
     header('Location: animelist.php');
 } catch (Exception $e) {
-    echo $e->getMessage;
+    echo $e->getMessage();
 }
