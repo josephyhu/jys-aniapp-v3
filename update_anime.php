@@ -3,7 +3,6 @@ session_start();
 require_once 'inc/functions.php';
 
 $id = $_GET['id'];
-$userId = $_GET['userId'];
 
 require_once 'inc/header.php';
 ?>
@@ -21,7 +20,7 @@ require_once 'inc/header.php';
     </div>
     <div class="logout"><a href="logout.php">Log out</a></div>
     <?php
-    $data = get_userAnimeDetails($userId, $id);
+    $data = get_userAnimeDetails($_SESSION['userId'], $id);
     $startedYear = $data['startedAt']['year'];
     if ($data['startedAt']['month'] < 10) {
         $startedMonth = '0' . $data['startedAt']['month'];

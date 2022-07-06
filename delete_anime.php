@@ -7,7 +7,6 @@ if (!isset($_SESSION['userId'])) {
 }
 
 $id = $_GET['entryId'];
-$userId = $_GET['userId'];
 
 require_once 'inc/header.php';
 
