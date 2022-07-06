@@ -84,7 +84,7 @@ require_once 'inc/header.php';
             echo "<tr>";
             for ($i = 0; $i < count($relatedMedia); $i++) {
             ?>
-                <td><a href="manga.php?id=<?php echo $relatedMedia[$i]['node']['id']; ?>"></a><img src="<?php echo $relatedMedia[$i]['node']['coverImage']['medium']; ?>" alt="cover" title='<?php echo $relatedMedia[$i]["node"]["title"]["romaji"] . "\n" . $relatedMedia[$i]["relationType"]; ?>'></td>
+                <td><a href="manga.php?id=<?php echo $relatedMedia[$i]['node']['id']; ?>"><img src="<?php echo $relatedMedia[$i]['node']['coverImage']['medium']; ?>" alt="cover" title='<?php echo $relatedMedia[$i]["node"]["title"]["romaji"] . "\n" . $relatedMedia[$i]["relationType"]; ?>'></td>
             <?php
                 
                 if (substr($i, -1) == 9) {
