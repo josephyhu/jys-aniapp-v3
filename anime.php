@@ -111,6 +111,7 @@ require_once 'inc/header.php';
             echo "</table>";
             ?>
             <a href="update_anime.php?userId=<?php echo $userId; ?>&id=<?php echo $id; ?>">Update anime</a>
+            <a href="delete_anime.php?userId=<?php echo $userId; ?>&id=<?php echo $id; ?>">Delete Anime</a>
             <?php
         }
     ?>

@@ -603,3 +603,55 @@ function get_userStats($userId) {
     $arr = json_decode($response->getBody()->getContents(), true);
     return $arr['data']['User'];
 }
+
+function delete_userAnime($accessToken, $mediaId) {
+    $query = 'mutation ($mediaId: Int) {
+        DeleteMediaListEntry(mediaId: $mediaId) {
+            id,
+        }
+    }';
+    $variables = [
+        "mediaId" => $mediaId
+    ];
+
+    $http = new GuzzleHttp\Client;
+    $response = $http->request('POST', 'https://graphql.anilist.co', [
+        'headers' => [
+            'Authorization' => 'Bearer ' . $accessToken,
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ],
+        'json' => [
+            'query' => $query,
+            'variables' => $variables,
+        ]
+    ]);
+    $arr = json_decode($response->getBody()->getContents(), true);
+    return $arr['data']['DeleteMediaListEntry'];
+}
+
+function delete_userManga($accessToken, $mediaId) {
+    $query = 'mutation ($mediaId: Int) {
+        DeleteMediaListEntry(mediaId: $mediaId) {
+            id,
+        }
+    }';
+    $variables = [
+        "mediaId" => $mediaId
+    ];
+
+    $http = new GuzzleHttp\Client;
+    $response = $http->request('POST', 'https://graphql.anilist.co', [
+        'headers' => [
+            'Authorization' => 'Bearer ' . $accessToken,
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+        ],
+        'json' => [
+            'query' => $query,
+            'variables' => $variables,
+        ]
+    ]);
+    $arr = json_decode($response->getBody()->getContents(), true);
+    return $arr['data']['DeleteMediaListEntry'];
+}
