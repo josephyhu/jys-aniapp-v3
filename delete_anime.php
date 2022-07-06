@@ -7,6 +7,10 @@ $userId = $_GET['userId'];
 
 require_once 'inc/header.php';
 
+$data = delete_userAnime($_SESSION['accessToken'], $id);
+
+var_dump($data);
+
 if (delete_userAnime($_SESSION['accessToken'], $id)) {
             echo "<p class='success'>Anime successfully deleted.</p>";
             sleep(3);
