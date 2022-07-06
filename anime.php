@@ -85,7 +85,7 @@ require_once 'inc/header.php';
             echo "<tbody>";
             echo "<tr>";
             for ($i = 0; $i < count($relatedMedia); $i++) {
-                if ($elatedMedia[$i]['node']['type'] == 'ANIME') {
+                if ($relatedMedia[$i]['node']['type'] == 'ANIME') {
             ?>
                     <td><a href="anime.php?id=<?php echo $relatedMedia[$i]['node']['id']; ?>"><img src="<?php echo $relatedMedia[$i]['node']['coverImage']['medium']; ?>" alt="cover" title='<?php echo $relatedMedia[$i]["node"]["title"]["romaji"] . "\n" . $relatedMedia[$i]["relationType"]; ?>'></a></td>
             <?php
