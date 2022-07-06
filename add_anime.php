@@ -31,8 +31,6 @@ require_once 'inc/header.php';
         </select><br>
         <label for="startedAt">Started date</label>
         <input type="date" id="startedAt" name="startedAt"><br>
-        <label for="completedAt">Completed date</label>
-        <input type="date" id="completedAt" name="completedAt"><br>
         <label for="score">Score</label>
         <input type="text" id="score" name="score"><br>
         <label for="progress">Progress</label>
@@ -47,16 +45,10 @@ require_once 'inc/header.php';
             "month" => substr($startedAt, 5, 2),
             "day" => substr($startedAt, 8, 2),
         ];
-        $completedAt = htmlspecialchars($_POST['completedAt']);
-        $completedObj = [
-            "year" => substr($completedAt, 0, 4),
-            "month" => substr($completedAt, 5, 2),
-            "day" => substr($completedAt, 8, 2),
-        ];
         $score = htmlspecialchars($_POST['score']);
         $progress = htmlspecialchars($_POST['progress']);
 
-        if (add_anime($_SESSION['accessToken'], $id, $status, $startedObj, $completedObj, $score, $progress)) {
+        if (add_anime($_SESSION['accessToken'], $id, $status, $startedObj, $score, $progress)) {
             echo "<p class='success'>Anime successfully added.</p>";
         } else {
             echo "<p class='warning'>Adding anime failed.</p>";

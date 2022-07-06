@@ -356,17 +356,12 @@ function get_userMangaDetails($userId, $mediaId) {
     return $arr['data']['MediaList'];
 }
 
-function add_anime($accessToken, $mediaId, $status, $startedAt, $completedAt, $score, $progress) {
-    $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $startedAt: FuzzyDateInput, $completedAt: FuzzyDateInput, $score: Float, $progress: Int) {
-        SaveMediaListEntry (mediaId: $mediaId, status: $status, startedAt: $startedAt, completedAt: $completedAt, score: $score, progress: $progress) {
+function add_anime($accessToken, $mediaId, $status, $startedAt, $score, $progress) {
+    $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $startedAt: FuzzyDateInput, $score: Float, $progress: Int) {
+        SaveMediaListEntry (mediaId: $mediaId, status: $status, startedAt: $startedAt, score: $score, progress: $progress) {
             id,
             status,
             startedAt {
-                year,
-                month,
-                day,
-            },
-            completedAt {
                 year,
                 month,
                 day,
@@ -383,11 +378,6 @@ function add_anime($accessToken, $mediaId, $status, $startedAt, $completedAt, $s
             "year" => $startedAt["year"],
             "month" => $startedAt["month"],
             "day" => $startedAt["day"],
-        ],
-        "completedAt" => [
-            "year" => $completedAt["year"],
-            "month" => $completedAt["month"],
-            "day" => $completedAt["day"],
         ],
         "score" => $score,
         "progress" => $progress,
@@ -409,17 +399,12 @@ function add_anime($accessToken, $mediaId, $status, $startedAt, $completedAt, $s
     return $arr['data']['SaveMediaListEntry']['id'];
 }
 
-function add_manga($accessToken, $mediaId, $status, $startedAt, $completedAt, $score, $progress, $progressVolumes) {
-    $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $startedAt: FuzzyDateInput, $completedAt: FuzzyDateInput, $score: Float, $progress: Int, $progressVolumes: Int) {
-        SaveMediaListEntry (mediaId: $mediaId, status: $status, startedAt: $startedAt, completedAt: $completedAt, score: $score, progress: $progress, progressVolumes: $progressVolumes) {
+function add_manga($accessToken, $mediaId, $status, $startedAt, $score, $progress, $progressVolumes) {
+    $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $startedAt: FuzzyDateInput, $score: Float, $progress: Int, $progressVolumes: Int) {
+        SaveMediaListEntry (mediaId: $mediaId, status: $status, startedAt: $startedAt, score: $score, progress: $progress, progressVolumes: $progressVolumes) {
             id,
             status,
             startedAt {
-                year,
-                month,
-                day,
-            },
-            completedAt {
                 year,
                 month,
                 day,
@@ -437,11 +422,6 @@ function add_manga($accessToken, $mediaId, $status, $startedAt, $completedAt, $s
             "year" => $startedAt["year"],
             "month" => $startedAt["month"],
             "day" => $startedAt["day"],
-        ],
-        "completedAt" => [
-            "year" => $completedAt["year"],
-            "month" => $completedAt["month"],
-            "day" => $completedAt["day"],
         ],
         "score" => $score,
         "progress" => $progress,
