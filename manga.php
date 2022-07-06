@@ -22,10 +22,10 @@ require_once 'inc/header.php';
     <?php
     }
         $data = get_mangaDetails($id);
-        if (isset($_SESSION['userId'])) {
-            $authData = get_userMangaDetails($_SESSION['userId'], $id);
-        } else {
-            $authData = '';
+        try {
+            $authData = get_userAnimeDetails($_SESSION['userId'], $id);
+        } catch (Exception $e) {
+            error_log($e->getMessage());
         }
 
         if (!empty($data)) {
