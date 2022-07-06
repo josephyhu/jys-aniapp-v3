@@ -588,7 +588,9 @@ function get_userStats($userId) {
 
 function delete_userAnime($accessToken, $id) {
     $query = 'mutation ($id: Int) {
-        DeleteMediaListEntry(id: $id)
+        DeleteMediaListEntry(id: $id) {
+            deleted
+        }
     }';
     $variables = [
         "id" => $id
@@ -612,7 +614,9 @@ function delete_userAnime($accessToken, $id) {
 
 function delete_userManga($accessToken, $id) {
     $query = 'mutation ($id: Int) {
-        DeleteMediaListEntry(id: $id)
+        DeleteMediaListEntry(id: $id) {
+            deleted
+        }
     }';
     $variables = [
         "id" => $id
