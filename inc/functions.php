@@ -286,6 +286,7 @@ function get_mangaDetails($id) {
 function get_userAnimeDetails($userId, $mediaId) {
     $query ='query ($userId: Int, $mediaId: Int) {
         MediaList(userId: $userId, mediaId: $mediaId, type: ANIME) {
+            id,
             status,
             startedAt {
                 year,
@@ -322,6 +323,7 @@ function get_userAnimeDetails($userId, $mediaId) {
 function get_userMangaDetails($userId, $mediaId) {
     $query ='query ($userId: Int, $mediaId: Int) {
         MediaList(userId: $userId, mediaId: $mediaId, type: MANGA) {
+            id,
             status,
             startedAt {
                 year,
