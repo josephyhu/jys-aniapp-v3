@@ -76,6 +76,26 @@ require_once 'inc/header.php';
             echo "</tr";
             echo "</tbody>";
             echo "</table>";
+
+            $relatedMedia = get_relatedMedia($id);
+
+            echo "<h3>Related Media</h3>";
+            echo "<table>";
+            echo "<tbody>";
+            echo "<tr>";
+            for ($i = 0; $i < count($relatedMedia); $i++) {
+                echo "<tr>";
+            ?>
+                <td><a href="animelist?id=<?php echo $id; ?>"></a><img src="<?php echo $relatedMedia['node']['coverImage']['medium']; ?>" alt="cover" title="<?php echo $relatedMedia['node']['title']['romaji'] . '<br>' . $relatedMedia['relationType']; ?>"></td>
+            <?php
+                
+                if (substr($i, -1) == 9) {
+                    echo '</tr><tr>';
+                }
+            }
+            echo "</tr>";
+            echo "</tbody>";
+            echo "</table>";
             echo "</div>";
             echo "</div>";
 

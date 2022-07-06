@@ -45,11 +45,11 @@ require_once 'inc/header.php';
                 for ($i = 0; $i < count($data); $i++) {
                     if ($type === 'ANIME') {
                     ?>
-                        <td><a href='anime.php?id=<?php echo $data[$i]["id"]; ?>'><img src='<?php echo $data[$i]["coverImage"]["medium"]; ?>' alt='cover' title="<?php echo $data[$i]['title']['english']; ?>"></a></td>
+                        <td><a href='anime.php?id=<?php echo $data[$i]["id"]; ?>'><img src='<?php echo $data[$i]["coverImage"]["medium"]; ?>' alt='cover' title="<?php echo $data[$i]['title']['romaji']; ?>"></a></td>
                     <?php
                     } else {
                     ?>
-                        <td><a href='manga.php?id=<?php echo $data[$i]["id"]; ?>'><img src='<?php echo $data[$i]["coverImage"]["medium"]; ?>' alt='cover' title="<?php echo $data[$i]['title']['english']; ?>"></a></td>
+                        <td><a href='manga.php?id=<?php echo $data[$i]["id"]; ?>'><img src='<?php echo $data[$i]["coverImage"]["medium"]; ?>' alt='cover' title="<?php echo $data[$i]['title']['romaji']; ?>"></a></td>
                     <?php
                     }
 

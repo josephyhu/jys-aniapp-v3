@@ -58,7 +58,7 @@ require_once 'inc/header.php'; ?>
         echo '<tr>';
         for ($i = 0; $i < count($data); $i++) {
         ?>
-            <td><a href="manga.php?userId=<?php echo $_SESSION['userId']; ?>&id=<?php echo $data[$i]['media']['id']; ?>"><img src="<?php echo $data[$i]['media']['coverImage']['medium']; ?>" alt='cover' title="<?php echo $data[$i]['media']['title']['english']; ?>">></a></td>
+            <td><a href="manga.php?userId=<?php echo $_SESSION['userId']; ?>&id=<?php echo $data[$i]['media']['id']; ?>"><img src="<?php echo $data[$i]['media']['coverImage']['medium']; ?>" alt='cover' title="<?php echo $data[$i]['media']['title']['romaji']; ?>">></a></td>
         <?php
             if (substr($i, -1) == 9) {
                 echo '</tr><tr>';

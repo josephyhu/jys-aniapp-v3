@@ -637,3 +637,39 @@ function delete_userManga($accessToken, $id) {
     $arr = json_decode($response->getBody()->getContents(), true);
     return $arr['data']['DeleteMediaListEntry'];
 }
+
+function get_relatedMedia($id) {
+    $query ='query ($id: Int) {
+        Media (id: $id) {
+            relations {
+                edges {
+                    relationType,
+                    node {
+                        id,
+                        title {
+                            english,
+                            romaji,
+                        },
+                        coverImage {
+                            medium,
+                        }
+                    }
+                }
+            }
+        }
+    }';
+
+    $variables = [
+        'id' => $id,
+    ];
+
+    $http = new GuzzleHttp\Client;
+    $response = $http->post('https://graphql.anilist.co', [
+        'json' => [
+            'query' => $query,
+            'variables' => $variables,
+        ]
+    ]);
+    $arr = json_decode($response->getBody()->getContents(), true);
+    return $arr['data']['Media']['relations']['edges'];
+}
