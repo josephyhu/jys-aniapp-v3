@@ -66,7 +66,9 @@ require_once 'inc/header.php';
         }
         echo "</div>";
         $users = test();
-        var_dump($users);
+        for ($i = 0; $i < count($users); $i++) {
+            var_dump($users[$i]['statistics']['anime']['count']);
+        }
         ?>
 </main>
 <?php require_once 'inc/footer.php'; ?>
