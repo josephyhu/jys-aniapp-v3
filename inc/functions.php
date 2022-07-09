@@ -145,7 +145,7 @@ function get_userMangaList($userId, $status) {
     return $arr['data']['MediaListCollection']['lists'][0]['entries'];
 }
 
-// Enable search functionality.
+// Get media based on type (anime/manga) and a search term.
 function search_media($type, $search) {
     $query = 'query ($type: MediaType, $search: String) {
         Page {
@@ -320,6 +320,7 @@ function get_userAnimeDetails($userId, $mediaId) {
     return $arr['data']['MediaList'];
 }
 
+// Get specific manga details for the current user.
 function get_userMangaDetails($userId, $mediaId) {
     $query ='query ($userId: Int, $mediaId: Int) {
         MediaList(userId: $userId, mediaId: $mediaId, type: MANGA) {
@@ -358,6 +359,7 @@ function get_userMangaDetails($userId, $mediaId) {
     return $arr['data']['MediaList'];
 }
 
+// Add anime to current user's list.
 function add_anime($accessToken, $mediaId, $status, $startedAt, $score, $progress) {
     $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $startedAt: FuzzyDateInput, $score: Float, $progress: Int) {
         SaveMediaListEntry (mediaId: $mediaId, status: $status, startedAt: $startedAt, score: $score, progress: $progress) {
@@ -401,6 +403,7 @@ function add_anime($accessToken, $mediaId, $status, $startedAt, $score, $progres
     return $arr['data']['SaveMediaListEntry']['id'];
 }
 
+// Add manga to current user's list.
 function add_manga($accessToken, $mediaId, $status, $startedAt, $score, $progress, $progressVolumes) {
     $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $startedAt: FuzzyDateInput, $score: Float, $progress: Int, $progressVolumes: Int) {
         SaveMediaListEntry (mediaId: $mediaId, status: $status, startedAt: $startedAt, score: $score, progress: $progress, progressVolumes: $progressVolumes) {
@@ -446,6 +449,7 @@ function add_manga($accessToken, $mediaId, $status, $startedAt, $score, $progres
     return $arr['data']['SaveMediaListEntry']['id'];
 }
 
+// Update anime on current user's list.
 function update_anime($accessToken, $mediaId, $status, $startedAt, $completedAt, $score, $progress) {
     $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $startedAt: FuzzyDateInput, $completedAt: FuzzyDateInput, $score: Float, $progress: Int) {
         SaveMediaListEntry(mediaId: $mediaId, status: $status, startedAt: $startedAt, completedAt: $completedAt, score: $score, progress: $progress) {
@@ -498,6 +502,7 @@ function update_anime($accessToken, $mediaId, $status, $startedAt, $completedAt,
     return $arr['data']['SaveMediaListEntry'];
 }
 
+// Update manga on current user's list.
 function update_manga($accessToken, $mediaId, $status, $startedAt, $completedAt, $score, $progress, $progressVolumes) {
     $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $startedAt: FuzzyDateInput, $completedAt: FuzzyDateInput, $score: Float, $progress: Int, $progressVolumes: Int) {
         SaveMediaListEntry(mediaId: $mediaId, status: $status, startedAt: $startedAt, completedAt: $completedAt, score: $score, progress: $progress, progressVolumes: $progressVolumes) {
@@ -541,6 +546,7 @@ function update_manga($accessToken, $mediaId, $status, $startedAt, $completedAt,
     return $arr['data']['SaveMediaListEntry'];
 }
 
+// Get user stats.
 function get_userStats($userId) {
     $query = '
         query ($id: Int) {
@@ -586,6 +592,7 @@ function get_userStats($userId) {
     return $arr['data']['User'];
 }
 
+// Delete an anime from current user's list.
 function delete_userAnime($accessToken, $id) {
     $query = 'mutation ($id: Int) {
         DeleteMediaListEntry(id: $id) {
@@ -612,6 +619,7 @@ function delete_userAnime($accessToken, $id) {
     return $arr['data']['DeleteMediaListEntry'];
 }
 
+// Delete a manga from current user's list.
 function delete_userManga($accessToken, $id) {
     $query = 'mutation ($id: Int) {
         DeleteMediaListEntry(id: $id) {
@@ -638,6 +646,8 @@ function delete_userManga($accessToken, $id) {
     return $arr['data']['DeleteMediaListEntry'];
 }
 
+
+// Get media related to the media on page.
 function get_relatedMedia($id) {
     $query ='query ($id: Int) {
         Media (id: $id) {

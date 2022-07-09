@@ -2,6 +2,7 @@
 session_start();
 require_once 'inc/functions.php';
 
+// Get current anime id.
 $id = $_GET['id'];
 
 require_once 'inc/header.php';
@@ -17,10 +18,12 @@ require_once 'inc/header.php';
         <?php } ?>
         <a href="search.php">Search</a>
     </div>
-    <?php if (isset($_SESSION['userId'])) { ?>
+    <?php
+    if (isset($_SESSION['userId'])) { ?>
         <div class="logout"><a href="logout.php">Log out</a></div>
     <?php
     }
+        // Get current anime details.
         $data = get_animeDetails($id);
         try {
             $authData = get_userAnimeDetails($_SESSION['userId'], $id);
@@ -77,7 +80,8 @@ require_once 'inc/header.php';
             echo "</tr";
             echo "</tbody>";
             echo "</table>";
-
+            
+            // Get details of related media of current anime.
             $relatedMedia = get_relatedMedia($id);
 
             echo "<h3>Related Media</h3>";
@@ -104,12 +108,14 @@ require_once 'inc/header.php';
             echo "</div>";
             echo "</div>";
 
+            // Display add anime link if the user is logged and does not already have current anime on his/her list.
             if (isset($_SESSION['userId']) && empty($authData)) {
             ?>
                 <a href='add_anime.php?id=<?php echo $id; ?>'>Add anime</a>
             <?php
             }
         }
+        // Get current user specific details of current anime and display the update/delete links if the anime is on his/her list.
         if (!empty($authData)) {
             echo "<hr>";
             echo "<table>";

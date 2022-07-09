@@ -4,6 +4,7 @@ require_once 'inc/functions.php';
 require_once 'inc/header.php'; ?>
 <main>
     <?php
+    // Check if the user has logged in, and redirect the user to the homepage if he/she hasn't.
     if (!isset($_SESSION['userId'])) {
         header('Location: index.php?logged_in=0');
     }
