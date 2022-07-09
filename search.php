@@ -68,16 +68,8 @@ require_once 'inc/header.php';
         $users = test();
         $a = [];
         for ($i = 0; $i < count($users); $i++) {
-            for ($j = 0; $j < count($users); $j++) {
-                if ($users[$i]['statistics']['anime']['count'] >= $users[$j]['statistics']['anime']['count']) {
-                    array_unshift($a, $users[$i]);
-                } else {
-                    array_unshift($a, $users[$j]);
-                }
-            }
+            echo max($users[$i]['statistics']['anime']['count']);
         }
-        echo "<p>" . $a[0]['name'] . "</p>";
-        echo "<p>" . $a[0]['statistics']['anime']['count'] . "</p>";
         ?>
 </main>
 <?php require_once 'inc/footer.php'; ?>
