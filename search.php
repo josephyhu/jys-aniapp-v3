@@ -67,10 +67,12 @@ require_once 'inc/header.php';
         echo "</div>";
         $users = test();
         for ($i = 0; $i < count($users); $i++) {
-            if ($users[$i]['statistics']['anime']['count'] <= $users[$i+1]['statistics']['anime']['count']) {
-                echo $users[$i+1]['name'] . '<br>';
-                echo $users[$i+1]['statistics']['anime']['count'];
+            while ($users[$i]['statistics']['anime']['count'] >= $users[$i+1]['statistics']['anime']['count']) {
+                $a = $i;
             }
+            $html = "<p>" . $users[$a]['name'] . "</p>";
+            $html .= "<p>" . $users[$a]['statistics']['anime']['count'] . "</p>";
+            echo $html;
         }
         ?>
 </main>
