@@ -68,7 +68,7 @@ require_once 'inc/header.php';
         $users = test();
         $a = [];
         for ($i = 0; $i < 10; $i++) {
-            echo $users[$i]['statistics']['anime']['count'];
+            echo $users[$i]['name'];
         }
         ?>
 </main>
