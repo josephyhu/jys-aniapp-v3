@@ -18,8 +18,8 @@ require_once 'inc/header.php';
         <div class="logout"><a href="logout.php">Log out</a></div>
     <?php } ?>
     <?php
+    $users = test();
     try {
-        $users = test();
         var_dump(max($users['statistics']['anime']['count']));
     } catch (Exception $e) {
         echo $e->getMessage();
