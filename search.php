@@ -65,6 +65,16 @@ require_once 'inc/header.php';
             echo $e->getMessage();
         }
         echo "</div>";
+        $users = test();
+        $max_anime = $users['statistics']['anime']['count'];
+        $max_manga = $users['statistics']['manga']['count'];
+        for ($i = 0; $i < count($users); $i++) {
+            if ($users[$i]['statistics']['anime']['count'] == $max_anime) {
+                echo "<h3>Most anime: $users[$i]['name']</h3>";
+            } else if ($users[$i]['statistics']['manga']['count'] == $max_manga) {
+                echo "<h3>Most manga: $users[$i]['manga']</h3>";
+            }
+        }
         ?>
 </main>
 <?php require_once 'inc/footer.php'; ?>
