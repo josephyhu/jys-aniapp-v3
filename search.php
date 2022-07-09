@@ -20,7 +20,7 @@ require_once 'inc/header.php';
     <?php
     try {
         $users = test();
-        echo max($users['statistics']['anime']['count']);
+        var_dump($users['statistics']['anime']['count']);
     } catch (Exception $e) {
         echo $e->getMessage();
     }
