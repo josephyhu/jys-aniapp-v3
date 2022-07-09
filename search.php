@@ -74,10 +74,10 @@ require_once 'inc/header.php';
                 } else {
                     array_unshift($a, $users[$j]);
                 }
-                echo "<p>" . $a[0]['name'] . "</p>";
-                echo "<p>" . $a[0]['statistics']['anime']['count'] . "</p>";
             }
         }
+        echo "<p>" . $a[0]['name'] . "</p>";
+        echo "<p>" . $a[0]['statistics']['anime']['count'] . "</p>";
         ?>
 </main>
 <?php require_once 'inc/footer.php'; ?>
