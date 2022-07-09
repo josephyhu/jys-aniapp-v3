@@ -76,8 +76,8 @@ require_once 'inc/header.php';
             }
             $html = "<p>" . $users[$a]['name'] . "</p>";
             $html .= "<p>" . $users[$a]['statistics']['anime']['count'] . "</p>";
+            echo $html;
         }
-        echo $html;
         ?>
 </main>
 <?php require_once 'inc/footer.php'; ?>
