@@ -66,8 +66,8 @@ require_once 'inc/header.php';
         }
         echo "</div>";
         $users = test();
-        $max_anime = $users['statistics']['anime']['count'];
-        $max_manga = $users['statistics']['manga']['count'];
+        $max_anime = max($users['statistics']['anime']['count']);
+        $max_manga = max($users['statistics']['manga']['count']);
         for ($i = 0; $i < count($users); $i++) {
             if ($users[$i]['statistics']['anime']['count'] == $max_anime) {
                 echo "<h3>Most anime: $users[$i]['name']</h3>";
