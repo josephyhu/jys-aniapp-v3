@@ -20,16 +20,7 @@ require_once 'inc/header.php';
     <?php
     try {
         $users = test();
-        $max_anime = max($users['statistics']['anime']['count']);
-        $max_manga = max($users['statistics']['manga']['count']);
-        var_dump($max_anime);
-        for ($i = 0; $i < count($users); $i++) {
-            if ($users[$i]['statistics']['anime']['count'] == $max_anime) {
-                echo "<h3>Most anime: $users[$i]['name']</h3>";
-            } else if ($users[$i]['statistics']['manga']['count'] == $max_manga) {
-                echo "<h3>Most manga: $users[$i]['manga']</h3>";
-            }
-        }
+        var_dump($users);
     } catch (Exception $e) {
         echo $e->getMessage();
     }
