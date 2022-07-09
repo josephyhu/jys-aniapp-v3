@@ -20,7 +20,7 @@ require_once 'inc/header.php';
     <?php
     try {
         $users = test();
-        var_dump($users[1]['name']);
+        var_dump($users[1]['statistics']);
     } catch (Exception $e) {
         echo $e->getMessage();
     }
