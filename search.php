@@ -65,10 +65,6 @@ require_once 'inc/header.php';
             echo $e->getMessage();
         }
         echo "</div>";
-        $users = test();
-        for ($i = 0; $i < count($users); $i++) {
-            var_dump(max($users[$i]['statistics']['anime']['count']));
-        }
         ?>
 </main>
 <?php require_once 'inc/footer.php'; ?>

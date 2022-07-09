@@ -684,30 +684,3 @@ function get_relatedMedia($id) {
     $arr = json_decode($response->getBody()->getContents(), true);
     return $arr['data']['Media']['relations']['edges'];
 }
-
-function test() {
-    $query = 'query {
-        Page {
-            users {
-                name,
-                statistics{
-                    anime {
-                        count
-                    },
-                    manga {
-                        count,
-                    }
-                }
-            }
-        }
-    }';
-
-    $http = new GuzzleHttp\Client;
-    $response = $http->post('https://graphql.anilist.co', [
-        'json' => [
-            'query' => $query,
-        ]
-    ]);
-    $arr = json_decode($response->getBody()->getContents(), true);
-    return $arr['data']['Page']['users'];
-}
