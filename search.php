@@ -66,17 +66,17 @@ require_once 'inc/header.php';
         }
         echo "</div>";
         $users = test();
+        $array = [];
         for ($i = 0; $i < count($users); $i++) {
             for ($j = 0; $j < count($users); $j++) {
                 if ($users[$i]['statistics']['anime']['count'] >= $users[$j]['statistics']['anime']['count']) {
-                    $a = $i;
+                    $a = array_unshift($array, $users[$i]);
                 } else {
-                    $a = $j;
+                    $a = array_unshift($array, $users[$j]);
                 }
+                echo "<p>" . $a[0]['name'] . "</p>";
+                echo "<p>" . $a[0]['statistics']['anime']['count'] . "</p>";
             }
-            $html = "<p>" . $users[$a]['name'] . "</p>";
-            $html .= "<p>" . $users[$a]['statistics']['anime']['count'] . "</p>";
-            echo $html;
         }
         ?>
 </main>
