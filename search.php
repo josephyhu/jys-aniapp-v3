@@ -67,7 +67,7 @@ require_once 'inc/header.php';
         echo "</div>";
         $users = test();
         for ($i = 0; $i < count($users); $i++) {
-            var_dump($users[$i]['statistics']['anime']['count']);
+            var_dump(max($users[$i]['statistics']['anime']['count']));
         }
         ?>
 </main>
