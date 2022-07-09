@@ -18,12 +18,6 @@ require_once 'inc/header.php';
         <div class="logout"><a href="logout.php">Log out</a></div>
     <?php } ?>
     <?php
-    try {
-        $users = test();
-        var_dump($users['statistics']['anime']['count']);
-    } catch (Exception $e) {
-        echo $e->getMessage();
-    }
     echo "<form method='post'>";
         echo "<label for='type'>Type<span class='required'>*</span></label><br>";
         echo "<input type='radio' id='anime' name='type' value='ANIME' required><label for='anime'>Anime</label> ";
@@ -71,6 +65,13 @@ require_once 'inc/header.php';
             echo $e->getMessage();
         }
         echo "</div>";
+        $users = test();
+        for ($i = 0; $i < count($users); $i++) {
+            if ($users[$i]['statistics']['anime']['count'] <= $users[$i+1]['statistics']['anime']['count']) {
+                echo $users[$i+1]['name'] . '<br>';
+                echo $users[$i+1]['statistics']['anime']['count'];
+            }
+        }
         ?>
 </main>
 <?php require_once 'inc/footer.php'; ?>
