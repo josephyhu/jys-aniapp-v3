@@ -213,6 +213,17 @@ function get_animeDetails($id) {
             source,
             countryOfOrigin,
             siteUrl,
+            characters (sort:ROLE) {
+                nodes {
+                    id,
+                    name {
+                        userPreferred,
+                    },
+                    image {
+                        medium,
+                    }
+                }
+            }
         }
     }';
 
@@ -264,6 +275,15 @@ function get_mangaDetails($id) {
             source,
             countryOfOrigin,
             siteUrl,
+            characters (sort:ROLE) {
+                nodes {
+                    id,
+                    name,
+                    image {
+                        medium,
+                    }
+                }
+            }
         }
     }';
 
@@ -647,7 +667,7 @@ function delete_userManga($accessToken, $id) {
 }
 
 
-// Get media related to the media on page.
+// Get media related to the current media.
 function get_relatedMedia($id) {
     $query ='query ($id: Int) {
         Media (id: $id) {
