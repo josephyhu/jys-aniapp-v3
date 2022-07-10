@@ -106,23 +106,22 @@ require_once 'inc/header.php';
             echo "</tbody>";
             echo "</table>";
 
+            echo "</div>";
             echo "<h3>Characters</h3>";
             echo "<table>";
             echo "<tbody>";
             echo "<tr>";
             for ($i = 0; $i < count($data['characters']['nodes']); $i++) {
-                ?>
-                    <td><a href="character.php?id=<?php echo $data['characters']['nodes'][$i]['id']; ?>"><img src="<?php echo $data['characters']['nodes'][$i]['image']['medium']; ?>" alt='cover' title="<?php echo $data['characters']['nodes'][$i]['name']['userPreferred']; ?>"></a></td>
-                <?php
-                    if (substr($i, -1) == 9) {
-                        echo '</tr><tr>';
-                    }
+            ?>
+                <td><a href="character.php?id=<?php echo $data['characters']['nodes'][$i]['id']; ?>"><img src="<?php echo $data['characters']['nodes'][$i]['image']['medium']; ?>" alt='cover' title="<?php echo $data['characters']['nodes'][$i]['name']['userPreferred']; ?>"></a></td>
+            <?php
+                if (substr($i, -1) == 9) {
+                    echo '</tr><tr>';
                 }
+            }
             echo "</tr>";
             echo "</tbody>";
             echo "</table>";
-
-            echo "</div>";
             echo "</div>";
 
             // Display add anime link if the user is logged and does not already have current anime on his/her list.
