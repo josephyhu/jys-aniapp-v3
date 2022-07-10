@@ -90,7 +90,7 @@ require_once 'inc/header.php';
             echo "<tr>";
             for ($i = 0; $i < count($characters); $i++) {
             ?>
-                <td><a href="character.php?id=<?php echo $characters[$i]['id']; ?>"><img src="<?php echo $characters[$i]['image']['medium']; ?>" alt='cover' title="<?php echo $characters[$i]['name']['userPreferred']; ?>" width="100" height="150"></a></td>
+                <td><a href="character.php?id=<?php echo $characters[$i]['node']['id']; ?>"><img src="<?php echo $characters[$i]['ndoe']['image']['medium']; ?>" alt='cover' title="<?php echo $characters[$i]['node']['name']['userPreferred'] . "\n" . $characters[$i]['node']['role']; ?>" width="100" height="150"></a></td>
             <?php
                 if (substr($i, -1) == 9) {
                     echo '</tr><tr>';
