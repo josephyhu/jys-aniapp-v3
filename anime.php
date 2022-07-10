@@ -107,6 +107,8 @@ require_once 'inc/header.php';
             echo "</table>";
 
             echo "</div>";
+            echo "</div>";
+
             echo "<h3>Characters</h3>";
             echo "<table>";
             echo "<tbody>";
@@ -122,7 +124,6 @@ require_once 'inc/header.php';
             echo "</tr>";
             echo "</tbody>";
             echo "</table>";
-            echo "</div>";
 
             // Display add anime link if the user is logged and does not already have current anime on his/her list.
             if (isset($_SESSION['userId']) && empty($authData)) {
