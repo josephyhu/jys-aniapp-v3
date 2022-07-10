@@ -50,7 +50,7 @@ require_once 'inc/header.php';
             echo "<td>" . $data['dateOfBirth']['year'] . "-" . $data['dateOfBirth']['month'] . "-" . $data['dateOfBirth']['day'] . "</td>";
             echo "<td>" . $data['age'] . "</td>";
             echo "<td>" . $data['gender'] . "</td>";
-            echo "<td>" . $data['favorites'] . "</td>";
+            echo "<td>" . $data['favourites'] . "</td>";
             echo "</tr";
             echo "</tbody>";
             echo "</table>";

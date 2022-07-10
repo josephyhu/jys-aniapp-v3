@@ -760,7 +760,7 @@ function get_characterDetails($id) {
             age,
             gender,
             siteUrl,
-            favorites,
+            favourites,
         }
     }';
 
