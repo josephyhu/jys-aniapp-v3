@@ -708,14 +708,16 @@ function get_relatedMedia($id) {
 // Get characters for the curren media.
 function get_characters($id) {
     $query = 'query ($id: Int) {
-        Media(id: $id) {
+        Media (id: $id) {
             characters (sort: ROLE) {
-                id,
-                name {
-                    userPreferred,
-                },
-                image {
-                    medium,
+                nodes {
+                    id,
+                    name {
+                        userPreferred,
+                    },
+                    image {
+                        medium,
+                    }
                 }
             }
         }
