@@ -81,22 +81,6 @@ require_once 'inc/header.php';
             echo "</tbody>";
             echo "</table>";
 
-            echo "<h3>Characters</h3>";
-            echo "<table>";
-            echo "<tbody>";
-            echo "<tr>";
-            for ($i = 0; $i < count($data['characters']['nodes']); $i++) {
-                ?>
-                    <td><a href="character.php?id=<?php echo $data['characters']['nodes'][$i]['id']; ?>"><img src="<?php echo $data['characters']['nodes'][$i]['image']['medium']; ?>" alt='cover' title="<?php echo $data['characters']['nodes'][$i]['name']['userPreferred']; ?>"></a></td>
-                <?php
-                    if (substr($i, -1) == 9) {
-                        echo '</tr><tr>';
-                    }
-                }
-            echo "</tr>";
-            echo "</tbody>";
-            echo "</table>";
-
             // Get details of related media of current anime.
             $relatedMedia = get_relatedMedia($id);
 
@@ -121,6 +105,23 @@ require_once 'inc/header.php';
             echo "</tr>";
             echo "</tbody>";
             echo "</table>";
+
+            echo "<h3>Characters</h3>";
+            echo "<table>";
+            echo "<tbody>";
+            echo "<tr>";
+            for ($i = 0; $i < count($data['characters']['nodes']); $i++) {
+                ?>
+                    <td><a href="character.php?id=<?php echo $data['characters']['nodes'][$i]['id']; ?>"><img src="<?php echo $data['characters']['nodes'][$i]['image']['medium']; ?>" alt='cover' title="<?php echo $data['characters']['nodes'][$i]['name']['userPreferred']; ?>"></a></td>
+                <?php
+                    if (substr($i, -1) == 9) {
+                        echo '</tr><tr>';
+                    }
+                }
+            echo "</tr>";
+            echo "</tbody>";
+            echo "</table>";
+
             echo "</div>";
             echo "</div>";
 
