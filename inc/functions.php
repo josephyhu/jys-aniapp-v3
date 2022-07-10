@@ -669,7 +669,7 @@ function delete_userManga($accessToken, $id) {
 
 // Get media related to the current media.
 function get_relatedMedia($id) {
-    $query ='query ($id: Int) {
+    $query = 'query ($id: Int) {
         Media (id: $id) {
             relations {
                 edges {
@@ -703,4 +703,35 @@ function get_relatedMedia($id) {
     ]);
     $arr = json_decode($response->getBody()->getContents(), true);
     return $arr['data']['Media']['relations']['edges'];
+}
+
+// Get characters for the curren media.
+function get_characters($id) {
+    $query = 'query ($id: Int) {
+        Media(id: $id) {
+            characters (sort: ROLE) {
+                id,
+                name {
+                    userPreferred,
+                },
+                image {
+                    medium,
+                }
+            }
+        }
+    }';
+
+    $variables = [
+        'id' => $id,
+    ];
+
+    $http = new GuzzleHttp\Client;
+    $response = $http->post('https://graphql.anilist.co', [
+        'json' => [
+            'query' => $query,
+            'variables' => $variables,
+        ]
+    ]);
+    $arr = json_decode($response->getBody()->getContents(), true);
+    return $arr['data']['Media']['characters']['nodes'];
 }

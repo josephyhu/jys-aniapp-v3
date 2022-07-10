@@ -81,6 +81,25 @@ require_once 'inc/header.php';
             echo "</div>";
             echo "</div>";
 
+            // Get character details for current manga.
+            $characters = get_characters($id);
+
+            echo "<h3>Characters</h3>";
+            echo "<table>";
+            echo "<tbody>";
+            echo "<tr>";
+            for ($i = 0; $i < count($characters); $i++) {
+            ?>
+                <td><a href="character.php?id=<?php echo $characters[$i]['id']; ?>"><img src="<?php echo $characters[$i]['image']['medium']; ?>" alt='cover' title="<?php echo $characters[$i]['name']['userPreferred']; ?>" width="100" height="150"></a></td>
+            <?php
+                if (substr($i, -1) == 9) {
+                    echo '</tr><tr>';
+                }
+            }
+            echo "</tr>";
+            echo "</tbody>";
+            echo "</table>";
+
             // Get details of related media of current manga.
             $relatedMedia = get_relatedMedia($id);
 
