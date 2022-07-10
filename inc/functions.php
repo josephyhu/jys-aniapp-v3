@@ -705,18 +705,21 @@ function get_relatedMedia($id) {
     return $arr['data']['Media']['relations']['edges'];
 }
 
-// Get characters for the curren media.
+// Get characters for the current media.
 function get_characters($id) {
     $query = 'query ($id: Int) {
         Media (id: $id) {
             characters (sort: ROLE) {
-                nodes {
-                    id,
-                    name {
-                        userPreferred,
-                    },
-                    image {
-                        medium,
+                edges {
+                    role,
+                    node {
+                        id,
+                        name {
+                            userPreferred,
+                        },
+                        image {
+                            medium,
+                        }
                     }
                 }
             }
@@ -735,5 +738,43 @@ function get_characters($id) {
         ]
     ]);
     $arr = json_decode($response->getBody()->getContents(), true);
-    return $arr['data']['Media']['characters']['nodes'];
+    return $arr['data']['Media']['characters']['edges'];
+}
+
+// Get character details.
+function get_characterDetails($id) {
+    $query ='query ($id: Int) {
+        Character (id: $id) {
+            name {
+                userPreferred,
+            },
+            image {
+                large,
+            },
+            description,
+            dateOfBirth {
+                year,
+                month,
+                day,
+            },
+            age,
+            gender,
+            siteUrl,
+            favorites,
+        }
+    }';
+
+    $variables = [
+        'id' => $id,
+    ];
+
+    $http = new GuzzleHttp\Client;
+    $response = $http->post('https://graphql.anilist.co', [
+        'json' => [
+            'query' => $query,
+            'variables' => $variables,
+        ]
+    ]);
+    $arr = json_decode($response->getBody()->getContents(), true);
+    return $arr['data']['Character'];
 }
