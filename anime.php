@@ -80,6 +80,24 @@ require_once 'inc/header.php';
             echo "</tr";
             echo "</tbody>";
             echo "</table>";
+            echo "</div>";
+            echo "</div>";
+
+            echo "<h3>Characters</h3>";
+            echo "<table>";
+            echo "<tbody>";
+            echo "<tr>";
+            for ($i = 0; $i < count($data['characters']['nodes']); $i++) {
+            ?>
+                <td><a href="character.php?id=<?php echo $data['characters']['nodes'][$i]['id']; ?>"><img src="<?php echo $data['characters']['nodes'][$i]['image']['medium']; ?>" alt='cover' title="<?php echo $data['characters']['nodes'][$i]['name']['userPreferred']; ?>" width="100" height="150"></a></td>
+            <?php
+                if (substr($i, -1) == 9) {
+                    echo '</tr><tr>';
+                }
+            }
+            echo "</tr>";
+            echo "</tbody>";
+            echo "</table>";
 
             // Get details of related media of current anime.
             $relatedMedia = get_relatedMedia($id);
@@ -91,32 +109,13 @@ require_once 'inc/header.php';
             for ($i = 0; $i < count($relatedMedia); $i++) {
                 if ($relatedMedia[$i]['node']['type'] == 'ANIME') {
             ?>
-                    <td><a href="anime.php?id=<?php echo $relatedMedia[$i]['node']['id']; ?>"><img src="<?php echo $relatedMedia[$i]['node']['coverImage']['medium']; ?>" alt="cover" title='<?php echo $relatedMedia[$i]["node"]["title"]["romaji"] . "\n" . $relatedMedia[$i]["relationType"]; ?>'></a></td>
+                    <td><a href="anime.php?id=<?php echo $relatedMedia[$i]['node']['id']; ?>"><img src="<?php echo $relatedMedia[$i]['node']['coverImage']['medium']; ?>" alt="cover" title='<?php echo $relatedMedia[$i]["node"]["title"]["romaji"] . "\n" . $relatedMedia[$i]["relationType"]; ?>' width='100' height='150'></a></td>
             <?php
                 } else {
             ?>
-                    <td><a href="manga.php?id=<?php echo $relatedMedia[$i]['node']['id']; ?>"><img src="<?php echo $relatedMedia[$i]['node']['coverImage']['medium']; ?>" alt="cover" title='<?php echo $relatedMedia[$i]["node"]["title"]["romaji"] . "\n" . $relatedMedia[$i]["relationType"]; ?>'></a></td>
+                    <td><a href="manga.php?id=<?php echo $relatedMedia[$i]['node']['id']; ?>"><img src="<?php echo $relatedMedia[$i]['node']['coverImage']['medium']; ?>" alt="cover" title='<?php echo $relatedMedia[$i]["node"]["title"]["romaji"] . "\n" . $relatedMedia[$i]["relationType"]; ?>' width='100' height='150'></a></td>
             <?php
                 }
-                if (substr($i, -1) == 9) {
-                    echo '</tr><tr>';
-                }
-            }
-            echo "</tr>";
-            echo "</tbody>";
-            echo "</table>";
-
-            echo "</div>";
-            echo "</div>";
-
-            echo "<h3>Characters</h3>";
-            echo "<table>";
-            echo "<tbody>";
-            echo "<tr>";
-            for ($i = 0; $i < count($data['characters']['nodes']); $i++) {
-            ?>
-                <td><a href="character.php?id=<?php echo $data['characters']['nodes'][$i]['id']; ?>"><img src="<?php echo $data['characters']['nodes'][$i]['image']['medium']; ?>" alt='cover' title="<?php echo $data['characters']['nodes'][$i]['name']['userPreferred']; ?>"></a></td>
-            <?php
                 if (substr($i, -1) == 9) {
                     echo '</tr><tr>';
                 }
