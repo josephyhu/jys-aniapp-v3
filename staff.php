@@ -66,26 +66,6 @@ require_once 'inc/header.php';
         echo "</div>";
     }
 
-    // Get characters voiced by the current voice actor.
-    $staffCharacters = get_staffCharacters($id);
-    if (!empty($staffCharacters)) {
-        echo "<h3>Characters</h3>";
-        echo '<table>';
-        echo '<tbody>';
-        echo '<tr>';
-        for ($i = 0; $i < count($staffCharacters); $i++) {
-        ?>
-            <td><a href="anime.php?id=<?php echo $staffCharacters[$i]['node']['id']; ?>"><img src="<?php echo $staffCharacters[$i]['node']['image']['medium']; ?>" alt='cover' title="<?php echo $staffCharacters[$i]['node']['name']['userPreferred'] . "\n" . $staffCharacters[$i]['role']; ?>" width="100" height="150"></a></td>
-        <?php
-            if (substr($i, -1) == 9) {
-                echo '</tr><tr>';
-            }
-        }
-        echo '</tr>';
-        echo '</tbody>';
-        echo '</table>';
-    }
-
     // Get media related to the staff.
     $staffMedia = get_staffMedia($id);
 
