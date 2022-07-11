@@ -57,7 +57,6 @@ require_once 'inc/header.php';
         echo "<td>" . $staffDetails['age'] . "</td>";
         echo "<td>" . $staffDetails['yearsActive'][0] . "-" . $staffDetails['yearsActive'][1] . "</td>";
         echo "<td>" . $staffDetails['gender'] . "</td>";
-        echo "<td>" . $animeDetails['source'] . "</td>";
         echo "<td>";
         foreach ($staffDetails['primaryOccupations'] as $occupation) {
             echo $occupation . "<br>";
