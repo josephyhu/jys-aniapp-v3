@@ -86,7 +86,7 @@ require_once 'inc/header.php';
         echo "</div>";
     }
 
-    // Get character details for current manga.
+    // Get characters or current manga.
     $characters = get_characters($id);
     if (!empty($characters)) {
         echo "<h3>Characters</h3>";
@@ -106,7 +106,27 @@ require_once 'inc/header.php';
         echo "</table>";
     }
 
-    // Get details of related media of current manga.
+        // Get staff for current manga.
+        $staff = get_staff($id);
+        if (!empty($staff)) {
+            echo "<h3>Staff</h3>";
+            echo "<table>";
+            echo "<tbody>";
+            echo "<tr>";
+            for ($i = 0; $i < count($staff); $i++) {
+            ?>
+                <td><a href="staff.php?id=<?php echo $staff[$i]['node']['id']; ?>"><img src="<?php echo $staff[$i]['node']['image']['medium']; ?>" alt='cover' title="<?php echo $staff[$i]['node']['name']['userPreferred'] . "\n" . $staff[$i]['role']; ?>" width="100" height="150"></a></td>
+            <?php
+                if (substr($i, -1) == 9) {
+                    echo '</tr><tr>';
+                }
+            }
+            echo "</tr>";
+            echo "</tbody>";
+            echo "</table>";
+        }
+
+    // Get related media of current manga.
     $relatedMedia = get_relatedMedia($id);
     if (!empty($relatedMedia)) {
         echo "<h3>Related Media</h3>";
