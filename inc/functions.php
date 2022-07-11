@@ -826,7 +826,7 @@ function get_staff($id) {
         ]
     ]);
     $arr = json_decode($response->getBody()->getContents(), true);
-    return $arr['data']['Media']['edges'];
+    return $arr['data']['Media']['staff']['edges'];
 }
 
 // Get staff details.
