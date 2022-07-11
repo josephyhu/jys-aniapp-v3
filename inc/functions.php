@@ -908,39 +908,3 @@ function get_staffMedia($id) {
     $arr = json_decode($response->getBody()->getContents(), true);
     return $arr['data']['Staff']['staffMedia']['nodes'];
 }
-
-function get_staffCharacters($id) {
-    $query = 'query ($id: Int) {
-        Staff (id: $id) {
-            characters (sort: ROLE) {
-                edges {
-                    role,
-                    node {
-                        id,
-                        name {
-                            userPreferred,
-                        },
-                        image {
-                            medium,
-                        },
-                        siteUrl,
-                    }
-                }
-            }
-        }
-    }';
-
-    $variables = [
-        'id' => $id,
-    ];
-
-    $http = new GuzzleHttp\Client;
-    $response = $http->post('https://graphql.anilist.co', [
-        'json' => [
-            'query' => $query,
-            'variables' => $variables,
-        ]
-    ]);
-    $arr = json_decode($response->getBody()->getContents(), true);
-    return $arr['data']['Staff']['characters']['edges'];
-}

@@ -24,7 +24,7 @@ require_once 'inc/header.php';
     <?php
     }
     // Get current character details.
-    $staffDetails = get_characterDetails($id);
+    $staffDetails = get_staffDetails($id);
 
     if (!empty($staffDetails)) {
         echo "<h2><a href='" . $staffDetails['siteUrl'] . "' target='_blank'>" . $staffDetails['name']['userPreferred'] . "</a></h2>";
