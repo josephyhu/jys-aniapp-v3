@@ -32,35 +32,35 @@ require_once 'inc/header.php';
             echo "<h2>Welcome " . $_SESSION['username'] . "!</h2>";
             if (!empty($_SESSION['userId'])) {
                 try {
-                    $data = get_userStats($_SESSION['userId']);
+                    $userDetails = get_userStats($_SESSION['userId']);
                 } catch (Exception $e) {
                     $e->getMessage();
                 }
             }
             ?>
-            <?php if (!empty($data)) { ?>
-                <a href='https://anilist.co/user/<?php echo $data['name']; ?>' target='_blank'><img src='<?php echo $data['bannerImage']; ?>' alt='banner' class='banner'></a>
+            <?php if (!empty($userDetails)) { ?>
+                <a href='https://anilist.co/user/<?php echo $userDetails['name']; ?>' target='_blank'><img src='<?php echo $userDetails['bannerImage']; ?>' alt='banner' class='banner'></a>
                 <div class='flex-container'>
                     <div id='avatar'>
-                        <a href='https://anilist.co/user/<?php echo $data['name']; ?>' target='_blank'><img src='<?php echo $data['avatar']['large']; ?>' alt='avatar'></a>
+                        <a href='https://anilist.co/user/<?php echo $userDetails['name']; ?>' target='_blank'><img src='<?php echo $userDetails['avatar']['large']; ?>' alt='avatar'></a>
                     </div>
                     <div id='bio' class='clearfix'>
                     <h3>Bio</h3>
                     <?php
-                    $data['about'] = preg_replace(
+                    $userDetails['about'] = preg_replace(
                         "/\[\](.*)/i",
                         "",
-                        $data['about'],
+                        $userDetails['about'],
                     );
-                    $data['about'] = substr($data['about'], 0, 500);
-                    echo wordwrap($data['about'], 125, '<br>');
+                    $userDetails['about'] = substr($userDetails['about'], 0, 500);
+                    echo wordwrap($userDetails['about'], 125, '<br>');
                     echo "<br>Click the avatar or the banner for the full bio.";
                     ?>
                 </div>
                 </div>
                 <div id='stats'>
                     <h3>Anime Stats</h3>
-                    <?php $days_watched = round($data['statistics']['anime']['minutesWatched']/1440, 2); ?>
+                    <?php $days_watched = round($userDetails['statistics']['anime']['minutesWatched']/1440, 2); ?>
                     <table>
                         <thead>
                             <tr>
@@ -73,11 +73,11 @@ require_once 'inc/header.php';
                         </thead>
                         <tbody>
                             <tr>
-                                <td><?php echo $data['statistics']['anime']['count']; ?></td>
-                                <td><?php echo $data['statistics']['anime']['meanScore']; ?></td>
-                                <td><?php echo $data['statistics']['anime']['standardDeviation']; ?></td>
+                                <td><?php echo $userDetails['statistics']['anime']['count']; ?></td>
+                                <td><?php echo $userDetails['statistics']['anime']['meanScore']; ?></td>
+                                <td><?php echo $userDetails['statistics']['anime']['standardDeviation']; ?></td>
                                 <td><?php echo $days_watched; ?></td>
-                                <td><?php echo $data['statistics']['anime']['episodesWatched']; ?></td>
+                                <td><?php echo $userDetails['statistics']['anime']['episodesWatched']; ?></td>
                             </tr>
                         </tbody>
                     </table>
@@ -94,11 +94,11 @@ require_once 'inc/header.php';
                         </thead>
                         <tbody>
                             <tr>
-                                <td><?php echo $data['statistics']['manga']['count']; ?></td>
-                                <td><?php echo $data['statistics']['manga']['meanScore']; ?></td>
-                                <td><?php echo $data['statistics']['manga']['standardDeviation']; ?></td>
-                                <td><?php echo $data['statistics']['manga']['chaptersRead']; ?></td>
-                                <td><?php echo $data['statistics']['manga']['volumesRead']; ?></td>
+                                <td><?php echo $userDetails['statistics']['manga']['count']; ?></td>
+                                <td><?php echo $userDetails['statistics']['manga']['meanScore']; ?></td>
+                                <td><?php echo $userDetails['statistics']['manga']['standardDeviation']; ?></td>
+                                <td><?php echo $userDetails['statistics']['manga']['chaptersRead']; ?></td>
+                                <td><?php echo $userDetails['statistics']['manga']['volumesRead']; ?></td>
                             </tr>
                         </tbody>
                     </table>

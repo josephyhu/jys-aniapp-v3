@@ -81,7 +81,6 @@ function get_userAnimeList($userId, $status) {
                     media {
                         id,
                         title {
-                            english,
                             romaji,
                         },
                         coverImage {
@@ -118,7 +117,6 @@ function get_userMangaList($userId, $status) {
                     media {
                         id,
                         title {
-                            english,
                             romaji,
                         },
                         coverImage {
@@ -152,7 +150,6 @@ function search_media($type, $search) {
             media (type: $type, search: $search, sort: SCORE_DESC) {
                 id,
                 title {
-                    english,
                     romaji,
                 },
                 coverImage {
@@ -661,7 +658,6 @@ function get_relatedMedia($id) {
                     node {
                         id,
                         title {
-                            english,
                             romaji,
                         },
                         coverImage {
@@ -761,4 +757,38 @@ function get_characterDetails($id) {
     ]);
     $arr = json_decode($response->getBody()->getContents(), true);
     return $arr['data']['Character'];
+}
+
+// Get media that includes the current character.
+function get_characterMedia($id) {
+    $query = 'query ($id: Int) {
+        Character (id: $id) {
+            media {
+                nodes {
+                    id,
+                    title {
+                        romaji,
+                    },
+                    coverImage {
+                        medium,
+                    },
+                    siteUrl,
+                }
+            }
+        }
+    }';
+
+    $variables = [
+        'id' => $id,
+    ];
+
+    $http = new GuzzleHttp\Client;
+    $response = $http->post('https://graphql.anilist.co', [
+        'json' => [
+            'query' => $query,
+            'variables' => $variables,
+        ]
+    ]);
+    $arr = json_decode($response->getBody()->getContents(), true);
+    return $arr['data']['Character']['media']['nodes'];
 }

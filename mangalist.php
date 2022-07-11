@@ -34,13 +34,13 @@ require_once 'inc/header.php'; ?>
 
     try {
         if (!empty($status)) {
-            $data = get_userMangaList($_SESSION['userId'], $status);
+            $userMangaList = get_userMangaList($_SESSION['userId'], $status);
         }
     } catch (Exception $e) {
         echo $e->getMessage();
     }
 
-    if (!empty($data)) {
+    if (!empty($userMangaList)) {
         if ($status === 'CURRENT') {
             echo '<h3>Currently Reading</h3>';
         } else if ($status === 'COMPLETED') {
@@ -57,9 +57,9 @@ require_once 'inc/header.php'; ?>
         echo '<table>';
         echo '<tbody>';
         echo '<tr>';
-        for ($i = 0; $i < count($data); $i++) {
+        for ($i = 0; $i < count($userMangaList); $i++) {
         ?>
-            <td><a href="manga.php?id=<?php echo $data[$i]['media']['id']; ?>"><img src="<?php echo $data[$i]['media']['coverImage']['medium']; ?>" alt='cover' title="<?php echo $data[$i]['media']['title']['romaji']; ?>" width="100" height="150"></a></td>
+            <td><a href="manga.php?id=<?php echo $userMangaList[$i]['media']['id']; ?>"><img src="<?php echo $userMangaList[$i]['media']['coverImage']['medium']; ?>" alt='cover' title="<?php echo $userMangaList[$i]['media']['title']['romaji']; ?>" width="100" height="150"></a></td>
         <?php
             if (substr($i, -1) == 9) {
                 echo '</tr><tr>';

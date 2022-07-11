@@ -34,13 +34,13 @@ require_once 'inc/header.php'; ?>
 
     try {
         if (!empty($status)) {
-            $data = get_userAnimeList($_SESSION['userId'], $status);
+            $userAnimeList = get_userAnimeList($_SESSION['userId'], $status);
         }
     } catch (Exception $e) {
         echo $e->getMessage();
     }
 
-    if (!empty($data)) {
+    if (!empty($userAnimeList)) {
         if ($status === 'CURRENT') {
             echo '<h3>Currently Watching</h3>';
         } else if ($status === 'COMPLETED') {
@@ -57,9 +57,9 @@ require_once 'inc/header.php'; ?>
         echo '<table>';
         echo '<tbody>';
         echo '<tr>';
-        for ($i = 0; $i < count($data); $i++) {
+        for ($i = 0; $i < count($userAnimeList); $i++) {
         ?>
-            <td><a href="anime.php?id=<?php echo $data[$i]['media']['id']; ?>"><img src="<?php echo $data[$i]['media']['coverImage']['medium']; ?>" alt='cover' title="<?php echo $data[$i]['media']['title']['romaji']; ?>" width="100" height="150"></a></td>
+            <td><a href="anime.php?id=<?php echo $userAnimeList[$i]['media']['id']; ?>"><img src="<?php echo $userAnimeList[$i]['media']['coverImage']['medium']; ?>" alt='cover' title="<?php echo $userAnimeList[$i]['media']['title']['romaji']; ?>" width="100" height="150"></a></td>
         <?php
             if (substr($i, -1) == 9) {
                 echo '</tr><tr>';

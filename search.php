@@ -36,20 +36,20 @@ require_once 'inc/header.php';
         echo "<div>";
         try {
             if (!empty($type) && !empty($search)) {
-                $data = search_media($type, $search);
+                $searchedMedia = search_media($type, $search);
             }
-            if (!empty($data)) {
+            if (!empty($searchedMedia)) {
                 echo '<table>';
                 echo '<tbody>';
                 echo '<tr>';
-                for ($i = 0; $i < count($data); $i++) {
+                for ($i = 0; $i < count($searchedMedia); $i++) {
                     if ($type === 'ANIME') {
                     ?>
-                        <td><a href='anime.php?id=<?php echo $data[$i]["id"]; ?>'><img src='<?php echo $data[$i]["coverImage"]["medium"]; ?>' alt='cover' title="<?php echo $data[$i]['title']['romaji']; ?>" width="100" height="150"></a></td>
+                        <td><a href='anime.php?id=<?php echo $searchedMedia[$i]["id"]; ?>'><img src='<?php echo $searchedMedia[$i]["coverImage"]["medium"]; ?>' alt='cover' title="<?php echo $searchedMedia[$i]['title']['romaji']; ?>" width="100" height="150"></a></td>
                     <?php
                     } else {
                     ?>
-                        <td><a href='manga.php?id=<?php echo $data[$i]["id"]; ?>'><img src='<?php echo $data[$i]["coverImage"]["medium"]; ?>' alt='cover' title="<?php echo $data[$i]['title']['romaji']; ?>" width="100" height="150"></a></td>
+                        <td><a href='manga.php?id=<?php echo $searchedMedia[$i]["id"]; ?>'><img src='<?php echo $searchedMedia[$i]["coverImage"]["medium"]; ?>' alt='cover' title="<?php echo $searchedMedia[$i]['title']['romaji']; ?>" width="100" height="150"></a></td>
                     <?php
                     }
 

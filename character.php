@@ -23,40 +23,61 @@ require_once 'inc/header.php';
         <div class="logout"><a href="logout.php">Log out</a></div>
     <?php
     }
-        // Get current character details.
-        $data = get_characterDetails($id);
+    // Get current character details.
+    $characterDetails = get_characterDetails($id);
 
-        if (!empty($data)) {
-            echo "<h2><a href='" . $data['siteUrl'] . "' target='_blank'>" . $data['name']['userPreferred'] . "</a></h2>";
+    if (!empty($characterDetails)) {
+        echo "<h2><a href='" . $characterDetails['siteUrl'] . "' target='_blank'>" . $characterDetails['name']['userPreferred'] . "</a></h2>";
 
-            echo "<div class='flex-container'>";
-            echo "<div id='cover'>";
-            echo "<img src='" . $data['image']['large']. "' alt='cover'>";
-            echo "</div>";
-            echo "<div class='details' class='clearfix'>";
-            echo "<p>" . $data['description'] . "</p>";
-            echo "<hr>";
-            echo "<table>";
-            echo "<thead>";
-            echo "<tr>";
-            echo "<th>Birthday</th>";
-            echo "<th>Age</th>";
-            echo "<th>Gender</th>";
-            echo "<th>Favorites</th>";
-            echo "</tr>";
-            echo "</thead>";
-            echo "<tbody>";
-            echo "<tr>";
-            echo "<td>" . $data['dateOfBirth']['year'] . "-" . $data['dateOfBirth']['month'] . "-" . $data['dateOfBirth']['day'] . "</td>";
-            echo "<td>" . $data['age'] . "</td>";
-            echo "<td>" . $data['gender'] . "</td>";
-            echo "<td>" . $data['favourites'] . "</td>";
-            echo "</tr";
-            echo "</tbody>";
-            echo "</table>";
-            echo "</div>";
-            echo "</div>";
+        echo "<div class='flex-container'>";
+        echo "<div id='cover'>";
+        echo "<img src='" . $characterDetails['image']['large']. "' alt='cover'>";
+        echo "</div>";
+        echo "<div class='details' class='clearfix'>";
+        echo "<p>" . $characterDetails['description'] . "</p>";
+        echo "<hr>";
+        echo "<table>";
+        echo "<thead>";
+        echo "<tr>";
+        echo "<th>Birthday</th>";
+        echo "<th>Age</th>";
+        echo "<th>Gender</th>";
+        echo "<th>Favorites</th>";
+        echo "</tr>";
+        echo "</thead>";
+        echo "<tbody>";
+        echo "<tr>";
+        echo "<td>" . $characterDetails['dateOfBirth']['year'] . "-" . $characterDetails['dateOfBirth']['month'] . "-" . $characterDetails['dateOfBirth']['day'] . "</td>";
+        echo "<td>" . $characterDetails['age'] . "</td>";
+        echo "<td>" . $characterDetails['gender'] . "</td>";
+        echo "<td>" . $characterDetails['favourites'] . "</td>";
+        echo "</tr";
+        echo "</tbody>";
+        echo "</table>";
+        echo "</div>";
+        echo "</div>";
+    }
+
+    // Get media related to the character.
+    $characterMedia = get_characterMedia($id);
+
+    if (!empty($characterMedia)) {
+        echo "<h3>Related Media</h3>";
+        echo '<table>';
+        echo '<tbody>';
+        echo '<tr>';
+        for ($i = 0; $i < count($characterMedia); $i++) {
+        ?>
+            <td><a href="anime.php?id=<?php echo $characterMedia[$i]['id']; ?>"><img src="<?php echo $characterMedia[$i]['coverImage']['medium']; ?>" alt='cover' title="<?php echo $characterMedia[$i]['title']['romaji']; ?>" width="100" height="150"></a></td>
+        <?php
+            if (substr($i, -1) == 9) {
+                echo '</tr><tr>';
+            }
         }
+        echo '</tr>';
+        echo '</tbody>';
+        echo '</table>';
+    }
     ?>
 </main>
 <?php require_once 'inc/footer.php'; ?>
