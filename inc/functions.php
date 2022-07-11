@@ -209,21 +209,12 @@ function get_animeDetails($id) {
             duration,
             genres,
             averageScore,
+            meanScore,
+            favourites,
             popularity,
             source,
             countryOfOrigin,
             siteUrl,
-            characters (sort:ROLE) {
-                nodes {
-                    id,
-                    name {
-                        userPreferred,
-                    },
-                    image {
-                        medium,
-                    }
-                }
-            }
         }
     }';
 
@@ -271,19 +262,12 @@ function get_mangaDetails($id) {
             volumes,
             genres,
             averageScore,
+            meanScore,
+            favourites,
             popularity,
             source,
             countryOfOrigin,
             siteUrl,
-            characters (sort:ROLE) {
-                nodes {
-                    id,
-                    name,
-                    image {
-                        medium,
-                    }
-                }
-            }
         }
     }';
 
