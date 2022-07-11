@@ -882,6 +882,7 @@ function get_staffMedia($id) {
             staffMedia {
                 nodes {
                     id,
+                    type,
                     title {
                         romaji,
                     },

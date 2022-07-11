@@ -84,7 +84,7 @@ require_once 'inc/header.php';
         echo '<tr>';
         for ($i = 0; $i < count($staffCharacters); $i++) {
         ?>
-            <td><a href="anime.php?id=<?php echo $staffCharacters[$i]['id']; ?>"><img src="<?php echo $staffCharacters[$i]['image']['medium']; ?>" alt='cover' title="<?php echo $staffCharacters[$i]['name']['userPreferred']; ?>" width="100" height="150"></a></td>
+            <td><a href="character.php?id=<?php echo $staffCharacters[$i]['id']; ?>"><img src="<?php echo $staffCharacters[$i]['image']['medium']; ?>" alt='cover' title="<?php echo $staffCharacters[$i]['name']['userPreferred']; ?>" width="100" height="150"></a></td>
         <?php
             if (substr($i, -1) == 9) {
                 echo '</tr><tr>';
@@ -104,9 +104,15 @@ require_once 'inc/header.php';
         echo '<tbody>';
         echo '<tr>';
         for ($i = 0; $i < count($staffMedia); $i++) {
+            if ($staffMedia[$i]['type'] == 'ANIME') {
         ?>
-            <td><a href="anime.php?id=<?php echo $staffMedia[$i]['id']; ?>"><img src="<?php echo $staffMedia[$i]['coverImage']['medium']; ?>" alt='cover' title="<?php echo $staffMedia[$i]['title']['romaji']; ?>" width="100" height="150"></a></td>
+                <td><a href="anime.php?id=<?php echo $staffMedia[$i]['id']; ?>"><img src="<?php echo $staffMedia[$i]['coverImage']['medium']; ?>" alt="cover" title='<?php echo $staffMedia[$i]["title"]["romaji"]; ?>' width='100' height='150'></a></td>
         <?php
+            } else {
+        ?>
+                <td><a href="manga.php?id=<?php echo $staffMedia[$i]['id']; ?>"><img src="<?php echo $staffMedia[$i]['coverImage']['medium']; ?>" alt="cover" title='<?php echo $staffMedia[$i]["title"]["romaji"]; ?>' width='100' height='150'></a></td>
+        <?php
+            }
             if (substr($i, -1) == 9) {
                 echo '</tr><tr>';
             }
