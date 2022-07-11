@@ -908,3 +908,36 @@ function get_staffMedia($id) {
     $arr = json_decode($response->getBody()->getContents(), true);
     return $arr['data']['Staff']['staffMedia']['nodes'];
 }
+
+// Get characters voice by the current voice actor.
+function get_staffCharacters($id) {
+    $query = 'query ($id: Int) {
+        Staff (id: $id) {
+            characters (sort:ROLE) {
+                nodes {
+                    id,
+                    name {
+                        userPreferred
+                    },
+                    image {
+                        medium
+                    },
+                }
+            }
+        }
+    }';
+
+    $variables = [
+        'id' => $id,
+    ];
+
+    $http = new GuzzleHttp\Client;
+    $response = $http->post('https://graphql.anilist.co', [
+        'json' => [
+            'query' => $query,
+            'variables' => $variables,
+        ]
+    ]);
+    $arr = json_decode($response->getBody()->getContents(), true);
+    return $arr['data']['Staff']['characters']['nodes'];
+};
