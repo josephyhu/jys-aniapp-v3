@@ -7,7 +7,7 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 $query = [
-    'client_id' => $_ENV['CLIENT_ID'],
+    'client_id' => getenv('CLIENT_ID'),
     'redirect_uri' => 'https://jys-aniapp-v3.herokuapp.com', // http://example.com/callback
     'response_type' => 'code'    
 ];
