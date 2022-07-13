@@ -2,10 +2,6 @@
 session_start();
 require_once 'inc/functions.php';
 
-// Load env.
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-
 $query = [
     'client_id' => getenv('CLIENT_ID'),
     'redirect_uri' => 'https://jys-aniapp-v3.herokuapp.com', // http://example.com/callback
