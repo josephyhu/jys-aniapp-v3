@@ -1,4 +1,14 @@
 {
+    "name": "josephyhu/jys-aniapp-v3",
+    "type": "project",
+    "description": "My unofficial AniList app.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joseph Yhu",
+            "email": "josephsyhu@gmail.com"
+        }
+    ],
     "require": {
         "guzzlehttp/guzzle": "^7.0"
     }
