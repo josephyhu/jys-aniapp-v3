@@ -1,5 +1,7 @@
 # JY's AniApp v3
 
+![version](https://img.shields.io/github/v/release/josephyhu/jys-aniapp-v3?display_name=tag) ![license](https://img.shields.io/github/license/josephyhu/jys-aniapp-v3)
+
 [Click here to run the app.](https://jys-aniapp-v3.herokuapp.com)
 
 ## Non-logged in users can:
