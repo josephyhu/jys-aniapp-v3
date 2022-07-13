@@ -13,8 +13,8 @@ function get_token($code) {
     $response = $http->post('https://anilist.co/api/v2/oauth/token', [
         'form_params' => [
             'grant_type' => 'authorization_code',
-            'client_id' => getenv('CLIENT_ID'),
-            'client_secret' => getenv('CLIENT_SECRET'),
+            'client_id' => '8687',
+            'client_secret' => 'KqGJr2JqIi8wdCq3lXdy4VsGlYK8yzeDElU7hW6a',
             'redirect_uri' => 'https://jys-aniapp-v3.herokuapp.com', // http://example.com/callback
             'code' => $code, // The Authorization code received previously
         ],
