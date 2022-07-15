@@ -25,4 +25,4 @@
 ## Developers
 1. Download and unzip the project.
 2. Run `composer install`.
-3. Create an .env file with your own values of `client_id` and `client_secret`. Be sure to use your own `redirect_uri` also.
+3. Create an .env file with your own values for `client_id` and `client_secret`. Be sure to use your own `redirect_uri` also.
