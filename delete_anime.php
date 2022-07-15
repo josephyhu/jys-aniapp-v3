@@ -17,6 +17,6 @@ if (delete_userAnime($_SESSION['accessToken'], $id)) {
 } else {
     echo "<p class='warning'>Deleting anime failed.</p>";
 }
-echo "<a href='animelist.php'>Go back to your animelist.</a>";
+echo "<a href='animelist.php'>Go back to your anime list.</a>";
 
 require_once 'inc/footer.php';

@@ -17,6 +17,6 @@ if (delete_userManga($_SESSION['accessToken'], $id)) {
 } else {
     echo "<p class='warning'>Deleting manga failed.</p>";
 }
-echo "<a href='mangalist.php'>Go back to your mangalist.</a>";
+echo "<a href='mangalist.php'>Go back to your manga list.</a>";
 
 require_once 'inc/footer.php';

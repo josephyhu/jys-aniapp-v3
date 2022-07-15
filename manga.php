@@ -188,7 +188,7 @@ require_once 'inc/header.php';
         echo "</table>";
         ?>
         <a href="update_manga.php?&id=<?php echo $id; ?>">Update manga</a><br>
-        <a href="delete_manga.php?&entryId=<?php echo $authMangaDetails['id']; ?>">Delete Manga</a>
+        <a href="delete_manga.php?&entryId=<?php echo $authMangaDetails['id']; ?>">Delete manga</a>
         <?php
     }
     ?>

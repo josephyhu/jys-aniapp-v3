@@ -31,8 +31,6 @@ require_once 'inc/header.php';
             <option value="DROPPED">Dropped</option>
             <option value="REPEATING">Repeating</option>
         </select><br>
-        <label for="startedAt">Started date<span class="required">*</span></label>
-        <input type="text" id="startedAt" name="startedAt" placeholder="YYYY-MM-DD"><br>
         <label for="score">Score</label>
         <input type="text" id="score" name="score" value="0"><br>
         <label for="progress">Progress</label>
@@ -43,17 +41,11 @@ require_once 'inc/header.php';
     </form>
     <?php 
         $status = htmlspecialchars($_POST['status']);
-        $startedAt = htmlspecialchars($_POST['startedAt']);
-        $startedObj = [
-            "year" => substr($startedAt, 0, 4),
-            "month" => substr($startedAt, 5, 2),
-            "day" => substr($startedAt, 8, 2),
-        ];
         $score = htmlspecialchars($_POST['score']);
         $progress = htmlspecialchars($_POST['progress']);
         $progressVolumes = htmlspecialchars($_POST['progressVolumes']);
 
-        if (add_manga($_SESSION['accessToken'], $id, $status, $startedObj, $score, $progress, $progressVolumes)) {
+        if (add_manga($_SESSION['accessToken'], $id, $status, $score, $progress, $progressVolumes)) {
             echo "<p class='success'>Manga successfully added.</p>";
         } else {
             echo "<p class='warning'>Adding manga failed.</p>";
