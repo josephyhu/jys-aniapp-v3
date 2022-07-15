@@ -22,8 +22,8 @@ require_once 'inc/header.php';
     </div>
     <div class="logout"><a href="logout.php">Log out</a></div>
     <form method="post">
-        <label for="status">Status<span class="required">*</span></label>
-        <select id="status" name="status" required>
+        <label for="status">Status</label>
+        <select id="status" name="status">
             <option value="CURRENT">Currently reading</option>
             <option value="COMPLETED">Completed</option>
             <option value="PLANNING">Plan to read</option>
@@ -31,14 +31,14 @@ require_once 'inc/header.php';
             <option value="DROPPED">Dropped</option>
             <option value="REPEATING">Repeating</option>
         </select><br>
-        <label for="startedAt">Started date</label>
-        <input type="date" id="startedAt" name="startedAt"><br>
+        <label for="startedAt">Started date<span class="required">*</span></label>
+        <input type="text" id="startedAt" name="startedAt" placeholder="YYYY-MM-DD"><br>
         <label for="score">Score</label>
-        <input type="text" id="score" name="score"><br>
+        <input type="text" id="score" name="score" value="0"><br>
         <label for="progress">Progress</label>
-        <input type="number" id="progress" name="progress"><br>
+        <input type="number" id="progress" name="progress" value="0"><br>
         <label for="progressVolumes">Volume progress</label>
-        <input type="number" id="progressVolumes" name="progressVolumes"><br>
+        <input type="number" id="progressVolumes" name="progressVolumes" value="0"><br>
         <button type="submit">Add manga</button>
     </form>
     <?php 
