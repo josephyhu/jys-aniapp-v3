@@ -1,6 +1,6 @@
 # JY's AniApp v3
 
-![version](https://img.shields.io/github/v/release/josephyhu/jys-aniapp-v3?display_name=tag) ![license](https://img.shields.io/github/license/josephyhu/jys-aniapp-v3) [![PHP Composer](https://github.com/josephyhu/jys-aniapp-v3/actions/workflows/php.yml/badge.svg)](https://github.com/josephyhu/jys-aniapp-v3/actions/workflows/php.yml) [![Requirements Status](https://requires.io/github/josephyhu/jys-aniapp-v3/requirements.svg?branch=main)](https://requires.io/github/josephyhu/jys-aniapp-v3/requirements/?branch=main)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/josephyhu/jys-aniapp-v3) [![PHP Composer](https://github.com/josephyhu/jys-aniapp-v3/actions/workflows/php.yml/badge.svg)](https://github.com/josephyhu/jys-aniapp-v3/actions/workflows/php.yml) [![Requirements Status](https://requires.io/github/josephyhu/jys-aniapp-v3/requirements.svg?branch=main)](https://requires.io/github/josephyhu/jys-aniapp-v3/requirements/?branch=main)
 
 [Click here to run the app.](https://jys-aniapp-v3.herokuapp.com)
 
