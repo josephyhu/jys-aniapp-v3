@@ -4,6 +4,8 @@
 
 [Click here to run the app.](https://jys-aniapp-v3.herokuapp.com)
 
+---
+
 ## Non-logged in users can:
 - Search for anime/manga.
 - See general anime/manga statistics.
@@ -17,3 +19,10 @@
 - Add anime/manga to his/her list.
 - Update or delete anime/manga from his/her list.
 - View his/her user statistics.
+
+---
+
+## Developers
+1. Download and unzip the project.
+2. Run `composer install`.
+3. Create an .env file with your own values of `client_id` and `client_secret`. Be sure to use your own `redirect_uri` also.
