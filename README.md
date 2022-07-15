@@ -23,6 +23,6 @@
 ---
 
 ## Developers
-1. Download and unzip the project.
+1. `git clone git@github.com:josephyhu/jys-aniapp-v3.git`
 2. Run `composer install`.
 3. Create an .env file with your own values for `client_id` and `client_secret`. Be sure to use your own `redirect_uri` also.
