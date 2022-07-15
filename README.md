@@ -23,6 +23,6 @@
 ---
 
 ## Developers
-1. Fork this repository, and run `git clone git@github.com:{your_github_username}/jys-aniapp-v3.git`
+1. Fork this repository, then clone it.
 2. Run `composer install`.
-3. Create an .env file with your own values for `client_id` and `client_secret`. Be sure to use your own `redirect_uri` also.
+3. Create an .env file with your own values for `client_id` and `client_secret`. Be sure to use your own value for `redirect_uri` also.
