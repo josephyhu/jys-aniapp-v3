@@ -363,7 +363,7 @@ function get_userMangaDetails($userId, $mediaId) {
 // Add anime to current user's list.
 function add_anime($accessToken, $mediaId, $status, $startedAt, $score, $progress) {
     $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $startedAt: FuzzyDateInput, $score: Float, $progress: Int) {
-        SaveMediaListEntry (mediaId: $mediaId, status: $status, startedat: $startedAt, score: $score, progress: $progress) {
+        SaveMediaListEntry (mediaId: $mediaId, status: $status, startedAt: $startedAt, score: $score, progress: $progress) {
             id,
             status,
             score,
