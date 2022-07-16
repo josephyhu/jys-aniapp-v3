@@ -6,13 +6,13 @@
 
 ---
 
-## Non-logged in users can:
+## Non-logged in users can
 - Search for anime/manga.
 - See general anime/manga statistics.
 - View a list of characters/staff for anime/manga.
 - See character/staff statistics.
 
-## Logged in users can:
+## Logged in users can
 - Do all of the above.
 - View his/her anime/manga list.
 - See his/her anime/manga statistics.
