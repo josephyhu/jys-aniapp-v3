@@ -36,11 +36,11 @@ require_once 'inc/header.php';
         <label for="completedAt">Completed Date</label>
         <input type="date" id="completedAt" name="completedObj"><br>
         <label for="score">Score</label>
-        <input type="text" id="score" name="score">
+        <input type="text" id="score" name="score" value="0"><br>
         <label for="progress">Progress</label>
-        <input type="number" id="progress" name="progress">
+        <input type="number" id="progress" name="progress" value="0">
         <label for="progressVolumes">Volume progress</label>
-        <input type="number" id="progressVolumes" name="progressVolumes"><br>
+        <input type="number" id="progressVolumes" name="progressVolumes" value="0"><br>
         <button type="submit">Add manga</button>
     </form>
     <?php 

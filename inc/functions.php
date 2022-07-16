@@ -394,8 +394,8 @@ function add_anime($accessToken, $mediaId, $status, $startedAt, $completedAt, $s
             "month" => (!empty($completedAt['month'])) ? $completedAt['month'] : null,
             "day" => (!empty($completedAt['day'])) ? $completedAt['day'] : null,
         ],
-        "score" => (!empty($score)) ? $score : null,
-        "progress" => (!empty($progress)) ? $progress : null,
+        "score" => $score,
+        "progress" => $progress,
     ];
 
     $http = new GuzzleHttp\Client;
@@ -449,9 +449,9 @@ function add_manga($accessToken, $mediaId, $status, $startedAt, $completedAt, $s
             "month" => (!empty($completedAt['month'])) ? $completedAt['month'] : null,
             "day" => (!empty($completedAt['day'])) ? $completedAt['day'] : null,
         ],
-        "score" => (!empty($score)) ? $score : null,
-        "progress" => (!empty($progress)) ? $progress : null,
-        "progressVolumes" => (!empty($progressVolumes)) ? $progressVolumes : null,
+        "score" => $score,
+        "progress" => $progress,
+        "progressVolumes" => $progressVolumes,
     ];
 
     $http = new GuzzleHttp\Client;
@@ -503,8 +503,8 @@ function update_anime($accessToken, $mediaId, $status, $startedAt, $completedAt,
             "month" => (!empty($completedAt['month'])) ? $completedAt['month'] : null,
             "day" => (!empty($completedAt['day'])) ? $completedAt['day'] : null,
         ],
-        "score" => (!empty($score)) ? $score : null,
-        "progress" => (!empty($progress)) ? $progress : null,
+        "score" => $score,
+        "progress" => $progress,
     ];
 
     $http = new GuzzleHttp\Client;
@@ -556,9 +556,9 @@ function update_manga($accessToken, $mediaId, $status, $startedAt, $completedAt,
             "month" => (!empty($completedAt['month'])) ? $completedAt['month'] : null,
             "day" => (!empty($completedAt['day'])) ? $completedAt['day'] : null,
         ],
-        "score" => (!empty($score)) ? $score : null,
-        "progress" => (!empty($progress)) ? $progress : null,
-        "progressVolumes" => (!empty($progressVolumes)) ? $progressVolumes : null,
+        "score" => $score,
+        "progress" => $progress,
+        "progressVolumes" => $progressVolumes,
     ];
 
     $http = new GuzzleHttp\Client;

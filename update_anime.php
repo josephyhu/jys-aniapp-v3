@@ -59,9 +59,9 @@ require_once 'inc/header.php';
         <label for="completedAt">Completed Date</label>
         <input type="date" id="completedAt" name="completedObj" value="<?php echo $completedYear . '-' . $completedMonth . '-' . $completedDay; ?>"><br>
         <label for="score">Score</label>
-        <input type="text" id="score" name="score" value="<?php echo $data['score']; ?>">
+        <input type="text" id="score" name="score" value="<?php echo (!empty($data['score'])) ? $data['score'] : 0; ?>"><br>
         <label for="progress">Progress</label>
-        <input type="number" id="progress" name="progress" value="<?php echo $data['progress']; ?>"><br>
+        <input type="number" id="progress" name="progress" value="<?php echo (!empty($data['progress'])) ? $data['progress']: 0; ?>"><br>
         <button type="submit">Update anime</button>
     </form>
     <?php 
