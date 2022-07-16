@@ -375,9 +375,9 @@ function add_anime($accessToken, $mediaId, $status, $startedAt, $score, $progres
         "mediaId" => $mediaId,
         "status" => $status,
         "startedAt" => [
-            "year" => (!empty($startedAt['year'])) ? $startedAt['year'] : "",
-            "month" => (!empty($startedAt['month'])) ? $startedAt['month'] : "",
-            "day" => (!empty($startedAt['day'])) ? $startedAt['day'] : "",
+            "year" => (!empty($startedAt['year'])) ? $startedAt['year'] : null,
+            "month" => (!empty($startedAt['month'])) ? $startedAt['month'] : null,
+            "day" => (!empty($startedAt['day'])) ? $startedAt['day'] : null,
         ],
         "score" => $score,
         "progress" => $progress,
