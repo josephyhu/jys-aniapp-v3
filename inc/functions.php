@@ -361,9 +361,9 @@ function get_userMangaDetails($userId, $mediaId) {
 }
 
 // Add anime to current user's list.
-function add_anime($accessToken, $mediaId, $status, $score, $progress) {
-    $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $score: Float, $progress: Int) {
-        SaveMediaListEntry (mediaId: $mediaId, status: $status, score: $score, progress: $progress) {
+function add_anime($accessToken, $mediaId, $status, $startedAt, $score, $progress) {
+    $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $startedAt: FuzzyDateInput, $score: Float, $progress: Int) {
+        SaveMediaListEntry (mediaId: $mediaId, status: $status, startedat: $startedAt, score: $score, progress: $progress) {
             id,
             status,
             score,
@@ -374,6 +374,11 @@ function add_anime($accessToken, $mediaId, $status, $score, $progress) {
     $variables = [
         "mediaId" => $mediaId,
         "status" => $status,
+        "startedAt" => [
+            "year" => (!empty($startedAt['year'])) ? $startedAt['year'] : "",
+            "month" => (!empty($startedAt['month'])) ? $startedAt['month'] : "",
+            "day" => (!empty($startedAt['day'])) ? $startedAt['day'] : "",
+        ],
         "score" => $score,
         "progress" => $progress,
     ];
