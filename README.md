@@ -22,7 +22,7 @@
 
 ---
 
-## Developers
+## Developers (requires AniList account)
 1. Fork this repository, then clone it.
 2. Run `composer install`.
 3. Create an .env file with your own values for `client_id` and `client_secret`. Be sure to use your own value for `redirect_uri` also.
