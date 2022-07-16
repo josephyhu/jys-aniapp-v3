@@ -31,21 +31,34 @@ require_once 'inc/header.php';
             <option value="DROPPED">Dropped</option>
             <option value="REPEATING">Repeating</option>
         </select><br>
+        <label for="startedAt">Start Date</label>
+        <input type="date" id="startedAt" name="startedObj">
+        <label for="completedAt">Completed Date</label>
+        <input type="date" id="completedAt" name="completedObj"><br>
         <label for="score">Score</label>
-        <input type="text" id="score" name="score" value="0"><br>
+        <input type="text" id="score" name="score">
         <label for="progress">Progress</label>
-        <input type="number" id="progress" name="progress" value="0"><br>
+        <input type="number" id="progress" name="progress">
         <label for="progressVolumes">Volume progress</label>
-        <input type="number" id="progressVolumes" name="progressVolumes" value="0"><br>
+        <input type="number" id="progressVolumes" name="progressVolumes"><br>
         <button type="submit">Add manga</button>
     </form>
     <?php 
         $status = htmlspecialchars($_POST['status']);
+        $startedObj = htmlspecialchars($_POST['startedObj']);
+        $completedObj = htmlspecialchars($_POST['completedObj']);
+        $startedAt = [];
+        $startedAt['year'] = substr($startedObj, 0, 4);
+        $startedAt['month'] = substr($startedObj, 5, 2);
+        $startedAt['day'] = substr($startedObj, 8, 2);
+        $completedAt = [];
+        $completedAt['year'] = substr($completedObj, 0, 4);
+        $completedAt['month'] = substr($completedObj, 5, 2);
+        $completedAt['day'] = substr($completedObj, 8, 2);
         $score = htmlspecialchars($_POST['score']);
         $progress = htmlspecialchars($_POST['progress']);
-        $progressVolumes = htmlspecialchars($_POST['progressVolumes']);
 
-        if (add_manga($_SESSION['accessToken'], $id, $status, $score, $progress, $progressVolumes)) {
+        if (add_manga($_SESSION['accessToken'], $id, $status, $startedAt, $completedAt, $score, $progress, $progressVolumes)) {
             echo "<p class='success'>Manga successfully added.</p>";
         } else {
             echo "<p class='warning'>Adding manga failed.</p>";

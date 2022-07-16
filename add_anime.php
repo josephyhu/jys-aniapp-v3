@@ -33,23 +33,30 @@ require_once 'inc/header.php';
         </select><br>
         <label for="startedAt">Start Date</label>
         <input type="date" id="startedAt" name="startedObj">
+        <label for="completedAt">Completed Date</label>
+        <input type="date" id="completedAt" name="completedObj"><br>
         <label for="score">Score</label>
-        <input type="text" id="score" name="score" value="0"><br>
+        <input type="text" id="score" name="score">
         <label for="progress">Progress</label>
-        <input type="number" id="progress" name="progress" value="0"><br>
+        <input type="number" id="progress" name="progress"><br>
         <button type="submit">Add anime</button>
     </form>
     <?php 
         $status = htmlspecialchars($_POST['status']);
         $startedObj = htmlspecialchars($_POST['startedObj']);
+        $completedObj = htmlspecialchars($_POST['completedObj']);
         $startedAt = [];
         $startedAt['year'] = substr($startedObj, 0, 4);
         $startedAt['month'] = substr($startedObj, 5, 2);
         $startedAt['day'] = substr($startedObj, 8, 2);
+        $completedAt = [];
+        $completedAt['year'] = substr($completedObj, 0, 4);
+        $completedAt['month'] = substr($completedObj, 5, 2);
+        $completedAt['day'] = substr($completedObj, 8, 2);
         $score = htmlspecialchars($_POST['score']);
         $progress = htmlspecialchars($_POST['progress']);
 
-        if (add_anime($_SESSION['accessToken'], $id, $status, $startedAt, $score, $progress)) {
+        if (add_anime($_SESSION['accessToken'], $id, $status, $startedAt, $completedAt, $score, $progress)) {
             echo "<p class='success'>Anime successfully added.</p>";
         } else {
             echo "<p class='warning'>Adding anime failed.</p>";

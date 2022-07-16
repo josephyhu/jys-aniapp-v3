@@ -361,11 +361,21 @@ function get_userMangaDetails($userId, $mediaId) {
 }
 
 // Add anime to current user's list.
-function add_anime($accessToken, $mediaId, $status, $startedAt, $score, $progress) {
-    $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $startedAt: FuzzyDateInput, $score: Float, $progress: Int) {
-        SaveMediaListEntry (mediaId: $mediaId, status: $status, startedAt: $startedAt, score: $score, progress: $progress) {
+function add_anime($accessToken, $mediaId, $status, $startedAt, $completedAt, $score, $progress) {
+    $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $startedAt: FuzzyDateInput, $completedAt: FuzzyDateInput, $score: Float, $progress: Int) {
+        SaveMediaListEntry (mediaId: $mediaId, status: $status, startedAt: $startedAt, completedAt: $completedAt, score: $score, progress: $progress) {
             id,
             status,
+            startedAt {
+                year,
+                month,
+                day,
+            },
+            completedAt {
+                year,
+                month,
+                day,
+            },
             score,
             progress,
         }
@@ -379,8 +389,13 @@ function add_anime($accessToken, $mediaId, $status, $startedAt, $score, $progres
             "month" => (!empty($startedAt['month'])) ? $startedAt['month'] : null,
             "day" => (!empty($startedAt['day'])) ? $startedAt['day'] : null,
         ],
-        "score" => $score,
-        "progress" => $progress,
+        "completedAt" => [
+            "year" => (!empty($completedAt['year'])) ? $completedAt['year'] : null,
+            "month" => (!empty($completedAt['month'])) ? $completedAt['month'] : null,
+            "day" => (!empty($completedAt['day'])) ? $completedAt['day'] : null,
+        ],
+        "score" => (!empty($score)) ? $score : null,
+        "progress" => (!empty($progress)) ? $progress : null,
     ];
 
     $http = new GuzzleHttp\Client;
@@ -400,11 +415,21 @@ function add_anime($accessToken, $mediaId, $status, $startedAt, $score, $progres
 }
 
 // Add manga to current user's list.
-function add_manga($accessToken, $mediaId, $status, $score, $progress, $progressVolumes) {
-    $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $score: Float, $progress: Int, $progressVolumes: Int) {
-        SaveMediaListEntry (mediaId: $mediaId, status: $status, score: $score, progress: $progress, progressVolumes: $progressVolumes) {
+function add_manga($accessToken, $mediaId, $status, $startedAt, $completedAt, $score, $progress, $progressVolumes) {
+    $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $startedAt: FuzzyDateInput, $completedAt: FuzzyDateInput, $score: Float, $progress: Int, $progressVolumes: Int) {
+        SaveMediaListEntry (mediaId: $mediaId, status: $status, startedAt: $startedAt, completedAt: $completedAt, score: $score, progress: $progress, progressVolumes: $progressVolumes) {
             id,
             status,
+            startedAt {
+                year,
+                month,
+                day,
+            },
+            completedAt {
+                year,
+                month,
+                day,
+            },
             score,
             progress,
             progressVolumes,
@@ -414,9 +439,19 @@ function add_manga($accessToken, $mediaId, $status, $score, $progress, $progress
     $variables = [
         "mediaId" => $mediaId,
         "status" => $status,
-        "score" => $score,
-        "progress" => $progress,
-        "progressVolumes" => $progressVolumes,
+        "startedAt" => [
+            "year" => (!empty($startedAt['year'])) ? $startedAt['year'] : null,
+            "month" => (!empty($startedAt['month'])) ? $startedAt['month'] : null,
+            "day" => (!empty($startedAt['day'])) ? $startedAt['day'] : null,
+        ],
+        "completedAt" => [
+            "year" => (!empty($completedAt['year'])) ? $completedAt['year'] : null,
+            "month" => (!empty($completedAt['month'])) ? $completedAt['month'] : null,
+            "day" => (!empty($completedAt['day'])) ? $completedAt['day'] : null,
+        ],
+        "score" => (!empty($score)) ? $score : null,
+        "progress" => (!empty($progress)) ? $progress : null,
+        "progressVolumes" => (!empty($progressVolumes)) ? $progressVolumes : null,
     ];
 
     $http = new GuzzleHttp\Client;
@@ -436,11 +471,21 @@ function add_manga($accessToken, $mediaId, $status, $score, $progress, $progress
 }
 
 // Update anime on current user's list.
-function update_anime($accessToken, $mediaId, $status, $score, $progress) {
-    $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $score: Float, $progress: Int) {
-        SaveMediaListEntry(mediaId: $mediaId, status: $status, score: $score, progress: $progress) {
+function update_anime($accessToken, $mediaId, $status, $startedAt, $completedAt, $score, $progress) {
+    $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $startedAt: FuzzyDateInput, $completedAt: FuzzyDateInput, $score: Float, $progress: Int) {
+        SaveMediaListEntry(mediaId: $mediaId, status: $status, startedAt: $startedAt, completedAt: $completedAt, score: $score, progress: $progress) {
             id,
             status,
+            startedAt {
+                year,
+                month,
+                day,
+            },
+            completedAt {
+                year,
+                month,
+                day,
+            },
             score,
             progress,
         }
@@ -448,8 +493,18 @@ function update_anime($accessToken, $mediaId, $status, $score, $progress) {
     $variables = [
         "mediaId" => $mediaId,
         "status" => $status,
-        "score" => $score,
-        "progress" => $progress,
+        "startedAt" => [
+            "year" => (!empty($startedAt['year'])) ? $startedAt['year'] : null,
+            "month" => (!empty($startedAt['month'])) ? $startedAt['month'] : null,
+            "day" => (!empty($startedAt['day'])) ? $startedAt['day'] : null,
+        ],
+        "completedAt" => [
+            "year" => (!empty($completedAt['year'])) ? $completedAt['year'] : null,
+            "month" => (!empty($completedAt['month'])) ? $completedAt['month'] : null,
+            "day" => (!empty($completedAt['day'])) ? $completedAt['day'] : null,
+        ],
+        "score" => (!empty($score)) ? $score : null,
+        "progress" => (!empty($progress)) ? $progress : null,
     ];
 
     $http = new GuzzleHttp\Client;
@@ -469,11 +524,21 @@ function update_anime($accessToken, $mediaId, $status, $score, $progress) {
 }
 
 // Update manga on current user's list.
-function update_manga($accessToken, $mediaId, $status, $score, $progress, $progressVolumes) {
-    $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $score: Float, $progress: Int, $progressVolumes: Int) {
-        SaveMediaListEntry(mediaId: $mediaId, status: $status, score: $score, progress: $progress, progressVolumes: $progressVolumes) {
+function update_manga($accessToken, $mediaId, $status, $startedAt, $completedAt, $score, $progress, $progressVolumes) {
+    $query = 'mutation ($mediaId: Int, $status: MediaListStatus, $startedAt: FuzzyDateInput, $completedAt: FuzzyDateInput, $score: Float, $progress: Int, $progressVolumes: Int) {
+        SaveMediaListEntry(mediaId: $mediaId, status: $status, startedAt: $startedAt, completedAt: $completedAt, score: $score, progress: $progress, progressVolumes: $progressVolumes) {
             id,
             status,
+            startedAt {
+                year,
+                month,
+                day,
+            },
+            completedAt {
+                year,
+                month,
+                day,
+            },
             score,
             progress,
         }
@@ -481,9 +546,19 @@ function update_manga($accessToken, $mediaId, $status, $score, $progress, $progr
     $variables = [
         "mediaId" => $mediaId,
         "status" => $status,
-        "score" => $score,
-        "progress" => $progress,
-        "progressVolumes" => $progressVolumes,
+        "startedAt" => [
+            "year" => (!empty($startedAt['year'])) ? $startedAt['year'] : null,
+            "month" => (!empty($startedAt['month'])) ? $startedAt['month'] : null,
+            "day" => (!empty($startedAt['day'])) ? $startedAt['day'] : null,
+        ],
+        "completedAt" => [
+            "year" => (!empty($completedAt['year'])) ? $completedAt['year'] : null,
+            "month" => (!empty($completedAt['month'])) ? $completedAt['month'] : null,
+            "day" => (!empty($completedAt['day'])) ? $completedAt['day'] : null,
+        ],
+        "score" => (!empty($score)) ? $score : null,
+        "progress" => (!empty($progress)) ? $progress : null,
+        "progressVolumes" => (!empty($progressVolumes)) ? $progressVolumes : null,
     ];
 
     $http = new GuzzleHttp\Client;

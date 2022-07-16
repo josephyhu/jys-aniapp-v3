@@ -54,17 +54,31 @@ require_once 'inc/header.php';
                 <option value="<?php echo $status_arr[$i]; ?>" <?php echo ($status_arr[$i] == $data['status']) ? 'selected' : ''; ?>><?php echo ucfirst(strtolower($status_arr[$i])); ?></option>
             <? } ?>
         </select><br>
+        <label for="startedAt">Start Date</label>
+        <input type="date" id="startedAt" name="startedObj" value="<?php echo $startedYear . '-' . $startedMonth . '-' . $startedDay; ?>">
+        <label for="completedAt">Completed Date</label>
+        <input type="date" id="completedAt" name="completedObj" value="<?php echo $completedYear . '-' . $completedMonth . '-' . $completedDay; ?>"><br>
         <label for="score">Score</label>
-        <input type="text" id="score" name="score" value="<?php echo !empty($data['progress']) ? $data['score'] : 0; ?>"><br>
+        <input type="text" id="score" name="score" value="<?php echo $data['score']; ?>">
         <label for="progress">Progress</label>
-        <input type="number" id="progress" name="progress" value="<?php echo !empty($data['progress']) ? $data['progress'] : 0; ?>"><br>
+        <input type="number" id="progress" name="progress" value="<?php echo $data['progress']; ?>"><br>
         <button type="submit">Update anime</button>
     </form>
     <?php 
         $status = htmlspecialchars($_POST['status']);
+        $startedObj = htmlspecialchars($_POST['startedObj']);
+        $completedObj = htmlspecialchars($_POST['completedObj']);
+        $startedAt = [];
+        $startedAt['year'] = substr($startedObj, 0, 4);
+        $startedAt['month'] = substr($startedObj, 5, 2);
+        $startedAt['day'] = substr($startedObj, 8, 2);
+        $completedAt = [];
+        $completedAt['year'] = substr($completedObj, 0, 4);
+        $completedAt['month'] = substr($completedObj, 5, 2);
+        $completedAt['day'] = substr($completedObj, 8, 2);
         $score = htmlspecialchars($_POST['score']);
         $progress = htmlspecialchars($_POST['progress']);
-        if (update_anime($_SESSION['accessToken'], $id, $status, $score, $progress)) {
+        if (update_anime($_SESSION['accessToken'], $id, $status, $startedAt, $completedAt, $score, $progress)) {
             echo "<p class='success'>Anime successfully updated.</p>";
         } else {
             echo "<p class='warning'>Updating anime failed.</p>";
